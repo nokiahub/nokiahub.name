@@ -148,7 +148,5 @@ pickAllFruits();
 await
 await연산자는 Promise를 기다리기 위해 사용됩니다. 연산자는 async function 내부에서만 사용할 수 있습니다.
 
-https://github.com/tc39/proposal-async-await/issues/9
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
-https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
-
+[Guide on using promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises/)<br>
+[Promise apis](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)<br>
