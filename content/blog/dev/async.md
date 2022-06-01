@@ -148,5 +148,91 @@ pickAllFruits();
 await
 await연산자는 Promise를 기다리기 위해 사용됩니다. 연산자는 async function 내부에서만 사용할 수 있습니다.
 
+### await vs return vs return await
+다음 예제를 통해 async await이 어떻게 동작하게 되는지 예측해보며 개념에 대한 이해를 더 정확하게 체크할 수 있었습니다. 해당 예제는 [여기](https://jakearchibald.com/2017/await-vs-return-vs-return-await/)에서 가져왔습니다.
+
+```javascript
+  async function waitAndMaybeReject() {
+  // Wait one second
+  await new Promise(r => setTimeout(r, 1000));
+  // Toss a coin
+  const isHeads = Boolean(Math.round(Math.random()));
+
+  if (isHeads) return 'yay';
+  throw Error('Boo!');
+}
+```
+
+#### just calling
+```javascript
+async function foo() {
+  try {
+    waitAndMaybeReject();
+  }
+  catch (e) {
+    return 'caught';
+  }
+}
+```
+waitAndMaybeReject는 async 함수이기 때문에 무조건 Promise를 반환합니다.<br>
+일반 함수였다면 50퍼센트의 확률로 'yay'라는 문자열을 반환했겠지만,<br>
+async 함수이기 때문에 50퍼센트의 확률로 **'yay'를 resolve하는 Promise** 혹은 **Error('Boo!')로 reject하는 Promise** 가 반환됩니다.<br>
+두 값 모두 resolve, reject가 되지 않은 pending 상태의 Promise이기 때문에 위의 코드에서 절대 에러가 발생하지 않게 됩니다.<br>
+
+#### awaiting
+```javascript
+async function foo() {
+  try {
+    await waitAndMaybeReject();
+  }
+  catch (e) {
+    return 'caught';
+  }
+}
+```
+await 키워드를 사용하므로써, pending상태의 Promise가 resolve 또는 reject 처리가 됩니다.<br>
+waitAndMaybeReject에서 isHeads가 true이면 foo에서 resolve처리가 되고, isHeads가 false이면 foo에서 error가 발생하게 됩니다.<br>
+
+#### returning
+```javascript
+async function foo() {
+  try {
+    return waitAndMaybeReject();
+  }
+  catch (e) {
+    return 'caught';
+  }
+}
+```
+await 키워드 없이 waitAndMaybeReject를 바로 return할 경우에도 첫번째 just calling의 경우와 같이 pending 상태의 Promise이기 때문에 catch 블록이 절대 실행되지 않습니다.
+
+#### return-awaiting
+```javascript
+async function foo() {
+  try {
+    return await waitAndMaybeReject();
+  }
+  catch (e) {
+    return 'caught';
+  }
+}
+```
+그렇다면 Promise를 받아 await 처리를 하고, 이를 return하는 async 함수는 어떻게 동작할까요?
+
+**isHeads = true로 나왔다면**<br>
+1. waitAndMaybeReject로부터 pending 상태의 Promise를 받는다.
+2. await를 통해 resolve 처리한다.
+3. resolve 된 경우 이 값을 다시 Promise.relove('yay')로 반환한다.
+
+**isHeads = false로 나왔다면**<br>
+1. waitAndMaybeReject로부터 pending 상태의 Promise를 받는다.
+2. await를 통해 reject 처리한다.
+3. Error('Boo!')로 인해 catch 블록이 실행된다.
+
+try-catch 문이 없다면 Promise의 resolve, reject 처리가 된 결과값을 다시 Promise로 반환하는 것은 redundant한 일입니다.<br>
+그렇기 때문에 try-catch 블록을 사용하지 않는 경우에 한에 이를 제한하는 eslint 규칙이 존재합니다.<br>
+
+
 [Guide on using promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises/)<br>
 [Promise apis](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)<br>
+[await vs return vs return await](https://jakearchibald.com/2017/await-vs-return-vs-return-await/)<br>
