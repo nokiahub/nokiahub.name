@@ -18,10 +18,8 @@ tags: 'heap, 자료구조, 힙 구조, 최대 힙, 최대 힙 구현'
 
 ```javascript
 // heapify 과정에서 노드의 자리를 바꾸는 함수
-function swap(arr, x, y) {
-  const tmp = arr[x];
-  arr[x]= arr[y];
-  arr[y] = tmp;
+function swap(index1, index2) {
+  [heap[index1], heap[index2]] = [heap[index2], heap[index1]];
 }
 ```
 
@@ -34,7 +32,7 @@ function push(number) {
   let parent = Math.floor(child / 2);
 
   while (child > 1 && heap[child] > heap[parent]) {
-    swap(heap, child, parent);
+    swap(child, parent);
     child = parent;
     parent = Math.floor(child / 2);
   }
@@ -55,7 +53,7 @@ heapify를 할 때 O(logn)의 시간 복잡도가 필요합니다.
 function pop() {
   const value = heap[1];
 
-  swap(heap, 1, heapCount);
+  swap(1, heapCount);
   heapCount = heapCount - 1;
 
   let parent = 1;
@@ -69,7 +67,7 @@ function pop() {
   }
 
   while (child <= heapCount && heap[parent] < heap[child]) {
-    swap(heap, child, parent);
+    swap(child, parent);
 
     parent = child;
     child = parent * 2;
@@ -137,79 +135,75 @@ best: O(nlogn)<br>
 ### 우선순위 큐 활용
 
 ```javascript
-push(value) {
-    heap.push(number);
-    heapCount++;
+const maxHeap = [null];
+let heapCount = 0;
 
-    let child = heapCount;
-    let parent = Math.floor(child / 2);
+function swap(index1, index2) {
+  [maxHeap[index1], maxHeap[index2]] = [maxHeap[index2], maxHeap[index1]];
+}
 
-    // heapify while문 내부에서 heap[index].age 의 값을 비교합니다.
-    while (
-      child > 1
-      && heap[child].age > heap[parent].age
-    ) {
-      swap(heap, child, parent);
-      child = parent;
-      parent = Math.floor(child / 2);
-    }
+function push(value) {
+  maxHeap.push(value);
+  heapCount++;
+
+  let child = heapCount;
+  let parent = Math.floor(child / 2);
+
+  while (child > 1 && maxHeap[child].age > maxHeap[parent].age) {
+    swap(child, parent);
+    child = parent;
+    parent = Math.floor(child / 2);
+  }
+}
+
+function pop() {
+  const value = maxHeap[1];
+
+  swap(1, heapCount);
+  heapCount = heapCount - 1;
+
+  let parent = 1;
+  let child = parent * 2;
+
+  if (child + 1 <= heapCount) {
+    child = (maxHeap[child].age > maxHeap[child + 1].age)
+      ? child
+      : child + 1;
   }
 
-  pop() {
-    const value = heap[1];
+  while (child <= heapCount && maxHeap[parent].age < maxHeap[child].age) {
+    swap(child, parent);
+    parent = child;
+    child = parent * 2;
 
-    swap(heap, 1, heapCount);
-    heapCount = heapCount - 1;
-
-    let parent = 1;
-    let child = parent * 2;
-
-    // child index를 결정할 때 heap[index].age를 비교하여 결정합니다.
     if (child + 1 <= heapCount) {
-      child = (heap[child].age > heap[child + 1].age)
+      child = (maxHeap[child].age > maxHeap[child + 1].age)
         ? child
         : child + 1;
     }
-
-    // heapify의 while문 내부에서도 heap[index].age를 비교합니다.
-    while (
-      child <= heapCount
-      && heap[parent] < heap[child]
-    ) {
-      swap(heap, child, parent);
-      parent = child;
-      child = parent * 2;
-
-      if (child + 1 <= heapCount) {
-        child = (heap[child].age > heap[child + 1].age)
-          ? child
-          : child + 1;
-      }
-    }
-
-    return value;
   }
 
-const maxHeap = new MaxHeap();
+  return value;
+}
 
-maxHeap.push({ name: 'nokia', age: 27 });
-maxHeap.push({ name: 'heehee', age: 26 });
-maxHeap.push({ name: 'judy', age: 14 });
-maxHeap.push({ name: 'sophia', age: 16 });
-maxHeap.push({ name: 'bjork', age: 32 });
+push({ name: 'nokia', age: 27 });
+push({ name: 'heehee', age: 26 });
+push({ name: 'judy', age: 14 });
+push({ name: 'sophia', age: 16 });
+push({ name: 'bjork', age: 32 });
 
 for (let i = 0; i < 5; i++) {
-  console.log(maxHeap.pop());
+  console.log(pop());
 }
 ```
 
 ```shell
 // age를 기준으로 객체들이 정렬된 것을 확인할 수 있었습니다.
-{ name: 'bjork', age: 32 }
-{ name: 'heehee', age: 26 }
-{ name: 'sophia', age: 16 }
-{ name: 'judy', age: 14 }
-{ name: 'nokia', age: 27 }
+(2) {name: "bjork", age: 32}
+(2) {name: "nokia", age: 27}
+(2) {name: "heehee", age: 26}
+(2) {name: "sophia", age: 16}
+(2) {name: "judy", age: 14}
 ```
 
 [위키피디아 - 힙](https://ko.wikipedia.org/wiki/%ED%9E%99_(%EC%9E%90%EB%A3%8C_%EA%B5%AC%EC%A1%B0))<br>
