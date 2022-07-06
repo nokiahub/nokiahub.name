@@ -2,14 +2,23 @@ module.exports = {
   siteMetadata: {
     title: `Hyeongju의 블로그`,
     author: {
-      name: `Hyeongju Jeong`,
-      summary: `welcome to nokia's blog.`,
+      name: `Jeong Hyeongju`,
+      summary: `nokia 블로그`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    description: `nokia의 블로그입니다.`,
+    siteUrl: `https://www.nokiahub.site/`,
   },
   plugins: [
     `gatsby-plugin-image`,
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://www.nokiahub.site/',
+        sitemap: 'https://www.nokiahub.site/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/' }]
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -110,7 +119,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
+        name: `Hyeongju의 블로그`,
         short_name: `GatsbyJS`,
         start_url: `/`,
         background_color: `#ffffff`,
@@ -118,7 +127,18 @@ module.exports = {
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icons: [
+          {
+            src: `/favicons/android-chrome-192x192.png`,
+            sizes: `192x192`,
+            type: `image/png`,
+          },
+          {
+            src: `/favicons/android-chrome-512x512.png`,
+            sizes: `512x512`,
+            type: `image/png`,
+          },
+        ]
       },
     },
     `gatsby-plugin-react-helmet`,
