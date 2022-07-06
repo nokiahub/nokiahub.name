@@ -1,32 +1,28 @@
-import * as React from "react"
-import { Link, graphql } from "gatsby"
+import * as React from 'react';
+import { Link, graphql } from 'gatsby';
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import Pagination from "../components/Pagination"
-import Seo from "../components/seo"
+import Bio from '../components/bio';
+import Layout from '../components/layout';
+import Pagination from '../components/Pagination';
+import Seo from '../components/seo';
 
 const BlogPostListTemplate = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata?.title
-  const posts = data.allMarkdownRemark.nodes
-  const postsPerPage = 6
-  const numPages = Math.ceil(posts.length / postsPerPage) + 1
+  const siteTitle = data.site.siteMetadata?.title;
+  const posts = data.allMarkdownRemark.nodes;
+  const postsPerPage = 6;
+  const numPages = Math.ceil(posts.length / postsPerPage) + 1;
 
   return (
     <Layout location={location} title={siteTitle}>
       <Seo title="Hyeongju의 블로그" />
       <Bio />
       <ol style={{ listStyle: `none` }}>
-        {posts.map(post => {
-          const title = post.frontmatter.title || post.fields.slug
+        {posts.map((post) => {
+          const title = post.frontmatter.title || post.fields.slug;
 
           return (
             <li key={post.fields.slug}>
-              <article
-                className="post-list-item"
-                itemScope
-                itemType="http://schema.org/Article"
-              >
+              <article className="post-list-item" itemScope itemType="http://schema.org/Article">
                 <header>
                   <h2>
                     <Link to={post.fields.slug} itemProp="url">
@@ -38,22 +34,22 @@ const BlogPostListTemplate = ({ data, location }) => {
                 <section>
                   <p
                     dangerouslySetInnerHTML={{
-                      __html: post.frontmatter.description || post.excerpt,
+                      __html: post.frontmatter.description || post.excerpt
                     }}
                     itemProp="description"
                   />
                 </section>
               </article>
             </li>
-          )
+          );
         })}
       </ol>
       <Pagination totalPages={numPages} />
     </Layout>
-  )
-}
+  );
+};
 
-export default BlogPostListTemplate
+export default BlogPostListTemplate;
 
 export const pageQuery = graphql`
   query blogListQuery($skip: Int!, $limit: Int!) {
@@ -79,4 +75,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
