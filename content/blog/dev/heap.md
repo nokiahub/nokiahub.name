@@ -4,15 +4,19 @@ title: 'Heap, Priority Queue'
 description: '최대, 최소 힙 구현하기'
 tags: 'heap, 자료구조, 힙 구조, 최대 힙, 최대 힙 구현'
 ---
+
 ## 힙(Heap)
+
 힙(heap)은 **최댓값 및 최솟값을 빠르게 찾아내기 위해 만들어진 자료구조**입니다.<br>
 완전이진트리를 기본으로 다음과 같은 조건을 만족합니다.<br>
+
 - 최대 힙: 트리의 부모 노드의 값이 자식 노드의 값보다 더 크다.
 - 최소 힙: 트리의 부모 노드의 값이 자식 노드의 값보다 더 작다.
 - 대소관계는 부모 노드와 자식 노드 간에만 성립하지만, sibling node 사이에는 대소관계가 성립되지 않는다.
 - 최대 힙에서는 루트 노드의 값이 가장 큰 값을 갖고 최소 힙에서는 루트 노드의 값이 가장 작은 값을 갖는다. 이를 응용하여 우선순위 큐와 같은 추상적 자료형을 구현할 수 있다.
 
 ### 힙의 삽입
+
 1. 트리의 가장 끝에 노드를 추가합니다.
 2. 추가한 노드와 부모 노드의 크기를 비교하여 크기를 바꿔가며 위치를 찾습니다.(heapify)
 
@@ -38,11 +42,14 @@ function push(number) {
   }
 }
 ```
+
 #### 시간복잡도
+
 트리의 가장 끝에 추가할 때 O(1),
 heapify를 할 때 O(logn)의 시간 복잡도가 필요합니다.
 
 ### 힙의 삭제
+
 1. 트리의 루트 노드를 반환합니다.
 2. 루트 노드와 가장 마지막 노드를 swap합니다.
 3. 가장 마지막 노드가 루트 노드가 되었습니다.
@@ -61,9 +68,7 @@ function pop() {
 
   // 두 자식 노드 중 값이 더 큰 자식의 index를 child로 한다.
   if (child + 1 <= heapCount) {
-    child = (heap[child] > heap[child + 1])
-      ? child
-      : child + 1;
+    child = heap[child] > heap[child + 1] ? child : child + 1;
   }
 
   while (child <= heapCount && heap[parent] < heap[child]) {
@@ -73,9 +78,7 @@ function pop() {
     child = parent * 2;
 
     if (child + 1 <= heapCount) {
-      child = (heap[child] > heap[child + 1])
-        ? child
-        : child + 1;
+      child = heap[child] > heap[child + 1] ? child : child + 1;
     }
   }
 
@@ -84,9 +87,11 @@ function pop() {
 ```
 
 #### 시간복잡도
+
 루트 노드에서 heapify 할 때 O(logn) 만큼의 시간복잡도가 필요합니다.
 
 ### 힙 정렬
+
 1. 정렬하고자 하는 값들을 힙에 모두 삽입합니다.
 2. 힙의 크기만큼 삭제를 합니다.
 3. 삭제하면서 리턴된 값들을 출력합니다.
@@ -109,7 +114,7 @@ function heapSort() {
   push(10);
 
   // 10 9 8 7 6 5 4 3 2 1
-  while(heapCount >= 1) {
+  while (heapCount >= 1) {
     console.log(pop());
   }
 }
@@ -118,8 +123,9 @@ heapSort();
 ```
 
 #### 시간복잡도
-모든 값들을 힙에 삽입할 때 O(n * logn),<br>
-모든 노드를 힙에서 삭제할 때 O(n * logn),<br>
+
+모든 값들을 힙에 삽입할 때 O(n _ logn),<br>
+모든 노드를 힙에서 삭제할 때 O(n _ logn),<br>
 따라서 정렬을 할 때 시간복잡도는 O(nlogn) 만큼이 필요합니다.
 
 worst: O(nlogn)<br>
@@ -127,6 +133,7 @@ average: O(nlogn)<br>
 best: O(nlogn)<br>
 
 ## 우선순위 큐(Priority Queue)
+
 들어가는 순서에 관계없이 나올 때는 우선순위대로 힙에서 나오게 되는 자료구조입니다.<br>
 최대 힙 또한 값이 우선순위가 되는 우선순위 큐의 한 종류라고 볼 수 있습니다.<br>
 이를 응용한다면 단순한 number 값만이 아니라 다양한 종류의 객체에 대해 어느 property에든 우선순위를 두어 정렬할 수 있습니다.<br>
@@ -166,9 +173,7 @@ function pop() {
   let child = parent * 2;
 
   if (child + 1 <= heapCount) {
-    child = (maxHeap[child].age > maxHeap[child + 1].age)
-      ? child
-      : child + 1;
+    child = maxHeap[child].age > maxHeap[child + 1].age ? child : child + 1;
   }
 
   while (child <= heapCount && maxHeap[parent].age < maxHeap[child].age) {
@@ -177,9 +182,7 @@ function pop() {
     child = parent * 2;
 
     if (child + 1 <= heapCount) {
-      child = (maxHeap[child].age > maxHeap[child + 1].age)
-        ? child
-        : child + 1;
+      child = maxHeap[child].age > maxHeap[child + 1].age ? child : child + 1;
     }
   }
 
@@ -206,5 +209,5 @@ for (let i = 0; i < 5; i++) {
 (2) {name: "judy", age: 14}
 ```
 
-[위키피디아 - 힙](https://ko.wikipedia.org/wiki/%ED%9E%99_(%EC%9E%90%EB%A3%8C_%EA%B5%AC%EC%A1%B0))<br>
+[위키피디아 - 힙](<https://ko.wikipedia.org/wiki/%ED%9E%99_(%EC%9E%90%EB%A3%8C_%EA%B5%AC%EC%A1%B0)>)<br>
 [안경잡이개발자 - 힙 정렬](https://m.blog.naver.com/ndb796/221228342808)<br>
