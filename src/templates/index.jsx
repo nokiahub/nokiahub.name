@@ -3,25 +3,14 @@ import { Link, graphql } from "gatsby"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
+import Pagination from "../components/Pagination"
 import Seo from "../components/seo"
 
-const BlogIndex = ({ data, location }) => {
+const BlogPostListTemplate = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title
   const posts = data.allMarkdownRemark.nodes
-
-  if (posts.length === 0) {
-    return (
-      <Layout location={location} title={siteTitle}>
-        <Seo title="Hyeongju의 블로그" />
-        <Bio />
-        <p>
-          No blog posts found. Add markdown posts to "content/blog" (or the
-          directory you specified for the "gatsby-source-filesystem" plugin in
-          gatsby-config.js).
-        </p>
-      </Layout>
-    )
-  }
+  const postsPerPage = 6
+  const numPages = Math.ceil(posts.length / postsPerPage) + 1
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -59,22 +48,26 @@ const BlogIndex = ({ data, location }) => {
           )
         })}
       </ol>
+      <Pagination totalPages={numPages} />
     </Layout>
   )
 }
 
-export default BlogIndex
+export default BlogPostListTemplate
 
 export const pageQuery = graphql`
-  query {
+  query blogListQuery($skip: Int!, $limit: Int!) {
     site {
       siteMetadata {
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      limit: $limit
+      skip: $skip
+    ) {
       nodes {
-        excerpt
         fields {
           slug
         }
