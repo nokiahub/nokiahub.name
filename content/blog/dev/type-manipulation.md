@@ -1,50 +1,139 @@
 ---
 date: '2022-07-11'
-title: '타입스크립트에서 타입 구성하기'
+title: '타입을 사용하여 타입 구성하기'
 description: '타입스크립트에서 키워드, index 등을 이용해 타입을 구성하는 방법'
-tags: 'javascript memory, garbage collection, stack, heap memory'
+tags: 'typescript, types'
 ---
 
 타입스크립트 공부를 하면서 어려운 점 중 하나는 value의 관점이 아닌 해당 value의 타입의 관점으로 봐야한다는 점 같습니다.<br>
-예를 들면 string 타입의 name을 키로 갖는 Person이라는 타입을 보았을 때, Person["name"]과 같이 "name"으로 접근하면 Person의 name에 대한 값을 참조하고 있는 것과 값의 타입을 참조하는 것, 이 두 가지 개념이 헷갈립니다.<br>
-타입을 이용해 새로운 타입을 만드는 여러가지 방법을 타입스크립트 공식 문서에서 정리해보았습니다.<br>
+타입을 이용해 새로운 타입을 만드는 여러가지 방법을 타입스크립트 공식 문서를 참고하며 정리해 보았습니다.<br>
 
 ## keyof Type Operator
 
-object 타입을 받아 object의 key를 string 리터럴 혹은 numeric 리터럴의 union 타입으로 반환합니다.
+object 타입의 키를 문자열, 혹은 숫자 리터럴 타입으로 반환합니다.<br>
+object 타입이 여러개의 키를 갖는다면 이를 유니온 타입으로 반환합니다.<br>
+```typescript
+type Person = {
+	name: string;
+	age: number;
+	address: string;
+}
 
-Object 타입에 index로 number 시그니처가 있을 때 keyof operator를 사용하면 해당 시그니처의 타입인 number 타입을 반환하고, string 타입의 시그니처일 경우 string 타입을 반환합니다.<br>
-keyof 는 mapped type에서 유용하게 쓰일 수 있습니다.
+type PersonKeys = keyof Person;
 
-## typeof type operator
+const personName: PersonKeys = 'name';
+const personAge: PersonKeys = 'age';
+const personAddress: PersonKeys = 'address';
+// OK
 
-자바스크립트에서도 expression context에 쓰이는 typeof operator가 존재합니다.<br> 타입스크립트에서 typeof는 변수의 type을 참조하여 type context내에서 사용할 수 있습니다.<br>
+const personSalary: PersonKeys = 'salary';
+// Error
+```
+위에서 선언한 타입은 PersonKeys = 'name' | 'age' | 'address'로 표현한 것과 같습니다.
 
+## typeof Type Operator
+
+typeof는 변수의 값의 type을 반환하는 키워드 입니다.<br>
+**타입**이 아닌 변수나 함수와 같은 **값**의 타입을 얻어내야 할 때 사용합니다.<br>
+```typescript
+function foo() {
+	return { x: 10, y: 3 };
+}
+
+type FooReturn = ReturnType<foo>;
+// Error
+
+type FooReturn = ReturnType<typeof foo>;
+// type FooReturn = { x: number, y: number }
+
+const coordinate1: FooReturn = { x: 10, y: 24 };
+// OK
+const coordinate2: FooReturn = { x: 10, y: '24' };
+// Error
+```
 ## Indexed Access Types
 
-index로 접근하여 index에 해당하는 값의 type을 접근할 수 있습니다.<br>
+object 타입의 키의 타입을 참조할 수 있습니다.<br>
+배열의 index를 통해 값을 접근할 수 있듯이 object의 타입을 키를 통해 타입에 접근이 가능합니다.<br>
+키를 유니온으로 표현할 경우 키 타입들의 유니온 타입이됩니다.<br>
 
 ```typescript
-Type Person = {
+type Person = {
+	name: string;
 	age: number;
+	isFemale: boolean;
+}
+
+type Gender = Person['isFemale'];
+
+const bool1: Gender = true;
+const bool2: Gender = false;
+// OK
+
+const num: Gender = 1;
+// Error
+
+type ObjectProperty = Person['name' | 'age'];
+
+const key1: ObjectProperty = 1;
+const key2: ObjectProperty = '1';
+// OK
+
+const key3: ObjectProperty = true;
+// Error
+```
+
+Person의 name키의 타입은 string, age키의 타입은 number이기 때문에 ObjectProperty 타입은 이를 union으로 표현한 number | string이 됩니다.<br>
+
+### 배열 요소의 타입을 'number'키를 이용하여 접근하기
+```typescript
+const Villagers = [
+	{ name: 'John', age: 20 },
+	{ name: 'Jane', age: 23 },
+	{ name: 'James', age: 17 },
+];
+
+type Villager = typeof Villagers[number];
+// { name: string, age: number };
+type Age = typeof Villagers[number]['age'];
+// string
+type Name = typeof Villagers[number]['name'];
+// string
+```
+
+## Conditional Types
+삼항연산자를 이용하면 condition에 따라 다른 타입을 지정할 수 있습니다.<br>
+> SomeType extends OtherType ? TrueType : FalseType;
+메서드를 여러 타입의 input을 위해 오버로딩할 때 비슷하게 생긴 여러개의 코드를 생성해야 합니다. 이 때 conditional type을 통해 이를 간결하게 표현할 수 있습니다.<br>
+
+```typescript
+interface IdLabel {
+	id: number;
+}
+
+interface NameLabel {
 	name: string;
 }
 
-Type I1 = Person[“age” | “name”];
+function createLabel(id: number): IdLabel;
+function createLabel(name: string): NameLabel;
+function createLabel(nameOrId: string | number)
+	: IdLabel | NameLabel;
+
+// using conditional type
+
+type IdOrNameLabel<T extends string | number> =
+T extends number ? IdLabel : NameLabel;
+// T의 타입이 number이면 IdLabel 타입, 아니면 NameLabel 타입을 반환
+
+function createLabel<T extend string | number>(idOrName: T)
+	: IdOrNameLabel<T>
 ```
 
-Person의 age 타입은 number, Person의 name의 타입은 string이기 때문에 I1 타입은 이를 union으로 표현한 number | string이 됩니다.<br>
+// to do
+### 한계
 
-```typescript
-Type I2 = Person[keyof Person];
-```
-
-앞서 keyof 키워드는 타입을 object 타입을 받아 key를 string literal 타입을 반환하는 것을 알았습니다. Keyof Person은 Person 타입의 key인 age, name의 타입을 리터럴로 표현하면 number | string이 됩니다.
-
-```typescript
-Type AliveOrName = “alive” | “name”;
-Type I3 = Person[AliveOrName];
-```
+### Inferring within conditional types
 
 ## Mapped Types
 
