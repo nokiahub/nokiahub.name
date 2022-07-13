@@ -17,7 +17,7 @@ const About = ({ data, location }) => {
         유연하고 확장 가능한 프로그램 설계를 좋아합니다.
         <br />
         자세한 내용은{' '}
-        <a href="https://drive.google.com/file/d/1_s8wR2kTMbsI0mSXoKcD9K9M40wwccgb/view?usp=sharing">
+        <a href="https://drive.google.com/file/d/1yUyq9deQg2UvQRnD8rNlRCRxmSi6_NsG/view?usp=sharing">
           이력서
         </a>
         에서 확인하실 수 있습니다.
