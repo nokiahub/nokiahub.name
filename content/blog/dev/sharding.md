@@ -11,8 +11,8 @@ row로 나뉘어진 데이터베이스는 logical shard, 나눠진 데이터베�
 ## Sharding을 사용하는 이유
 애플리케이션의 규모가 커지고 대규모의 트래픽에 대응하려면 데이터베이스를 스케일링해야 합니다. 스케일링을 할 때 데이터의 무결성과 보안성을 유지하는 것이 중요합니다.
 
-- The main appeal of sharding a database is that it can help to facilitate horizontal scaling, also known as scaling out.
-- 추가적인 ram이나 cpu를 통해 scale up 하는데는 데이터 스토리지 용량에 한계가 있기 때문에 scaling out 하는 것이 더 유연할 수 있습니다.
+- scale up은 추가적인 RAM, CPU를 통해 기존 서버의 성능을 높히는 것이고, scale out은 서버의 갯수를 늘리는 것입니다.<br>
+- scale up 하는데는 데이터 스토리지 용량에 한계가 있기 때문에 scaling out 하는 것이 더 유연할 수 있습니다.<br>
 
 많은 양의 데이터를 하나의 데이터베이스로 관리하게 되면 다음과 같은 문제가 발생합니다.<br>
 - 데이터 검색에 많은 시간이 소요된다.
@@ -30,7 +30,7 @@ sharding 아키텍쳐를 적용하며 데이터가 오염이 될 수 있습니�
 ## Key based 샤딩
 데이터의 특정 필드 값에 hash function을 적용하여 hash value를 이용해 어떤 샤드에 저장이 될 지 결정이 됩니다.<br>
 hash function에 적용될 column을 샤딩 키라고 합니다.
-- As you add servers, each one will need a corresponding hash value and many of your existing entries, if not all of them, will need to be remapped to their new, correct hash value and then migrated to the appropriate server.
+- 서버가 추가될 때 해당 서버의 hash value가 추가되어야 하고 기존의 entry들의 hash value 또한 새로 정해져서 재정렬이 필요합니다.<br>
 
 ## 모듈러 샤딩
 pk를 데이터 베이스 수로 나눈 값을 pk 키로 데이터베이스를 특정합니다.<br>
@@ -55,9 +55,15 @@ pk의 범위를 기준으로 데이터베이스를 분산시키는 방식입니�
 샤딩을 도입하기 전에 다음과 같은 대안을 고려해 볼 수 있습니다.<br>
 - 모든 컴포넌트가 하나의 머신에 존재하는 모놀리식 방법을 사용하고 있었을 경우, 별도의 데이터베이스 저장 공간을 사용할 수 있습니다.<br>
 - 주로 데이터를 검색할 때 많은 시간이 걸린다면 캐싱을 이용해 이미 요청되었던 결과를 빠르게 반환할 수 있도록 합니다.<br>
-- Creating one or more read replicas. Another strategy that can help to improve read performance, this involves copying the data from one database server (the primary server) over to one or more secondary servers. Following this, every new write goes to the primary before being copied over to the secondaries, while reads are made exclusively to the secondary servers. Distributing reads and writes like this keeps any one machine from taking on too much of the load, helping to prevent slowdowns and crashes. Note that creating read replicas involves more computing resources and thus costs more money, which could be a significant constraint for some.
-- Upgrading to a larger server. In most cases, scaling up one’s database server to a machine with more resources requires less effort than sharding. As with creating read replicas, an upgraded server with more resources will likely cost more money. Accordingly, you should only go through with resizing if it truly ends up being your best option.
+
+- 더 큰 서버로 scale up하는 방법이 있습니다.<br>
+
+- 데이터베이스와 동일한 또 다른 데이터베이스를 사용하여서 데이터 손실을 최소화 하면서 부하를 막을 수 있습니다. 보통 데이터 손실을 막기 위해 백업을 하지만 데이터베이스 장애가 발생한 시간과 백업 시간 사이에는 이를 막을 수 없습니다. 복제된 레플리카는 마스터 서버와 거의 동일하기 때문에 장애가 발생한 동안 레플리카를 마스터 서버로 사용하고 이에 대한 새로운 레플리카 서버를 만들어 복구합니다.<br>
+어드민에서 큰 규모의 읽기 전용 데이터를 불러올 때는 레플리카 서버를 사용하고, 실 서비스는 마스터 서버를 이용하여 데이터베이스로 몰리는 부하를 나눠서 관리할 수 있습니다.<br>
+동일한 또 하나의 데이터베이스 사용에 비용이 발생하지만 데이터의 안정성을 위해 레플리케이션 도입할 수 있습니다.<br>
+
 
 
 [digital ocean - Understanding Database Sharding](https://www.digitalocean.com/community/tutorials/understanding-database-sharding)<br>
 [우아한 형제들 기술 블로그 - DB분산처리를 위한 sharding]("https://techblog.woowahan.com/2687/")<br>
+[데이터베이스 리플리케이션과 그 응용](https://www.coovil.net/db-replication/)<br>
