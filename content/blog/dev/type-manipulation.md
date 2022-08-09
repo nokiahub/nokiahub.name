@@ -12,12 +12,13 @@ tags: 'typescript, types'
 
 object 타입의 키를 문자열, 혹은 숫자 리터럴 타입으로 반환합니다.<br>
 object 타입이 여러개의 키를 갖는다면 이를 유니온 타입으로 반환합니다.<br>
+
 ```typescript
 type Person = {
-	name: string;
-	age: number;
-	address: string;
-}
+  name: string;
+  age: number;
+  address: string;
+};
 
 type PersonKeys = keyof Person;
 
@@ -29,15 +30,17 @@ const personAddress: PersonKeys = 'address';
 const personSalary: PersonKeys = 'salary';
 // Error
 ```
+
 위에서 선언한 타입은 PersonKeys = 'name' | 'age' | 'address'로 표현한 것과 같습니다.
 
 ## typeof Type Operator
 
 typeof는 변수의 값의 type을 반환하는 키워드 입니다.<br>
 **타입**이 아닌 변수나 함수와 같은 **값**의 타입을 얻어내야 할 때 사용합니다.<br>
+
 ```typescript
 function foo() {
-	return { x: 10, y: 3 };
+  return { x: 10, y: 3 };
 }
 
 type FooReturn = ReturnType<foo>;
@@ -51,6 +54,7 @@ const coordinate1: FooReturn = { x: 10, y: 24 };
 const coordinate2: FooReturn = { x: 10, y: '24' };
 // Error
 ```
+
 ## Indexed Access Types
 
 object 타입의 키의 타입을 참조할 수 있습니다.<br>
@@ -59,10 +63,10 @@ object 타입의 키의 타입을 참조할 수 있습니다.<br>
 
 ```typescript
 type Person = {
-	name: string;
-	age: number;
-	isFemale: boolean;
-}
+  name: string;
+  age: number;
+  isFemale: boolean;
+};
 
 type Gender = Person['isFemale'];
 
@@ -86,11 +90,12 @@ const key3: ObjectProperty = true;
 Person의 name키의 타입은 string, age키의 타입은 number이기 때문에 ObjectProperty 타입은 이를 union으로 표현한 number | string이 됩니다.<br>
 
 ### 배열 요소의 타입을 'number'키를 이용하여 접근하기
+
 ```typescript
 const Villagers = [
-	{ name: 'John', age: 20 },
-	{ name: 'Jane', age: 23 },
-	{ name: 'James', age: 17 },
+  { name: 'John', age: 20 },
+  { name: 'Jane', age: 23 },
+  { name: 'James', age: 17 }
 ];
 
 type Villager = typeof Villagers[number];
@@ -102,9 +107,11 @@ type Name = typeof Villagers[number]['name'];
 ```
 
 ## Conditional Types
+
 삼항연산자를 이용하면 condition에 따라 다른 타입을 지정할 수 있습니다.<br>
+
 > SomeType extends OtherType ? TrueType : FalseType;
-메서드를 여러 타입의 input을 위해 오버로딩할 때 비슷하게 생긴 여러개의 코드를 생성해야 합니다. 이 때 conditional type을 통해 이를 간결하게 표현할 수 있습니다.<br>
+> 메서드를 여러 타입의 input을 위해 오버로딩할 때 비슷하게 생긴 여러개의 코드를 생성해야 합니다. 이 때 conditional type을 통해 이를 간결하게 표현할 수 있습니다.<br>
 
 ```typescript
 interface IdLabel {
@@ -131,6 +138,7 @@ function createLabel<T extend string | number>(idOrName: T)
 ```
 
 // to do
+
 ### 한계
 
 ### Inferring within conditional types
