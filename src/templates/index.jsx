@@ -15,7 +15,6 @@ const BlogPostListTemplate = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Seo title="Hyeongju의 블로그" />
-      <Bio />
       <ol style={{ listStyle: `none` }}>
         {posts.map((post) => {
           const title = post.frontmatter.title || post.fields.slug;
