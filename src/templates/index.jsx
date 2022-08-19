@@ -5,11 +5,9 @@ import Layout from '../components/Layout';
 import Pagination from '../components/Pagination';
 import Seo from '../components/seo';
 
-const BlogPostListTemplate = ({ data, location }) => {
+const BlogPostListTemplate = ({ data, location, pageContext }) => {
   const siteTitle = data.site.siteMetadata?.title;
   const posts = data.allMarkdownRemark.nodes;
-  const postsPerPage = 6;
-  const numPages = Math.ceil(posts.length / postsPerPage) + 1;
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -42,7 +40,7 @@ const BlogPostListTemplate = ({ data, location }) => {
           );
         })}
       </ol>
-      <Pagination totalPages={numPages} />
+      <Pagination totalPages={pageContext.numPages} />
     </Layout>
   );
 };
