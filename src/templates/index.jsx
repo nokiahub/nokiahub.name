@@ -40,7 +40,7 @@ const BlogPostListTemplate = ({ data, location, pageContext }) => {
           );
         })}
       </ol>
-      <Pagination totalPages={pageContext.numPages} />
+      <Pagination totalPages={pageContext.numPages} currentPage={pageContext.currentPage} />
     </Layout>
   );
 };
