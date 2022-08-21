@@ -145,5 +145,7 @@ function createLabel<T extend string | number>(idOrName: T)
 
 ## Mapped Types
 
+### 참고자료
+
 [typescript - Creating Types from Types](https://www.typescriptlang.org/docs/handbook/2/types-from-types.html)<br>
 [typescript - Mapped Types](https://www.typescriptlang.org/docs/handbook/2/mapped-types.html)<br>

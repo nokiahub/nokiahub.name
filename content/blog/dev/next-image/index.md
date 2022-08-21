@@ -67,6 +67,8 @@ const ImageWrapper = styled.div`
 </ImageWrapper>
 ```
 
+### 참고자료
+
 [next.js - api reference](https://nextjs.org/docs/api-reference/next/image)<br>
 [next.js - basic features](https://nextjs.org/docs/basic-features/image-optimization)<br>
 [mdn - object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit)<br>

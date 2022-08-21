@@ -154,6 +154,8 @@ getButtonComponent().then((component) => {
 });
 ```
 
+### 참고자료
+
 [생활코딩-웹팩](https://opentutorials.org/module/4566)<br>
 [webpack-concepts](https://webpack.js.org/concepts/)<br>
 [webpack-code splitting](https://webpack.js.org/guides/code-splitting/)<br>

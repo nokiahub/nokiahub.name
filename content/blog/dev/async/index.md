@@ -236,6 +236,8 @@ async function foo() {
 try-catch 문이 없다면 Promise의 resolve, reject 처리가 된 결과값을 다시 Promise로 반환하는 것은 redundant한 일입니다.<br>
 그렇기 때문에 try-catch 블록을 사용하지 않는 경우에 한에 이를 제한하는 eslint 규칙이 존재합니다.<br>
 
+### 참고자료
+
 [Guide on using promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises/)<br>
 [Promise apis](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)<br>
 [await vs return vs return await](https://jakearchibald.com/2017/await-vs-return-vs-return-await/)<br>

@@ -128,5 +128,7 @@ Accept: 클라이언트가 이해 가능한 컨텐츠 타입이 무엇인지를 
 받은 HTML 파일이 다른 CSS, Javascript를 참조할 수 있고, 이에 대한 추가적인 요청을 해야할 수 있습니다.
 추가적으로 웹 브라우저는 CSS 파일을 요청하게 되고 요청에 대해 또 다시 Content-Type 헤더가 브라우저에게 CSS 파일은 어떤 방식으로 렌더링 할지 정하게 됩니다.<br>
 
+### 참고자료
+
 [Amazon Web Services - 웹 브라우저에 URL을 입력하면 어떤 일이 생기나요?](https://aws.amazon.com/ko/blogs/korea/what-happens-when-you-type-a-url-into-your-browser/)<br>
 [mdn - Using dns-prefetch](https://developer.mozilla.org/en-US/docs/Web/Performance/dns-prefetch)<br>

@@ -209,5 +209,7 @@ for (let i = 0; i < 5; i++) {
 (2) {name: "judy", age: 14}
 ```
 
+### 참고자료
+
 [위키피디아 - 힙](<https://ko.wikipedia.org/wiki/%ED%9E%99_(%EC%9E%90%EB%A3%8C_%EA%B5%AC%EC%A1%B0)>)<br>
 [안경잡이개발자 - 힙 정렬](https://m.blog.naver.com/ndb796/221228342808)<br>

@@ -95,6 +95,8 @@ client가 resource server의 승인을 받는 과정입니다.<br>
 
 resource가 발급한 액세스 토큰과 함께 온 요청에 대해서 응답을 하게 됩니다.<br>
 
+### 참고자료
+
 [mdn - http 개요](https://developer.mozilla.org/ko/docs/Web/HTTP/Overview)<br>
 [10분 테크톡 - 인증과 인가](https://www.youtube.com/watch?v=y0xMXlOAfss)<br>
 [생활 코딩 - OAuth](https://www.youtube.com/watch?v=hm2r6LtUbk8&list=PLuHgQVnccGMA4guyznDlykFJh28_R08Q-)<br>

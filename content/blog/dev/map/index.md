@@ -152,6 +152,8 @@ set.forEach((value) => {
 - set.values(): set.keys()와 동일한 값 반환(맵과 호환을 위해 만들어짐)
 - set.entries(): [value, value] 배열을 포함하는 이터러블 객체 반환
 
+### 참고자료
+
 [mdn - map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)<br>
 [mdn -set](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Set)<br>
 [코어 자바스크립트 - 맵과 셋](https://ko.javascript.info/map-set)<br>

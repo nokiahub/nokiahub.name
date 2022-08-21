@@ -1,11 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `Hyeongju의 블로그`,
+    title: `형주의 블로그`,
     author: {
-      name: `Jeong Hyeongju`,
-      summary: `nokia 블로그`
+      name: `정형주`,
+      summary: `프론트엔드 개발자`
     },
-    description: `nokia의 블로그입니다.`,
+    description: `형주의 블로그입니다.`,
     siteUrl: `https://www.nokiahub.site/`
   },
   plugins: [

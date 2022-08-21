@@ -8,8 +8,11 @@ const Pagination = ({ totalPages, currentPage }) => {
   return (
     <ul className={style.list}>
       {items.map((_, index) => (
-        <Link className={`${style.item} ${index+1 === currentPage && style.current}`}
-        key={index} to={index === 0 ? '/' : `/${index + 1}`}>
+        <Link
+          className={`${style.item} ${index + 1 === currentPage && style.current}`}
+          key={index}
+          to={index === 0 ? '/' : `/${index + 1}`}
+        >
           {index + 1}
         </Link>
       ))}

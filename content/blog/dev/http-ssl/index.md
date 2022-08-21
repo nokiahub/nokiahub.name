@@ -58,6 +58,8 @@ TCP/IP 통신에서 일반 텍스트를 이용하는 대신에 SSL이나 TSL 프
 3. 클라이언트(브라우저)는 유효한 CA리스트와 해당 공개키들을 미리 알고 있다.
 4. 클라이언트가 서버로부터 전송받은 인증서를 CA리스트에 있는지 확인하고, 해당 공개키를 통해 인증서를 복호화한다. (전자서명)
 
+### 참고자료
+
 [ssl certificate](https://www.cloudflare.com/ko-kr/learning/ssl/what-is-an-ssl-certificate/)<br/>
 [tls handshake](https://www.cloudflare.com/ko-kr/learning/ssl/what-happens-in-a-tls-handshake/)<br/>
 [생활코딩 - https와 ssl 인증서](https://opentutorials.org/course/228/4894#public)

@@ -75,6 +75,8 @@ pk의 범위를 기준으로 데이터베이스를 분산시키는 방식입니�
   어드민에서 큰 규모의 읽기 전용 데이터를 불러올 때는 레플리카 서버를 사용하고, 실 서비스는 마스터 서버를 이용하여 데이터베이스로 몰리는 부하를 나눠서 관리할 수 있습니다.<br>
   동일한 또 하나의 데이터베이스 사용에 비용이 발생하지만 데이터의 안정성을 위해 레플리케이션 도입할 수 있습니다.<br>
 
+### 참고자료
+
 [digital ocean - Understanding Database Sharding](https://www.digitalocean.com/community/tutorials/understanding-database-sharding)<br>
 [우아한 형제들 기술 블로그 - DB분산처리를 위한 sharding]("https://techblog.woowahan.com/2687/")<br>
 [데이터베이스 리플리케이션과 그 응용](https://www.coovil.net/db-replication/)<br>

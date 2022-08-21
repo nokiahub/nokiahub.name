@@ -72,6 +72,8 @@ mark and sweep 알고리즘은 root(node.js 환경에서는 global, browser 환�
 코드를 짤 때 메모리를 직접 관리하지 않아도 자동으로 동적 메모리가 할당되고, 더 이상 메모리가 쓰이지 않을 때 자동으로 해제한다는 점은 분명 편리하고 좋은 장점입니다.<br>
 하지만 주기적으로 실행되는 garbage collection도 결국에는 컴퓨터가 해결해야 하는 일이기 때문에 자주 실행될 경우 성능에 영향을 끼칠 수 있습니다.<br>
 
+### 참고자료
+
 [Javascript memory explained](https://felixgerschau.com/javascript-memory-management/)<br>
 [modern javascript tutorial - garbage collection](https://javascript.info/garbage-collection)<br>
 [mdn - 자바스크립트의 메모리 관리](https://developer.mozilla.org/ko/docs/Web/JavaScript/Memory_Management)<br>

@@ -40,6 +40,8 @@ OPTIONS 호출에 대한 결과가 요청을 보낼 수 없다고 하면 실제 
 
 서버는 요청된 preflight request header를 보고 리소스를 허용할지 결정할 수 있다.
 
+### 참고자료
+
 [mdn-CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)<br/>
 [wikipedia-Cross-origin resource sharing](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)<br />
 [hackedu-same-origin policy](https://www.hackedu.com/blog/same-origin-policy-and-cross-origin-resource-sharing-cors)
