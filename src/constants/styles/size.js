@@ -10,6 +10,6 @@ const size = {
   maxWidthXxxxl: '56rem',
   maxWidthFull: '100%',
   maxWidthWrapper: '48rem',
-}
+};
 
 export default size

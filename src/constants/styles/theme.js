@@ -6,6 +6,6 @@ const theme = {
   heading: '#1a202c',
   headingBlack: 'black',
   accent: '#d1dce5',
-}
+};
 
 export default theme

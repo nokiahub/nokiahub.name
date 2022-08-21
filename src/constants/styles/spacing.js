@@ -14,6 +14,6 @@ const spacing = {
   spacing20: '5rem',
   spacing24: '6rem',
   spacing32: '8rem',
-}
+};
 
 export default spacing
