@@ -8,6 +8,7 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "dependencies": {
+    "babel-plugin-styled-components": "^2.0.7",
     "gatsby": "^4.15.0",
     "gatsby-plugin-feed": "^4.15.0",
     "gatsby-plugin-gatsby-cloud": "^4.15.0",
@@ -20,6 +21,7 @@
     "gatsby-plugin-robots-txt": "^1.7.1",
     "gatsby-plugin-sharp": "^4.15.0",
     "gatsby-plugin-sitemap": "^5.18.0",
+    "gatsby-plugin-styled-components": "^5.21.0",
     "gatsby-remark-copy-linked-files": "^5.15.0",
     "gatsby-remark-images": "^6.15.0",
     "gatsby-remark-prismjs": "^6.15.0",
