@@ -1,22 +1,34 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
-import * as style from './index.module.css';
+import styled from 'styled-components';
+import { spacing, typography } from '../../constants/styles';
+
+const StyledList = styled.ul`
+  display: flex;
+  justify-content: center;
+`;
+
+const StyledLink = styled(Link)`
+  margin-right: ${spacing.spacing4};
+  font-size: ${typography.fontSize1};
+  font-weight: ${({ fontWeight }) => fontWeight};
+`;
 
 const Pagination = ({ totalPages, currentPage }) => {
   const items = Array.from(Array(totalPages).keys());
 
   return (
-    <ul className={style.list}>
+    <StyledList>
       {items.map((_, index) => (
-        <Link
-          className={`${style.item} ${index + 1 === currentPage && style.current}`}
+        <StyledLink
+          fontWeight={index + 1 === currentPage ? typography.fontWeightBold : typography.fontWeightNormal}
           key={index}
           to={index === 0 ? '/' : `/${index + 1}`}
         >
           {index + 1}
-        </Link>
+        </StyledLink>
       ))}
-    </ul>
+    </StyledList>
   );
 };
 
