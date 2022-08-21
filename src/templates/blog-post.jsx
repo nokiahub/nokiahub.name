@@ -3,6 +3,12 @@ import { Link, graphql } from 'gatsby';
 
 import Layout from '../components/Layout';
 import Seo from '../components/seo';
+import styled from 'styled-components';
+import { spacing } from '../constants/styles';
+
+const StyledArticle = styled.article`
+  margin: ${spacing.spacing4} ${spacing.spacing0} ${spacing.spacing4} ${spacing.spacing0};
+`;
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark;
@@ -15,16 +21,16 @@ const BlogPostTemplate = ({ data, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <article className="blog-post" itemScope itemType="http://schema.org/Article">
+      <StyledArticle itemScope itemType="http://schema.org/Article">
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} itemProp="articleBody" />
         <hr />
-      </article>
+      </StyledArticle>
       <footer>
-        <nav className="blog-post-nav">
+        <nav>
           <ul
             style={{
               display: `flex`,

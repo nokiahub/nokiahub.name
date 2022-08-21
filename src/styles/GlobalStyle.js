@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components'
-import { spacing, theme, typography } from '../constants/styles'
+import { createGlobalStyle } from 'styled-components';
+import { spacing, theme, typography } from '../constants/styles';
 
 const GlobalStyle = createGlobalStyle`
   *,
@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: 'Nanum Gothic' san-serif;
+    font-family: 'Nanum Gothic', san-serif;
     font-size: ${typography.fontSize1};
     color: ${theme.text};
   }
@@ -97,11 +97,12 @@ const GlobalStyle = createGlobalStyle`
   /* Prose */
 
   p {
-    line-height: ${typography.lineHeightRelaxed});
+    line-height: ${typography.lineHeightRelaxed};
     --baseline-multiplier: 0.179;
     --x-height-multiplier: 0.35;
     margin: ${spacing.spacing0} ${spacing.spacing0} ${spacing.spacing8} ${spacing.spacing0};
     padding: ${spacing.spacing0};
+    word-break: keep-all;
   }
 
   ul,
@@ -185,6 +186,6 @@ const GlobalStyle = createGlobalStyle`
       list-style-position: inside;
     }
   }
-`
+`;
 
 export default GlobalStyle

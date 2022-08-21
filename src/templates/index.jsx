@@ -5,6 +5,26 @@ import Layout from '../components/Layout';
 import Pagination from '../components/Pagination';
 import Seo from '../components/seo';
 
+import styled from 'styled-components';
+import { spacing, theme, typography } from '../constants/styles';
+
+const PostListItem = styled.article`
+  margin-bottom: ${spacing.spacing8};
+  margin-top: ${spacing.spacing8};
+`;
+
+const PostHeader = styled.header`
+  margin-bottom: ${spacing.spacing4};
+`;
+
+const PostTitle = styled.h1`
+  font-size: ${typography.fontSize4};
+  color: ${theme.primary};
+  margin-bottom: ${spacing.spacing2};
+  margin-top: ${spacing.spacing0};
+  transition: ease-in-out 0.1s;
+`;
+
 const BlogPostListTemplate = ({ data, location, pageContext }) => {
   const siteTitle = data.site.siteMetadata?.title;
   const posts = data.allMarkdownRemark.nodes;
@@ -18,15 +38,15 @@ const BlogPostListTemplate = ({ data, location, pageContext }) => {
 
           return (
             <li key={post.fields.slug}>
-              <article className="post-list-item" itemScope itemType="http://schema.org/Article">
-                <header>
-                  <h2>
+              <PostListItem itemScope itemType="http://schema.org/Article">
+                <PostHeader>
+                  <PostTitle>
                     <Link to={post.fields.slug} itemProp="url">
                       <span itemProp="headline">{title}</span>
                     </Link>
-                  </h2>
+                  </PostTitle>
                   <small>{post.frontmatter.date}</small>
-                </header>
+                </PostHeader>
                 <section>
                   <p
                     dangerouslySetInnerHTML={{
@@ -35,7 +55,7 @@ const BlogPostListTemplate = ({ data, location, pageContext }) => {
                     itemProp="description"
                   />
                 </section>
-              </article>
+              </PostListItem>
             </li>
           );
         })}
