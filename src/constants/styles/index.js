@@ -3,4 +3,4 @@ import spacing from './spacing';
 import theme from './theme';
 import typography from './typography';
 
-export { size, spacing, theme, typography }
+export { size, spacing, theme, typography };

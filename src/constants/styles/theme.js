@@ -5,7 +5,7 @@ const theme = {
   textLight: '#4f5969',
   heading: '#1a202c',
   headingBlack: 'black',
-  accent: '#d1dce5',
+  accent: '#d1dce5'
 };
 
-export default theme
+export default theme;

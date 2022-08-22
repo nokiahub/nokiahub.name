@@ -9,7 +9,7 @@ const size = {
   maxWidthXxxl: '48rem',
   maxWidthXxxxl: '56rem',
   maxWidthFull: '100%',
-  maxWidthWrapper: '48rem',
+  maxWidthWrapper: '48rem'
 };
 
-export default size
+export default size;

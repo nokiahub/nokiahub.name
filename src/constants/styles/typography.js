@@ -14,7 +14,7 @@ const typography = {
   fontSize4: '1.728rem',
   fontSize5: '2.074rem',
   fontSize6: '2.488rem',
-  fontSize7: '2.986rem',
+  fontSize7: '2.986rem'
 };
 
-export default typography
+export default typography;
