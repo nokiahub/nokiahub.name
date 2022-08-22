@@ -1,4 +1,7 @@
 import React from 'react';
+
+import StyledThemeProvider from '../styles/StyledThemeProvider';
+import GlobalStyle from '../styles/GlobalStyle';
 import ThemeButton from './ThemeButton';
 import { Link } from 'gatsby';
 import { spacing, size, typography } from '../constants/styles';
@@ -48,19 +51,22 @@ const Layout = ({ location, children }) => {
   );
 
   return (
-    <Wrapper data-is-root-path={isRootPath}>
-      <StyledHeader>
-        {header}
-        {about}
-      </StyledHeader>
-      <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
-      </footer>
-      <ThemeButton />
-    </Wrapper>
+    <StyledThemeProvider>
+      <GlobalStyle />
+      <Wrapper data-is-root-path={isRootPath}>
+        <StyledHeader>
+          {header}
+          {about}
+        </StyledHeader>
+        <main>{children}</main>
+        <footer>
+          © {new Date().getFullYear()}, Built with
+          {` `}
+          <a href="https://www.gatsbyjs.com">Gatsby</a>
+        </footer>
+        <ThemeButton />
+      </Wrapper>
+    </StyledThemeProvider>
   );
 };
 
