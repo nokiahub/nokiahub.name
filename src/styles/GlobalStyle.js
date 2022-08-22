@@ -18,7 +18,8 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Nanum Gothic', san-serif;
     font-size: ${typography.fontSize1};
-    color: ${theme.text};
+    color: ${(props) => props.theme.text};
+    background: ${(props) => props.theme.background};
   }
 
   footer {
@@ -26,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   hr {
-    background: ${theme.accent};
+    background: ${(props) => props.theme.accent};
     height: 1px;
     border: 0;
   }
@@ -51,13 +52,13 @@ const GlobalStyle = createGlobalStyle`
   h5,
   h6 {
     font-weight: ${typography.fontWeightBold};
-    color: ${theme.heading};
+    color: ${(props) => props.theme.heading};
   }
 
   h1 {
     font-weight: ${typography.fontWeightBlack};
     font-size: ${typography.fontSize6};
-    color: ${theme.headingBlack};
+    color: ${(props) => props.theme.headingBlack};
   }
 
   h2 {
@@ -135,11 +136,11 @@ const GlobalStyle = createGlobalStyle`
   }
 
   blockquote {
-    color: ${theme.textLight};
+    color: ${(props) => props.theme.textLight};
     margin-left: calc(-1 * ${spacing.spacing6});
     margin-right: ${spacing.spacing8};
     padding: ${spacing.spacing0} ${spacing.spacing0} ${spacing.spacing0} ${spacing.spacing6};
-    border-left: ${spacing.spacing1} solid ${theme.primary};
+    border-left: ${spacing.spacing1} solid ${(props) => props.theme.primary};
     font-size: ${typography.fontSize2};
     font-style: italic;
     margin-bottom: ${spacing.spacing8};
@@ -162,13 +163,13 @@ const GlobalStyle = createGlobalStyle`
   }
 
   table thead tr th {
-    border-bottom: 1px solid ${theme.accent};
+    border-bottom: 1px solid ${(props) => props.theme.accent};
   }
 
   /* Link */
 
   a {
-    color: ${theme.primary};
+    color: ${(props) => props.theme.primary};
   }
 
   a:hover,

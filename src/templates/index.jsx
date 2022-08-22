@@ -6,7 +6,7 @@ import Pagination from '../components/Pagination';
 import Seo from '../components/seo';
 
 import styled from 'styled-components';
-import { spacing, theme, typography } from '../constants/styles';
+import { spacing, typography } from '../constants/styles';
 
 const PostListItem = styled.article`
   margin-bottom: ${spacing.spacing8};
@@ -19,10 +19,13 @@ const PostHeader = styled.header`
 
 const PostTitle = styled.h1`
   font-size: ${typography.fontSize4};
-  color: ${theme.primary};
   margin-bottom: ${spacing.spacing2};
   margin-top: ${spacing.spacing0};
   transition: ease-in-out 0.1s;
+`;
+
+const PostTitleLink = styled(Link)`
+  color: ${(props) => props.theme.primary};
 `;
 
 const BlogPostListTemplate = ({ data, location, pageContext }) => {
@@ -41,9 +44,9 @@ const BlogPostListTemplate = ({ data, location, pageContext }) => {
               <PostListItem itemScope itemType="http://schema.org/Article">
                 <PostHeader>
                   <PostTitle>
-                    <Link to={post.fields.slug} itemProp="url">
-                      <span itemProp="headline">{title}</span>
-                    </Link>
+                    <PostTitleLink to={post.fields.slug} itemProp="url">
+                      {title}
+                    </PostTitleLink>
                   </PostTitle>
                   <small>{post.frontmatter.date}</small>
                 </PostHeader>

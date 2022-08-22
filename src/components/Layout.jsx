@@ -1,8 +1,8 @@
-import * as React from 'react';
+import React from 'react';
+import ThemeButton from './ThemeButton';
 import { Link } from 'gatsby';
-import GlobalStyle from '../styles/GlobalStyle';
+import { spacing, size, typography } from '../constants/styles';
 import styled from 'styled-components';
-import { spacing, size, theme, typography } from '../constants/styles';
 
 const Wrapper = styled.div`
   margin: ${spacing.spacing0} auto;
@@ -10,17 +10,16 @@ const Wrapper = styled.div`
   padding: ${spacing.spacing20} ${spacing.spacing5} ${spacing.spacing5};
 `;
 
-const StyledHeader = styled.header`
+const StyledHeader = styled.nav`
   display: flex;
   justify-content: space-between;
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
-  backdrop-filter: blur(1px);
-  background: rgba(255, 255, 255, 0.9);
   padding: ${spacing.spacing5} ${spacing.spacing6};
-  border-bottom: 1px solid ${theme.accent};
+  border-bottom: 1px solid ${(props) => props.theme.accent};
+  background: ${(props) => props.theme.background};
   z-index: 1;
 `;
 
@@ -30,7 +29,7 @@ const StyledHeading = styled.h1`
   transition: ease-in-out 0.1s;
 
   $:hover {
-    color: ${theme.text};
+    color: ${(props) => props.theme.text};
   }
 `;
 
@@ -49,8 +48,6 @@ const Layout = ({ location, title, children }) => {
   );
 
   return (
-  <>
-    <GlobalStyle />
     <Wrapper data-is-root-path={isRootPath}>
       <StyledHeader>
         {header}
@@ -62,8 +59,8 @@ const Layout = ({ location, title, children }) => {
         {` `}
         <a href="https://www.gatsbyjs.com">Gatsby</a>
       </footer>
+      <ThemeButton />
     </Wrapper>
-  </>
   );
 };
 
