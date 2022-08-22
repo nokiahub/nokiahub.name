@@ -33,12 +33,12 @@ const StyledHeading = styled.h1`
   }
 `;
 
-const Layout = ({ location, title, children }) => {
+const Layout = ({ location, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
   const isRootPath = location.pathname === rootPath;
   let header = (
     <StyledHeading>
-      <Link to="/">{title}</Link>
+      <Link to="/">형주의 블로그</Link>
     </StyledHeading>
   );
   let about = (

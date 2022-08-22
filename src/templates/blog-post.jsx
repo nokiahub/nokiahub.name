@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Link, graphql } from 'gatsby';
 
-import Layout from '../components/Layout';
 import Seo from '../components/seo';
 import styled from 'styled-components';
 import { spacing } from '../constants/styles';
@@ -10,13 +9,12 @@ const StyledArticle = styled.article`
   margin: ${spacing.spacing4} ${spacing.spacing0} ${spacing.spacing4} ${spacing.spacing0};
 `;
 
-const BlogPostTemplate = ({ data, location }) => {
+const BlogPostTemplate = ({ data }) => {
   const post = data.markdownRemark;
-  const siteTitle = data.site.siteMetadata?.title || `Title`;
   const { previous, next } = data;
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <>
       <Seo
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
@@ -57,7 +55,7 @@ const BlogPostTemplate = ({ data, location }) => {
           </ul>
         </nav>
       </footer>
-    </Layout>
+    </>
   );
 };
 
