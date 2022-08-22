@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Link, graphql } from 'gatsby';
 
-import Layout from '../components/Layout';
 import Pagination from '../components/Pagination';
 import Seo from '../components/seo';
 
@@ -28,12 +27,11 @@ const PostTitleLink = styled(Link)`
   color: ${(props) => props.theme.primary};
 `;
 
-const BlogPostListTemplate = ({ data, location, pageContext }) => {
-  const siteTitle = data.site.siteMetadata?.title;
+const BlogPostListTemplate = ({ data, pageContext }) => {
   const posts = data.allMarkdownRemark.nodes;
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <>
       <Seo title="Hyeongju의 블로그" />
       <ol style={{ listStyle: `none` }}>
         {posts.map((post) => {
@@ -64,7 +62,7 @@ const BlogPostListTemplate = ({ data, location, pageContext }) => {
         })}
       </ol>
       <Pagination totalPages={pageContext.numPages} currentPage={pageContext.currentPage} />
-    </Layout>
+    </>
   );
 };
 

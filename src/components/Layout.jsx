@@ -33,12 +33,12 @@ const StyledHeading = styled.h1`
   }
 `;
 
-const Layout = ({ location, title, children }) => {
+const Layout = ({ location, data, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
   const isRootPath = location.pathname === rootPath;
   let header = (
     <StyledHeading>
-      <Link to="/">{title}</Link>
+      <Link to="/">{data.site.siteMetadata.title}</Link>
     </StyledHeading>
   );
   let about = (
