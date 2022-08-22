@@ -1,13 +1,12 @@
 import * as React from 'react';
-import { Link, graphql } from 'gatsby';
-import Layout from '../components/Layout';
+import { graphql } from 'gatsby';
 import Seo from '../components/seo';
 
-const About = ({ data, location }) => {
+const About = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <>
       <Seo title={siteTitle} description={siteTitle} />
       <p>
         안녕하세요. 1년차 프론트엔드 개발자 정형주입니다.
@@ -22,7 +21,7 @@ const About = ({ data, location }) => {
         </a>
         에서 확인하실 수 있습니다.
       </p>
-    </Layout>
+    </>
   );
 };
 
