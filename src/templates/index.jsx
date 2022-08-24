@@ -32,7 +32,7 @@ const BlogPostListTemplate = ({ data, pageContext }) => {
 
   return (
     <>
-      <Seo title="Hyeongju의 블로그" />
+      <Seo title="형주의 블로그" />
       <ol style={{ listStyle: `none` }}>
         {posts.map((post) => {
           const title = post.frontmatter.title || post.fields.slug;

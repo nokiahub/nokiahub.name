@@ -112,7 +112,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Hyeongju의 블로그`,
+        name: `형주의 블로그`,
         short_name: `GatsbyJS`,
         start_url: `/`,
         background_color: `#ffffff`,
