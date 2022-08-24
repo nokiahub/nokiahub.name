@@ -69,21 +69,23 @@ const StyledThemeProvider = ({ children }) => {
 
 ### 3. 공통 Layout 컴포넌트에 ThemeProvider 적용
 
-개츠비는 CSR처럼 index.js같은 앤트리 파일이 따로 없고 각각의 페이지가 최상단 파일이기 때문에 모든 페이지에 wrapper로 적용되어있는 Layout 컴포넌트에 ThemeProvider를 적용해봤습니다.
+개츠비는 CSR처럼 index.js같은 앤트리 파일이 따로 없고 각각의 페이지가 최상단 파일이기 때문에 모든 페이지에 wrapper로 적용되어있는 Layout 컴포넌트에 위의 두 컴포넌트 ThemeProvider, StyledThemeProvider를 적용해봤습니다.
 
 ```javascript
 // Layout.jsx
-
+import ThemeProvider from '../contexts/themeContext';
 import StyledThemeProvider from '../styles/StyledThemeProvider';
 import GlobalStyle from '../styles/GlobalStyle';
 
 const Layout = ({ children }) => {
   // ...
   return (
-    <StyledThemeProvider>
-      <GlobalStyle />
-      <Wrapper>{children}</Wrapper>
-    </StyledThemeProvider>
+    <ThemeProvider>
+      <StyledThemeProvider>
+        <GlobalStyle />
+        <Wrapper>{children}</Wrapper>
+      </StyledThemeProvider>
+    </ThemeProvider>
   );
 };
 ```
@@ -105,7 +107,8 @@ wrapRootElement는 SSG에서 처리하기 어려웠던 root 엘리먼트를 랩�
 context API, Redux store에서 사용하는 Provider 컴포넌트를 내부에서 사용하면 전역 state관리가 가능합니다.<br>
 
 > For setting persistent UI elements around pages use wrapPageElement.
-> wrapPageElement는 Layout과 같이 어플리케이션 내에서 UI를 일관적으로 나타낼 수 있습니다.<br>
+
+wrapPageElement는 Layout과 같이 어플리케이션 내에서 UI를 일관적으로 나타낼 수 있습니다.<br>
 
 ```javascript
 // gatsby-ssr.js, gatsby-browser.js
@@ -126,11 +129,30 @@ export const wrapPageElement = ({ element, props }) => {
 서버에서 렌더링된 결과와 브라우저에서 hydration된 후를 일치할 수 있도록,<br>
 gatsby-ssr.js, gatsby-browser.js 파일에 동일하게 wrapRootElement, wrapPageElement를 각각 동일한 코드로 적용했습니다.
 
+Context Provider를 gatsby-ssr.js로 옮겼기 때문에 Layout에서 ThemeProvider를 삭제합니다.<br>
+
+```javascript
+// Layout.jsx
+import StyledThemeProvider from '../styles/StyledThemeProvider';
+import GlobalStyle from '../styles/GlobalStyle';
+
+const Layout = ({ children }) => {
+  // ...
+  return (
+    <StyledThemeProvider>
+      <GlobalStyle />
+      <Wrapper>{children}</Wrapper>
+    </StyledThemeProvider>
+  );
+};
+```
+
 ### To Do
 
-**가시성 좋은 다크 모드 컬러 조사 후 적용하기**
+**가시성 좋은 다크 모드 컬러 조사 후 적용하기**<br>
 현재 다크모드 컬러는 라이트모드와 똑같은 primary 컬러를 사용하는데 배경색과 대비가 잘 되지 않아 더 잘 보이는 컬러로 업데이트 할 예정입니다.<br>
-**사용자가 다시 블로그를 방문해도 theme 유지하기**
+
+**사용자가 다시 블로그를 방문해도 theme 유지하기**<br>
 사용자가 블로그를 껐다가 다시 방문하거나 새로고침하면 theme이 초기화가 됩니다. localStorage등에 theme 데이터를 저장해서 다시 방문하여도 이전 사용자가 설정했던 theme이 적용되도록 해야겠습니다.
 
 ### 참고자료
