@@ -91,10 +91,8 @@ export class CatsModule {}
 
 위의 프로퍼티를 통해 모듈과 모듈 사이에 어떤 provider들이 제공되고 쓰이는지 알 수 있습니다.<br>
 
-<img src="./modules.svg" width="75%">
-
 ### 예시
-
+<img src="./modules.svg" width="75%"><br>
 다음 코드는 모듈의 구성과 의존성 주입에 대한 간단한 예시입니다.<br>
 
 ```
@@ -130,5 +128,5 @@ export class AuthModule {}
 
 user module을 import하고, authService내부에서 UserService를 사용할 수 있습니다.<br>
 
-
+### 참고자료
 [nestJS](https://docs.nestjs.com/)<br>
