@@ -13,10 +13,10 @@ const StyledBtn = styled.button`
   border-radius: 100px;
 `;
 
-const ThemeButton = () => {
+const ThemeSwitchToggle = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   return <StyledBtn onClick={toggleTheme}>{theme === 'dark' ? 'light' : 'dark'}</StyledBtn>;
 };
 
-export default ThemeButton;
+export default ThemeSwitchToggle;

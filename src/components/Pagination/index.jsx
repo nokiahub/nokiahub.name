@@ -21,7 +21,9 @@ const Pagination = ({ totalPages, currentPage }) => {
     <StyledList>
       {items.map((_, index) => (
         <StyledLink
-          fontWeight={index + 1 === currentPage ? typography.fontWeightBold : typography.fontWeightNormal}
+          fontWeight={
+            index + 1 === currentPage ? typography.fontWeightBold : typography.fontWeightNormal
+          }
           key={index}
           to={index === 0 ? '/' : `/${index + 1}`}
         >
