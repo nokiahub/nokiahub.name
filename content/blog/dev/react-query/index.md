@@ -201,5 +201,6 @@ Promise에 cancel 함수를 추가하면 진행중인 Promise를 중단할 수 �
 react-query에서는 쿼리의 결과가 캐싱되고 렌더링될 때 쿼리의 결과에 접근할 수 있기 때문에 사용자의 스크롤 포지션 또한 기억하고 있습니다.<br>
 
 ### 참고자료
+
 [react-query - document](https://tanstack.com/query/v4/docs)<br>
 [axios - cancellation](https://axios-http.com/docs/cancellation)<br>
