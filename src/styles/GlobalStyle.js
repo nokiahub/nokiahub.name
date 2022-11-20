@@ -177,6 +177,10 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
   }
 
+  svg {
+    fill: ${(props) => props.theme.text};
+  }
+
   @media (max-width: 42rem) {
     blockquote {
       padding: ${spacing.spacing0} ${spacing.spacing0} ${spacing.spacing0} ${spacing.spacing4};
