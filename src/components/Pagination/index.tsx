@@ -14,14 +14,21 @@ const StyledLink = styled(Link)`
   font-weight: ${({ fontWeight }) => fontWeight};
 `;
 
-const Pagination = ({ totalPages, currentPage }) => {
+type Props = {
+  totalPages: number;
+  currentPage: number;
+};
+
+const Pagination = ({ totalPages, currentPage }: Props) => {
   const items = Array.from(Array(totalPages).keys());
 
   return (
     <StyledList>
       {items.map((_, index) => (
         <StyledLink
-          fontWeight={index + 1 === currentPage ? typography.fontWeightBold : typography.fontWeightNormal}
+          fontWeight={
+            index + 1 === currentPage ? typography.fontWeightBold : typography.fontWeightNormal
+          }
           key={index}
           to={index === 0 ? '/' : `/${index + 1}`}
         >
