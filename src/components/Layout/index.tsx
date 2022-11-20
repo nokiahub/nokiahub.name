@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import type { PageProps } from 'gatsby';
 
 import StyledThemeProvider from '../../styles/StyledThemeProvider';
 import GlobalStyle from '../../styles/GlobalStyle';
@@ -14,9 +15,8 @@ const Wrapper = styled.div`
   padding: ${spacing.spacing20} ${spacing.spacing5} ${spacing.spacing5};
 `;
 
-const Layout = ({ location, children }) => {
-  const rootPath = `${__PATH_PREFIX__}/`;
-  const isRootPath = location.pathname === rootPath;
+const Layout = ({ location, children }: PageProps) => {
+  const isRootPath = location.pathname === '/';
 
   return (
     <StyledThemeProvider>
