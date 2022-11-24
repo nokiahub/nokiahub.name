@@ -5,6 +5,8 @@ description: 'next.js의 Image 컴포넌트 사용법과 사이즈를 설정하�
 tags: 'next, next.js, next/image, Image, image optimization, 이미지 최적화'
 ---
 
+[해당 글은 next.js v12.0.0 기준으로 작성되었습니다.]
+
 next에서 제공하는 Image 컴포넌트는 HTML의 `<img>` 엘리먼트를 기반으로 성능을 최적화 시킨 빌트인 컴포넌트입니다.<br>
 
 Image 컴포넌트에 src, width, height를 설정하는 방법은 `<img>` 태그에 src, width, height attribute를 설정하는 방법과 설정하는 방법은 유사합니다.<br>
@@ -48,15 +50,17 @@ object-position은 컨테이너 내부에서 `<img>`, `<video>` 의 위치를 �
 
 ### 소스 코드
 
-```javascript
-const ImageWrapper = styled.div`
-  position: relative;
-  height: 200px;
-  min-width: 200px;
-  margin-right: 10px;
-`
+```jsx
+import Image from 'next/image';
 
-<ImageWrapper>
+const wrapperStyle = {
+  position: relative,
+  height: '200px',
+  minWidth: '200px',
+  marginRight: '10px',
+};
+
+<div styles={wrapperStyle}>
   <Image
     priority={true}
     layout="fill"
@@ -65,12 +69,45 @@ const ImageWrapper = styled.div`
     src={image_url}
     alt={alt_name}
   />
-</ImageWrapper>
+</div>
+```
+
+[next.js v13.0.0]
+
+### next/image 컴포넌트의 fill 속성 사용
+<Image />의 fill 속성을 사용하여 width와 height를 이미지 태그에 적용하지 않고 부모 엘리먼트에 맞출 수 있습니다.<br />
+이미지의 비율 유지를 위해 style로 <code>objectFit: 'contain'</code> 이라는 값을 추가합니다.<br />
+
+**주의! fill 속성을 사용하기 위해서는 부모 엘리먼트의 position이 'relative', 'fixed' 또는 'absolute'중 하나여야 합니다.**<br />
+
+왜일까?
+
+### 소스코드
+```jsx
+import Image from 'next/image';
+
+const wrapperStyle = {
+  position: relative,
+  height: '200px',
+  minWidth: '200px',
+  marginRight: '10px',
+};
+
+<div styles={wrapperStyle}>
+  <Image
+    priority={true}
+    fill
+    src={image_url}
+    alt={alt_name}
+    styles={{ objectFit: 'contain' }}
+  />
+</div>
 ```
 
 ### 참고자료
 
 [next.js - api reference](https://nextjs.org/docs/api-reference/next/image)<br>
 [next.js - basic features](https://nextjs.org/docs/basic-features/image-optimization)<br>
+[next/image - github](https://github.com/vercel/next.js/blob/canary/docs/api-reference/next/image.md)<br>
 [mdn - object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit)<br>
 [mdn - object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-position)<br>
