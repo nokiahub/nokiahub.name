@@ -1,8 +1,16 @@
 import * as React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, PageProps } from 'gatsby';
 import Seo from '../components/seo';
 
-const About = ({ data }) => {
+type DataProps = {
+  site: {
+    siteMetadata: {
+      title: string;
+    }
+  };
+};
+
+const About: React.FC<PageProps<DataProps>> = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
 
   return (
