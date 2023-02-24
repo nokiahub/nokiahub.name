@@ -19,6 +19,6 @@ const theme = {
     accent: '#2e353f',
     background: '#282a36'
   }
-};
+} as const;
 
 export default theme;
