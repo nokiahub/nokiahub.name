@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import { ThemeProvider } from 'styled-components';
 import { ThemeContext } from '../contexts/themeContext';
 import { theme as themeByMode } from '../constants/styles';
 
-const StyledThemeProvider = ({ children }) => {
+type Props = {
+  children: ReactNode;
+}
+
+const StyledThemeProvider = ({ children }: Props) => {
   const { theme } = React.useContext(ThemeContext);
 
   return (
