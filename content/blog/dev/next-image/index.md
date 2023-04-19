@@ -80,8 +80,6 @@ const wrapperStyle = {
 
 **주의! fill 속성을 사용하기 위해서는 부모 엘리먼트의 position이 'relative', 'fixed' 또는 'absolute'중 하나여야 합니다.**<br />
 
-왜일까?
-
 ### 소스코드
 ```jsx
 import Image from 'next/image';
