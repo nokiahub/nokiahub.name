@@ -20,7 +20,7 @@ react-query의 useInfiniteQuery 훅을 사용하여 깔끔하게 무한스크롤
 
 
 ### 전체 소스코드
-```react
+```javascript
 const { ref, inView } = useInView();
   const { data, fetchNextPage } = useInfiniteQuery(
     ['items'],
