@@ -25,7 +25,7 @@ const Utterances = () => {
     scriptRef.current = script;
   }, []);
 
-  return <div>{scriptStatus === 'success' && <script ref={scriptRef}></script>}</div>;
+  return <script ref={scriptRef}></script>;
 };
 
 export default Utterances;
