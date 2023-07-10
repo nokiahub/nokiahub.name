@@ -6,7 +6,7 @@ type Status = 'loading' | 'success' | 'failed';
 
 const Utterances = () => {
   const [scriptStatus, setScriptStatus] = useState<Status>('loading');
-  const scriptRef = useRef<null | HTMLScriptElement>(null);
+  const commentsRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -22,10 +22,10 @@ const Utterances = () => {
     script.setAttribute('issue-term', 'pathname');
     script.setAttribute('theme', 'github-light');
 
-    scriptRef.current = script;
+    commentsRef.current?.appendChild(script);
   }, []);
 
-  return <script ref={scriptRef}></script>;
+  return <div ref={commentsRef}></div>;
 };
 
 export default Utterances;
