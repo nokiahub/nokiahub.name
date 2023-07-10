@@ -25,6 +25,13 @@ const BlogPostTemplate = ({ data }) => {
           <p>{post.frontmatter.date}</p>
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} itemProp="articleBody" />
+        <script src="https://utteranc.es/client.js"
+          repo="nokiahub/gatsby-blog"
+          issue-term="pathname"
+          theme="github-light"
+          crossOrigin="anonymous"
+          async>
+        </script>
         <hr />
       </StyledArticle>
       <footer>
