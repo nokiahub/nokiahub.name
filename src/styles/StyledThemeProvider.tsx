@@ -6,7 +6,7 @@ import { theme as themeByMode } from '../constants/styles';
 
 type Props = {
   children: ReactNode;
-}
+};
 
 const StyledThemeProvider = ({ children }: Props) => {
   const { theme } = React.useContext(ThemeContext);

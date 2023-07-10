@@ -6,7 +6,7 @@ type DataProps = {
   site: {
     siteMetadata: {
       title: string;
-    }
+    };
   };
 };
 

@@ -3,7 +3,7 @@ import { Link, graphql } from 'gatsby';
 
 import Seo from '../components/seo';
 import styled from 'styled-components';
-import Utterances from '../components/Comments/Utterances'
+import Utterances from '../components/Comments/Utterances';
 import { spacing } from '../constants/styles';
 
 const StyledArticle = styled.article`
