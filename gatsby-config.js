@@ -6,7 +6,7 @@ module.exports = {
       summary: `프론트엔드 개발자`
     },
     description: `형주의 블로그입니다.`,
-    siteUrl: `https://www.nokiahub.site/`
+    siteUrl: `https://www.nokiahub.name/`
   },
   plugins: [
     `gatsby-plugin-image`,
@@ -14,8 +14,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: 'https://www.nokiahub.site/',
-        sitemap: 'https://www.nokiahub.site/sitemap.xml',
+        host: 'https://www.nokiahub.name/',
+        sitemap: 'https://www.nokiahub.name/sitemap.xml',
         policy: [{ userAgent: '*', allow: '/' }]
       }
     },
