@@ -3,6 +3,7 @@ import { Link, graphql } from 'gatsby';
 
 import Seo from '../components/seo';
 import styled from 'styled-components';
+import Utterances from '../components/Comments/Utterances';
 import { spacing } from '../constants/styles';
 
 const StyledArticle = styled.article`
@@ -25,15 +26,9 @@ const BlogPostTemplate = ({ data }) => {
           <p>{post.frontmatter.date}</p>
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} itemProp="articleBody" />
-        <script src="https://utteranc.es/client.js"
-          repo="nokiahub/gatsby-blog"
-          issue-term="pathname"
-          theme="github-light"
-          crossOrigin="anonymous"
-          async>
-        </script>
         <hr />
       </StyledArticle>
+      <Utterances />
       <footer>
         <nav>
           <ul

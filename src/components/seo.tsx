@@ -6,13 +6,13 @@ import { useStaticQuery, graphql } from 'gatsby';
 type Meta = ConcatArray<PropertyMetaObj | NameMetaObj>;
 
 type PropertyMetaObj = {
-  property: string
-  content: string
+  property: string;
+  content: string;
 };
 
 type NameMetaObj = {
-  name: string
-  content: string
+  name: string;
+  content: string;
 };
 
 type Props = {
@@ -20,7 +20,7 @@ type Props = {
   lang: string;
   meta: Meta;
   title: string;
-}
+};
 
 const Seo = ({ description, lang, meta, title }: Props) => {
   const { site } = useStaticQuery(

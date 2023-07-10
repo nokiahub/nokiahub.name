@@ -57,7 +57,7 @@ const wrapperStyle = {
   position: relative,
   height: '200px',
   minWidth: '200px',
-  marginRight: '10px',
+  marginRight: '10px'
 };
 
 <div styles={wrapperStyle}>
@@ -69,18 +69,20 @@ const wrapperStyle = {
     src={image_url}
     alt={alt_name}
   />
-</div>
+</div>;
 ```
 
 [next.js v13.0.0]
 
 ### next/image 컴포넌트의 fill 속성 사용
+
 <Image />의 fill 속성을 사용하여 width와 height를 이미지 태그에 적용하지 않고 부모 엘리먼트에 맞출 수 있습니다.<br />
 이미지의 비율 유지를 위해 style로 <code>objectFit: 'contain'</code> 이라는 값을 추가합니다.<br />
 
 **주의! fill 속성을 사용하기 위해서는 부모 엘리먼트의 position이 'relative', 'fixed' 또는 'absolute'중 하나여야 합니다.**<br />
 
 ### 소스코드
+
 ```jsx
 import Image from 'next/image';
 
@@ -88,18 +90,12 @@ const wrapperStyle = {
   position: relative,
   height: '200px',
   minWidth: '200px',
-  marginRight: '10px',
+  marginRight: '10px'
 };
 
 <div styles={wrapperStyle}>
-  <Image
-    priority={true}
-    fill
-    src={image_url}
-    alt={alt_name}
-    styles={{ objectFit: 'contain' }}
-  />
-</div>
+  <Image priority={true} fill src={image_url} alt={alt_name} styles={{ objectFit: 'contain' }} />
+</div>;
 ```
 
 ### 참고자료
