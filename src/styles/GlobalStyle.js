@@ -9,7 +9,6 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    line-height: ${typography.lineHeightNormal});
     font-size: ${typography.fontSizeRoot};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -20,6 +19,9 @@ const GlobalStyle = createGlobalStyle`
     font-size: ${typography.fontSize1};
     color: ${(props) => props.theme.text};
     background: ${(props) => props.theme.background};
+    line-height: ${typography.lineHeightRelaxed};
+    font-weight: 500;
+    font-size: ${typography.fontSize2};
   }
 
   footer {
@@ -96,7 +98,15 @@ const GlobalStyle = createGlobalStyle`
   }
 
   /* Prose */
-
+  pre {
+    line-height: ${typography.lineHeightNone} !important;
+  }
+  
+  code {
+    font-family: 'Pretendard', sans-serif !important;
+    font-size: ${typography.fontSize1} !important;
+  }
+  
   p {
     line-height: ${typography.lineHeightRelaxed};
     --baseline-multiplier: 0.179;
