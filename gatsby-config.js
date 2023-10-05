@@ -145,16 +145,6 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
-    {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [
-          `NanumGothic`,
-          `source sans pro\:400,700,900` // you can also specify font weights and styles
-        ],
-        display: 'swap'
-      }
-    },
     `gatsby-plugin-styled-components`
   ]
 };
