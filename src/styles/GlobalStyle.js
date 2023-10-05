@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: 'Nanum Gothic', san-serif;
+    font-family: 'Pretendard', sans-serif;
     font-size: ${typography.fontSize1};
     color: ${(props) => props.theme.text};
     background: ${(props) => props.theme.background};
