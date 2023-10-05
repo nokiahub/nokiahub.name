@@ -17,7 +17,7 @@ const PostHeader = styled.header`
 `;
 
 const PostTitle = styled.h1`
-  font-size: ${typography.fontSize4};
+  font-size: ${typography.fontSize5};
   margin-bottom: ${spacing.spacing2};
   margin-top: ${spacing.spacing0};
   transition: ease-in-out 0.1s;
@@ -46,7 +46,7 @@ const BlogPostListTemplate = ({ data, pageContext }) => {
                       {title}
                     </PostTitleLink>
                   </PostTitle>
-                  <small>{post.frontmatter.date}</small>
+                  <small style={{ fontSize: typography.fontSize2}}>{post.frontmatter.date}</small>
                 </PostHeader>
                 <section>
                   <p
