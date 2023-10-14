@@ -3,6 +3,7 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 
 import GithubIcon from 'src/assets/icons/GithubIcon';
+import { AboutIcon } from 'src/assets/icons/AboutIcon';
 import { spacing, typography } from 'src/constants/styles';
 
 const StyledHeader = styled.nav`
@@ -48,7 +49,9 @@ const Header = () => {
           </Link>
         </StyledHeading>
         <StyledHeading>
-          <Link to="/about">about</Link>
+          <Link to="/about">
+          <AboutIcon />
+          </Link>
         </StyledHeading>
       </RightSection>
     </StyledHeader>
