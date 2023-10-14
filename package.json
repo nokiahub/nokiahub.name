@@ -45,6 +45,7 @@
     "@typescript-eslint/parser": "^5.30.5",
     "eslint": "^7.32.0",
     "eslint-plugin-react": "^7.30.1",
+    "gatsby-plugin-root-import": "^2.0.9",
     "prettier": "^2.6.2"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",

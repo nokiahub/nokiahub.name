@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import type { PageProps } from 'gatsby';
 
-import StyledThemeProvider from '../../styles/StyledThemeProvider';
-import GlobalStyle from '../../styles/GlobalStyle';
+import StyledThemeProvider from 'src/styles/StyledThemeProvider';
+import GlobalStyle from 'src/styles/GlobalStyle';
 import Header from './Header';
 import Footer from './Footer';
 import ThemeSwitchToggle from './ThemeSwitchToggle';
-import { spacing, size } from '../../constants/styles';
+import {spacing, size } from 'src/constants/styles';
 
 const Wrapper = styled.div`
   margin: ${spacing.spacing0} auto;

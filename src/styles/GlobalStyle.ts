@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, ThemeProps } from 'styled-components';
 import { spacing, theme, typography } from '../constants/styles';
 
 const GlobalStyle = createGlobalStyle`
@@ -17,9 +17,9 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Pretendard', sans-serif;
     font-size: ${typography.fontSize1};
+    line-height: ${typography.lineHeightRelaxed};
     color: ${(props) => props.theme.text};
     background: ${(props) => props.theme.background};
-    line-height: ${typography.lineHeightRelaxed};
     font-weight: 500;
     font-size: ${typography.fontSize2};
   }
@@ -29,7 +29,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   hr {
-    background: ${(props) => props.theme.accent};
+    background: ${(props: ThemeProps<any>) => props.theme.accent};
     height: 1px;
     border: 0;
   }
@@ -54,13 +54,13 @@ const GlobalStyle = createGlobalStyle`
   h5,
   h6 {
     font-weight: ${typography.fontWeightBold};
-    color: ${(props) => props.theme.heading};
+    color: ${(props: ThemeProps<any>) => props.theme.heading};
   }
 
   h1 {
     font-weight: ${typography.fontWeightBlack};
     font-size: ${typography.fontSize6};
-    color: ${(props) => props.theme.headingBlack};
+    color: ${(props: ThemeProps<any>) => props.theme.headingBlack};
   }
 
   h2 {
@@ -146,11 +146,11 @@ const GlobalStyle = createGlobalStyle`
   }
 
   blockquote {
-    color: ${(props) => props.theme.textLight};
+    color: ${(props: ThemeProps<any>) => props.theme.textLight};
     margin-left: calc(-1 * ${spacing.spacing6});
     margin-right: ${spacing.spacing8};
     padding: ${spacing.spacing0} ${spacing.spacing0} ${spacing.spacing0} ${spacing.spacing6};
-    border-left: ${spacing.spacing1} solid ${(props) => props.theme.primary};
+    border-left: ${spacing.spacing1} solid ${(props: ThemeProps<any>) => props.theme.primary};
     font-size: ${typography.fontSize2};
     font-style: italic;
     margin-bottom: ${spacing.spacing8};
@@ -179,7 +179,7 @@ const GlobalStyle = createGlobalStyle`
   /* Link */
 
   a {
-    color: ${(props) => props.theme.primary};
+    color: ${(props: ThemeProps<any>) => props.theme.primary};
   }
 
   a:hover,
@@ -188,7 +188,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   svg {
-    fill: ${(props) => props.theme.text};
+    fill: ${(props: ThemeProps<any>) => props.theme.text};
   }
 
   @media (max-width: 42rem) {
