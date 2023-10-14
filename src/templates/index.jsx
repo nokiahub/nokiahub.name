@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { Link, graphql } from 'gatsby';
-
-import Pagination from '../components/Pagination';
-import Seo from '../components/seo';
-
 import styled from 'styled-components';
-import { spacing, typography } from '../constants/styles';
+
+import Pagination from 'src/components/Pagination';
+import Seo from 'src/components/seo';
+import { spacing, typography } from 'src/constants/styles';
 
 const PostListItem = styled.article`
   margin-bottom: ${spacing.spacing8};
@@ -76,7 +75,8 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { fields: [frontmatter___date], order: DESC },
+      filter: {frontmatter: {status: {ne: "draft" }}},
       limit: $limit
       skip: $skip
     ) {
