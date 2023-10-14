@@ -1,4 +1,5 @@
 ---
+status: 'draft'
 date: '2022-11-06'
 title: 'Nest.js Controller, Service and Module'
 description: 'Nest.js로 백앤드 아키텍쳐 관련 용어 익히기'
