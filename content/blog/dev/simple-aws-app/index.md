@@ -1,4 +1,5 @@
 ---
+status: 'draft'
 date: '2023-04-30'
 title: 'AWS 서버리스, 코어 서비스 워크샵 후기'
 description: 'AWS 코어 서비스로 간단한 웹 애플리케이션 직접 만들기 (feat. VPC, EC2, ELB)'
