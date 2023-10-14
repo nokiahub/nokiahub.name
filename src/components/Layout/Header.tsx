@@ -13,7 +13,7 @@ const StyledHeader = styled.nav`
   width: 100%;
   top: 0;
   left: 0;
-  padding: ${spacing.spacing3} ${spacing.spacing5};
+  padding: ${spacing.spacing3} ${spacing.spacing5} ${spacing.spacing2};
   border-bottom: 1px solid ${(props) => props.theme.accent};
   background: ${(props) => props.theme.background};
   z-index: 1;
