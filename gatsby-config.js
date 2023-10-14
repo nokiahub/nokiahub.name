@@ -11,6 +11,7 @@ module.exports = {
   plugins: [
     `gatsby-plugin-image`,
     `gatsby-plugin-sitemap`,
+    `gatsby-plugin-root-import`,
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {

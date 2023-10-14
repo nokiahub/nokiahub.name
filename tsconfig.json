@@ -8,6 +8,9 @@
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "paths": {
+      "src/*": ["src/*"],
+    }
   }
 }
