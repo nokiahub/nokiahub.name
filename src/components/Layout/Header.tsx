@@ -41,7 +41,7 @@ const Header = () => {
         </StyledHeading>
       <RightSection>
         <StyledHeading>
-          <Link to="https://github.com/nokiahub">
+          <Link target="_blank" to="https://github.com/nokiahub">
             <GithubIcon />
           </Link>
         </StyledHeading>
