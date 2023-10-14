@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 
-import GithubIcon from '../../assets/icons/GithubIcon';
-import { spacing, typography } from '../../constants/styles';
+import GithubIcon from 'src/assets/icons/GithubIcon';
+import { spacing, typography } from 'src/constants/styles';
 
 const StyledHeader = styled.nav`
   display: flex;

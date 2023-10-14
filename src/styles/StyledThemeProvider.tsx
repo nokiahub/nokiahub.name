@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 
 import { ThemeProvider } from 'styled-components';
-import { ThemeContext } from '../contexts/themeContext';
+import { ThemeContext } from 'src/contexts/themeContext';
 import { theme as themeByMode } from '../constants/styles';
 
 type Props = {
