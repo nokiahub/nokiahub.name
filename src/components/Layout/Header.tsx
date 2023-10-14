@@ -13,7 +13,7 @@ const StyledHeader = styled.nav`
   width: 100%;
   top: 0;
   left: 0;
-  padding: ${spacing.spacing5} ${spacing.spacing6};
+  padding: ${spacing.spacing3} ${spacing.spacing5};
   border-bottom: 1px solid ${(props) => props.theme.accent};
   background: ${(props) => props.theme.background};
   z-index: 1;
@@ -25,23 +25,20 @@ const RightSection = styled.div`
 `;
 
 const StyledHeading = styled.h1`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   font-size: ${typography.fontSize2};
   margin: 0;
   transition: ease-in-out 0.1s;
-
-  $:hover {
-    color: ${(props) => props.theme.text};
-  }
 `;
 
 const Header = () => {
   return (
     <StyledHeader>
-      <div>
         <StyledHeading>
           <Link to="/">형주의 블로그</Link>
         </StyledHeading>
-      </div>
       <RightSection>
         <StyledHeading>
           <Link to="https://github.com/nokiahub">
