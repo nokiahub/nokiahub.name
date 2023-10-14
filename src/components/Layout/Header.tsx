@@ -21,7 +21,7 @@ const StyledHeader = styled.nav`
 
 const RightSection = styled.div`
   display: flex;
-  gap: ${spacing.spacing4};
+  gap: ${spacing.spacing6};
 `;
 
 const StyledHeading = styled.h1`
