@@ -1,4 +1,5 @@
 ---
+status: 'draft'
 date: '2023-10-15'
 title: 'vanilla-extract란?'
 description: 'vanilla-extract에서 소개하는 type-safe한 css-in-js 알아보기'
