@@ -59,6 +59,66 @@ theme에 대한 타입을 따로 지정 해주지 않아도 잘못된 property�
 ## vanilla-extract APIs
 
 ### Sprinkles
+> Generate a static set of custom utility classes and compose them either statically at build time, or dynamically at runtime,
+> without the usual style generation overhead of CSS-in-JS.
+
+정적 스타일을 빌드 타임, 동적 스타일을 런타임에 **오버헤드 없이** 생성할 수 있습니다.<br />
+`styled-components`와 같은 보편적인 CSS-in-JS에 비해 오버헤드가 없다.<br />
+`utility class + type-safe` 한 스타일을 생성한다는 특징이 있는 것 같습니다.
+
+#### Usage
+sprinkle의 `definedProperties`, `createSprinkles`
+```ts
+const colors = {
+  'blue-50': '#eff6ff',
+  'blue-100': '#dbeafe',
+  'blue-200': '#bfdbfe',
+  'gray-700': '#374151',
+  'gray-800': '#1f2937',
+  'gray-900': '#111827'
+  // etc.
+};
+
+const colorProperties = defineProperties({
+  conditions: {
+    lightMode: {},
+    darkMode: { '@media': '(prefers-color-scheme: dark)' }
+  },
+  defaultCondition: 'lightMode',
+  properties: {
+    color: colors,
+    background: colors
+    // etc.
+  }
+});
+
+export const sprinkles = createSprinkles(colorProperties);
+
+export type Sprinkles = Parameters<typeof sprinkles>[0];
+
+```
+
+`conditions`, `defaultCondition`, `properties`를 인자로 받아 sprinkle을 생성합니다.<br />
+
+```ts
+import { sprinkles } from './sprinkles.css.ts';
+
+export const container = sprinkles({
+  display: 'flex',
+  paddingX: 'small',
+
+  // Conditional sprinkles:
+  flexDirection: {
+    mobile: 'column',
+    desktop: 'row'
+  },
+  background: {
+    lightMode: 'blue-50',
+    darkMode: 'gray-700'
+  }
+});
+```
+
 
 ### Recipes
 
