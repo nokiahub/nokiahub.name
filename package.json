@@ -8,6 +8,8 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "dependencies": {
+    "@carbon/icons-react": "^11.28.0",
+    "@types/carbon__icons-react": "^11.26.1",
     "babel-plugin-styled-components": "^2.0.7",
     "gatsby": "^4.25.7",
     "gatsby-plugin-feed": "^4.15.0",

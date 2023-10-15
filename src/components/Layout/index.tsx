@@ -6,8 +6,8 @@ import StyledThemeProvider from 'src/styles/StyledThemeProvider';
 import GlobalStyle from 'src/styles/GlobalStyle';
 import Header from './Header';
 import Footer from './Footer';
-import ThemeSwitchToggle from './ThemeSwitchToggle';
-import {spacing, size } from 'src/constants/styles';
+import { spacing, size } from 'src/constants/styles';
+import { ArrowUp } from '@carbon/icons-react';
 
 const Wrapper = styled.div`
   margin: ${spacing.spacing0} auto;
@@ -15,8 +15,24 @@ const Wrapper = styled.div`
   padding: ${spacing.spacing20} ${spacing.spacing5} ${spacing.spacing5};
 `;
 
+const ScrollToTop = styled.button`
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  cursor: pointer;
+  z-index: 1000;
+  border-radius: 100%;
+  width: 36px;
+  height: 36px;
+  border: 1px solid ${({ theme }) => theme.text};
+  background-color: ${({ theme }) => theme.background};
+`;
+
 const Layout = ({ location, children }: PageProps) => {
   const isRootPath = location.pathname === '/';
+  const handleClickScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   return (
     <StyledThemeProvider>
@@ -25,7 +41,10 @@ const Layout = ({ location, children }: PageProps) => {
         <Header />
         <main>{children}</main>
         <Footer />
-        <ThemeSwitchToggle />
+        <ScrollToTop onClick={handleClickScrollToTop}>
+          <ArrowUp size={20} />
+        </ScrollToTop>
+
       </Wrapper>
     </StyledThemeProvider>
   );

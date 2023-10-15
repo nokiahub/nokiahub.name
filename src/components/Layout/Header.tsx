@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
+import { Information } from '@carbon/icons-react';
 
 import GithubIcon from 'src/assets/icons/GithubIcon';
-import { AboutIcon } from 'src/assets/icons/AboutIcon';
 import { spacing, typography } from 'src/constants/styles';
+import ThemeSwitchToggle from 'src/components/Layout/ThemeSwitchToggle';
 
 const StyledHeader = styled.nav`
   display: flex;
@@ -41,13 +42,16 @@ const Header = () => {
         </StyledHeading>
       <RightSection>
         <StyledHeading>
+          <ThemeSwitchToggle />
+        </StyledHeading>
+        <StyledHeading>
           <Link target="_blank" to="https://github.com/nokiahub">
             <GithubIcon />
           </Link>
         </StyledHeading>
         <StyledHeading>
           <Link to="/about">
-          <AboutIcon />
+            <Information size={24} />
           </Link>
         </StyledHeading>
       </RightSection>
