@@ -6,8 +6,7 @@ import StyledThemeProvider from 'src/styles/StyledThemeProvider';
 import GlobalStyle from 'src/styles/GlobalStyle';
 import Header from './Header';
 import Footer from './Footer';
-import ThemeSwitchToggle from './ThemeSwitchToggle';
-import {spacing, size } from 'src/constants/styles';
+import { spacing, size } from 'src/constants/styles';
 
 const Wrapper = styled.div`
   margin: ${spacing.spacing0} auto;
@@ -25,7 +24,6 @@ const Layout = ({ location, children }: PageProps) => {
         <Header />
         <main>{children}</main>
         <Footer />
-        <ThemeSwitchToggle />
       </Wrapper>
     </StyledThemeProvider>
   );

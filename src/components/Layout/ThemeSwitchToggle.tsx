@@ -1,22 +1,16 @@
 import React, { useContext } from 'react';
+import { Contrast } from '@carbon/icons-react';
+
 import { ThemeContext } from 'src/contexts/themeContext';
 
-import styled from 'styled-components';
-
-const StyledBtn = styled.button`
-  position: fixed;
-  right: 24px;
-  bottom: 24px;
-  width: 54px;
-  height: 54px;
-  border: none;
-  border-radius: 100px;
-`;
-
 const ThemeSwitchToggle = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { toggleTheme } = useContext(ThemeContext);
 
-  return <StyledBtn onClick={toggleTheme}>{theme === 'dark' ? 'light' : 'dark'}</StyledBtn>;
+  return (
+    <span onClick={toggleTheme}>
+      <Contrast size={24} className="my-custom-class" />
+    </span>
+  );
 };
 
 export default ThemeSwitchToggle;
