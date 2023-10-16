@@ -9,6 +9,7 @@ module.exports = {
     siteUrl: `https://www.nokiahub.name/`
   },
   plugins: [
+    `gatsby-plugin-vanilla-extract`,
     `gatsby-plugin-image`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-root-import`,
