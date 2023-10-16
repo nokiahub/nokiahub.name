@@ -24,8 +24,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     reporter.panicOnBuild(`There was an error loading your projects`, projectsResult.errors);
     return;
   }
-  
-  console.log(projectsResult.data.allMarkdownRemark.nodes);
 
   const projects = projectsResult.data.allMarkdownRemark.nodes;
 
