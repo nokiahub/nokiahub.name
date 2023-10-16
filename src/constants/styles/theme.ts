@@ -12,12 +12,12 @@ const theme = {
   dark: {
     primary: '#bd93f9',
     secondary: '#0077c7',
-    text: '#f8f8f2',
+    text: '#f4f4f5',
     textLight: '#deded9',
-    heading: 'e5dfd3',
+    heading: '#f4f4f5',
     headingBlack: '#f8f8f2',
     accent: '#2e353f',
-    background: '#282a36'
+    background: '#18181b'
   }
 } as const;
 
