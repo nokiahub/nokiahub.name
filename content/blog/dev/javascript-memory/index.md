@@ -1,4 +1,5 @@
 ---
+category: 'post'
 date: '2022-07-08'
 title: 'Javascript 메모리'
 description: '자바스크립트 엔진은 어떻게 메모리 관리를 할까?'

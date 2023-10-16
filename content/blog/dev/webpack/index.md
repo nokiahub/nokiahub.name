@@ -1,4 +1,5 @@
 ---
+category: 'post'
 date: '2022-05-29'
 title: 'Webpack'
 description: '웹팩에 대한 정리글'

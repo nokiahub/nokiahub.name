@@ -1,4 +1,5 @@
 ---
+category: 'post'
 date: '2022-10-02'
 title: '리액트 쿼리(react-query)'
 description: '리액트 쿼리 라이브러리 문서를 위주로 내용을 정리한 글입니다.'

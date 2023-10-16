@@ -1,4 +1,5 @@
 ---
+category: 'post'
 date: '2022-08-19'
 title: 'Next.js의 빌트인 Image 컴포넌트'
 description: 'next.js의 Image 컴포넌트 사용법과 사이즈를 설정하는 방법'

@@ -1,4 +1,5 @@
 ---
+category: 'post'
 date: '2022-08-09'
 title: '인증과 인가, OAuth'
 description: '웹에서 사용자 인증하기, 다른 서비스를 통해 인증받기'

@@ -1,4 +1,5 @@
 ---
+category: 'post'
 date: '2022-11-30'
 title: 'React Component의 타입'
 description: 'ReactNode, ReactElement, JSX.Element의 차이'

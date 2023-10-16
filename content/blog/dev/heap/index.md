@@ -1,4 +1,5 @@
 ---
+category: 'post'
 date: '2022-06-06'
 title: 'Heap, Priority Queue'
 description: '최대, 최소 힙 구현하기'

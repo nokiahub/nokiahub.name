@@ -1,4 +1,5 @@
 ---
+category: 'post'
 date: '2022-07-11'
 title: '타입을 사용하여 타입 구성하기'
 description: '타입스크립트에서 키워드, index 등을 이용해 타입을 구성하는 방법'

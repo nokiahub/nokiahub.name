@@ -1,4 +1,5 @@
 ---
+category: 'post'
 date: '2022-05-09'
 title: 'CORS'
 description: 'CORS란?'

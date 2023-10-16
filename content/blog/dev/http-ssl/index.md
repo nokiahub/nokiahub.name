@@ -1,4 +1,5 @@
 ---
+category: 'post'
 date: '2022-04-29'
 title: 'HTTPS와 SSL'
 description: 'HTTPS와 SSL'
