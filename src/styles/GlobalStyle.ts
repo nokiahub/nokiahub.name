@@ -98,12 +98,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   /* Prose */
-  pre {
-    line-height: ${typography.lineHeightNone} !important;
-  }
-  
   code {
-    font-family: 'Pretendard', sans-serif !important;
     font-size: ${typography.fontSize1} !important;
   }
   
