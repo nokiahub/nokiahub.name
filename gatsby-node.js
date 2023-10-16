@@ -3,6 +3,45 @@ const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
+
+  const projectTemplate = path.resolve('./src/templates/project.tsx');
+  const projectsResult = await graphql(
+    `
+      {
+        allMarkdownRemark(filter: {frontmatter: {category: {eq: "project" }}}, limit: 1000) {
+          nodes {
+            id
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    `
+);
+
+  if (projectsResult.errors) {
+    reporter.panicOnBuild(`There was an error loading your projects`, projectsResult.errors);
+    return;
+  }
+  
+  console.log(projectsResult.data.allMarkdownRemark.nodes);
+
+  const projects = projectsResult.data.allMarkdownRemark.nodes;
+
+  if (projects.length > 0) {
+    projects.forEach((project, index) => {
+      actions.createPage({
+        path: project.fields.slug,
+        component: projectTemplate,
+        context: {
+          id: project.id,
+        }
+      });
+    });
+  }
+
+
   const blogPost = path.resolve(`./src/templates/blog-post.jsx`);
   const result = await graphql(
     `
