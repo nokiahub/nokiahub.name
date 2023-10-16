@@ -76,7 +76,12 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC },
-      filter: {frontmatter: {status: {ne: "draft" }}},
+      filter: {
+        frontmatter: {
+          status: { ne: "draft" }
+          category: { eq: "post" }
+        }
+      },
       limit: $limit
       skip: $skip
     ) {
