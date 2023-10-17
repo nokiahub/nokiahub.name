@@ -16,6 +16,9 @@ const Wrapper = styled.div`
 `;
 
 const ScrollToTop = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   bottom: 32px;
   right: 32px;
