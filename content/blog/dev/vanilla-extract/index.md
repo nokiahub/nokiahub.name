@@ -1,8 +1,8 @@
 ---
 category: 'post'
 date: '2023-10-15'
-title: 'vanilla-extract 이란?'
-description: 'vanilla-extract에서 소개하는 type-safe한 css-in-js 알아보기'
+title: 'vanilla extract - sprinkles API'
+description: 'vanilla-extract로 type-safe하게 스타일링하기'
 tags: 'css, vanilla-extract'
 ---
 
