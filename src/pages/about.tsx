@@ -32,7 +32,7 @@ const About: React.FC<PageProps<DataProps>> = ({ data }) => {
 
       <p>
         <br />더 자세한 내용은{' '}
-        <a href="https://hazel-case-679.notion.site/29-Frontend-Developer-80d76411929b4b9e9d1cc034177385b7?pvs=4">
+        <a target="_blank" rel="noreferrer" href="https://hazel-case-679.notion.site/29-Frontend-Developer-80d76411929b4b9e9d1cc034177385b7?pvs=4">
           이력서
         </a>
         에서 확인하실 수 있습니다.
