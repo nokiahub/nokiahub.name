@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { Link, graphql } from 'gatsby';
+import type { PageProps } from 'gatsby';
+
 import styled from 'styled-components';
 
 import Seo from 'src/components/seo';
@@ -25,7 +27,29 @@ const PostTitleLink = styled(Link)`
   color: ${(props) => props.theme.primary};
 `;
 
-const ProjectsTemplate = ({ data }) => {
+type DataProps = {
+  site: {
+    siteMetadata: {
+      title: string;
+    }
+  },
+  allMarkdownRemark: {
+    nodes: Node[];
+  }
+};
+
+type Node = {
+  frontmatter: {
+    title: string;
+    description: string;
+  };
+  fields: {
+    slug: string;
+  }
+}
+
+
+const ProjectsTemplate = ({ data }: PageProps<DataProps>) => {
   const projects = data.allMarkdownRemark.nodes;
 
   return (
@@ -48,7 +72,7 @@ const ProjectsTemplate = ({ data }) => {
                 <section>
                   <p
                     dangerouslySetInnerHTML={{
-                      __html: item.frontmatter.description || item.excerpt
+                      __html: item.frontmatter.description
                     }}
                     itemProp="description"
                   />
