@@ -42,6 +42,11 @@ const Header = () => {
         </StyledHeading>
       <RightSection>
         <StyledHeading>
+          <Link to="/projects">
+            Projects
+          </Link>
+        </StyledHeading>
+        <StyledHeading>
           <ThemeSwitchToggle />
         </StyledHeading>
         <StyledHeading>
@@ -54,6 +59,7 @@ const Header = () => {
             <Information size={24} />
           </Link>
         </StyledHeading>
+
       </RightSection>
     </StyledHeader>
   );
