@@ -45,6 +45,14 @@ const ProjectsTemplate = ({ data }) => {
                     </PostTitleLink>
                   </PostTitle>
                 </PostHeader>
+                <section>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: item.frontmatter.description || item.excerpt
+                    }}
+                    itemProp="description"
+                  />
+                </section>
               </PostListItem>
             </li>
           );
@@ -77,6 +85,7 @@ export const pageQuery = graphql`
         }
         frontmatter {
           title
+          description
         }
       }
     }
