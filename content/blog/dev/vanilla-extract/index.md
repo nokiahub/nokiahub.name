@@ -124,6 +124,104 @@ recipe에는 `base`, `variants`, `compoundVariants` 그리고 `defaultVariants�
 - `compoundVariants`: variant 조합에 따라 적용되는 스타일.
 - `defaultVariants`: variant의 기본값을 설정할 때 사용.
 
+### variants
+디자인 시스템에 여러 상황에 따라 스타일이 다른 버튼이 있다고 가정해봅시다.<br>
+다음과 같이 한가지 케이스마다 하나의 스타일을 정의할 수 있습니다.
+
+```js
+import { recipe } from '@vanilla-extract/recipes';
+
+export const button = recipe({
+  base: {
+    borderRadius: 6
+  },
+  variants: {
+    color: {
+      primary: { background: 'whitesmoke' },
+      secondary: { background: 'blueviolet' },
+      warning: { background: 'slateblue' }
+    },
+    fontWeight: {
+      normal: { fontWeight: 400 },
+      bold: { fontWeight: 700 }
+    }
+  },
+});
+```
+위와 같이 정의하면 필요에 따라 다른 variant들을 조합하여 사용할 수 있습니다.<br>
+color variant의 갯수, fontWeight의 갯수의 조합을 생각해보면 총 6가지의 버튼을 만들 수 있습니다.<br>
+
+```js
+import { button } from 'src/styles/styles.css';
+
+const primaryNormal = button({
+  color: 'primary',
+  fontWeight: 'normal'
+});
+
+const secondaryNormal = button({
+  color: 'secondary',
+  fontWeight: 'normal'
+});
+
+const primaryBold = button({
+  color: 'primary',
+  fontWeight: 'bold'
+});
+
+// ...
+```
+
+### compoundVariants
+여러가지 variant의 특정 조합이 적용이 되었을 때 적용이 되는 variant 입니다.<br>
+아래에 compoundVariants에 지정된 variants와 동일하게 color: 'primary', background: 'primary'인 경우에 
+fontSize를 명시적으로 지정하지 않아도 fontSize: 'large'가 자동으로 적용됩니다.<br>
+
+```js
+export const button = recipe({
+  base: {
+    background: 'red',
+  },
+  variants: {
+    color: {
+      primary: 'red',
+      secondary: 'blue'
+    },
+    background: {
+      primary: 'yellow',
+      secondary: 'green'
+    },
+    fontSize: {
+      small: '10px',
+      medium: '20px',
+      large: '30px'
+    }
+  },
+  compoundVariants: [
+    {
+      variants: {
+
+        color: 'primary',
+        background: 'primary',
+      },
+      style: {
+        fontSize: 'large'
+      }
+    }
+  ]
+});
+```
+
+리액트 jsx에서 사용한 아래의 코드는 다음과 같이 컴파운드 배리언트가 적용됩니다.<br>
+```jsx
+<button className={button({ color: 'primary', background: 'secondary' })}>
+  컴파운드 배리언트
+</button>
+// -> 자동으로 font-size가 large값인 30px로 적용됨
+```
+compound variants를 사용하면 특정 조합이 반복되는 스타일에 대한 중복을 제거할 수 있을 것 같습니다.<br>
+
+
 
 ### 참고자료
 [vanilla-extract](https://vanilla-extract.style/)<br />
