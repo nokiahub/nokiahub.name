@@ -1,7 +1,7 @@
 ---
 category: 'post'
 date: '2023-04-19'
-title: 'next.js와 useInfiniteQuery를 이용한 무한 스크롤 구현'
+title: 'useInfiniteQuery를 이용한 무한 스크롤 구현'
 description: 'next.js에서 react-query의 useInfiniteQuery를 이용하여 무한 스크롤 만들기'
 tags: 'react-query, useInfiniteQuery, next.js infinite query'
 ---
