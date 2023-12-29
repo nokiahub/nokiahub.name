@@ -31,11 +31,11 @@ type DataProps = {
   site: {
     siteMetadata: {
       title: string;
-    }
-  },
+    };
+  };
   allMarkdownRemark: {
     nodes: Node[];
-  }
+  };
 };
 
 type Node = {
@@ -45,9 +45,8 @@ type Node = {
   };
   fields: {
     slug: string;
-  }
-}
-
+  };
+};
 
 const ProjectsTemplate = ({ data }: PageProps<DataProps>) => {
   const projects = data.allMarkdownRemark.nodes;
@@ -89,19 +88,14 @@ const ProjectsTemplate = ({ data }: PageProps<DataProps>) => {
 export default ProjectsTemplate;
 
 export const pageQuery = graphql`
-  query blogListQuery {
+  query projectListQuery {
     site {
       siteMetadata {
         title
       }
     }
     allMarkdownRemark(
-      filter: {
-        frontmatter: {
-          status: { ne: "draft" }
-          category: { eq: "project" }
-        }
-      },
+      filter: { frontmatter: { status: { ne: "draft" }, category: { eq: "project" } } }
     ) {
       nodes {
         fields {
