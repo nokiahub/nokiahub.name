@@ -3,7 +3,7 @@ category: 'post'
 date: '2023-10-15'
 title: 'vanilla extract - sprinkles API, recipes API'
 description: 'vanilla-extract로 type-safe하게 스타일링하기'
-tags: 'css, vanilla-extract'
+tags: [ 'css, vanilla-extract']
 ---
 
 ## vanilla-extract의 특징

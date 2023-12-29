@@ -8,7 +8,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const projectsResult = await graphql(
     `
       {
-        allMarkdownRemark(filter: {frontmatter: {category: {eq: "project" }}}, limit: 1000) {
+        allMarkdownRemark(filter: { frontmatter: { category: { eq: "project" } } }, limit: 1000) {
           nodes {
             id
             fields {
@@ -18,7 +18,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         }
       }
     `
-);
+  );
 
   if (projectsResult.errors) {
     reporter.panicOnBuild(`There was an error loading your projects`, projectsResult.errors);
@@ -33,33 +33,27 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         path: project.fields.slug,
         component: projectTemplate,
         context: {
-          id: project.id,
+          id: project.id
         }
       });
     });
   }
 
-
-  const blogPost = path.resolve(`./src/templates/blog-post.jsx`);
+  const blogPost = path.resolve(`./src/templates/blog-post.tsx`);
   const result = await graphql(
     `
       {
         allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: ASC },
-          filter: {
-            frontmatter: {
-              status: { ne: "draft" }
-              category: { eq: "post" }
-            }
-          },
+          sort: { fields: [frontmatter___date], order: ASC }
+          filter: { frontmatter: { status: { ne: "draft" }, category: { eq: "post" } } }
           limit: 1000
-          ) {
-            nodes {
-              id
-              fields {
-                slug
-              }
+        ) {
+          nodes {
+            id
+            fields {
+              slug
             }
+          }
         }
       }
     `
@@ -93,7 +87,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     Array.from({ length: numPages }).forEach((_, index) => {
       createPage({
         path: index === 0 ? '/' : `/${index + 1}`,
-        component: path.resolve('./src/templates/index.jsx'),
+        component: path.resolve('./src/templates/index.tsx'),
         context: {
           limit: postsPerPage,
           skip: index * postsPerPage,

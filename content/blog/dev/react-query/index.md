@@ -3,7 +3,7 @@ category: 'post'
 date: '2022-10-02'
 title: '리액트 쿼리(react-query)'
 description: '리액트 쿼리 라이브러리 문서를 위주로 내용을 정리한 글입니다.'
-tags: 'react-query, async, state management, 비동기 상태관리, 상태관리'
+tags: [ 'react-query, async, state management, 비동기 상태관리, 상태관리']
 ---
 
 react-query는 리액트에서 비동기로 받아오는 데이터의 상태, 즉 서버에 대한 상태관리를 도와주는 라이브러리입니다.<br>
