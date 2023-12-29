@@ -3,7 +3,7 @@ category: 'post'
 date: '2022-11-30'
 title: 'React Component의 타입'
 description: 'ReactNode, ReactElement, JSX.Element의 차이'
-tags: 'react, component type, typescript, ReactNode, ReactElement, JSX.Element'
+tags: [ 'react, component type, typescript, ReactNode, ReactElement, JSX.Element']
 ---
 
 <img src="./typeDiagram.jpg" width="75%"><br>

@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import type { PageProps } from 'gatsby';
 
 import StyledThemeProvider from 'src/styles/StyledThemeProvider';
 import GlobalStyle from 'src/styles/GlobalStyle';
@@ -31,11 +30,18 @@ const ScrollToTop = styled.button`
   background-color: ${({ theme }) => theme.background};
 `;
 
+type PageProps = {
+  location: {
+    pathname: string;
+  };
+  children: React.ReactElement;
+};
+
 const Layout = ({ location, children }: PageProps) => {
   const isRootPath = location.pathname === '/';
   const handleClickScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+  };
 
   return (
     <StyledThemeProvider>
@@ -47,7 +53,6 @@ const Layout = ({ location, children }: PageProps) => {
         <ScrollToTop onClick={handleClickScrollToTop}>
           <ArrowUp size={20} />
         </ScrollToTop>
-
       </Wrapper>
     </StyledThemeProvider>
   );

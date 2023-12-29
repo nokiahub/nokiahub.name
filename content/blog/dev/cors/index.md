@@ -3,7 +3,7 @@ category: 'post'
 date: '2022-05-09'
 title: 'CORS'
 description: 'CORS란?'
-tags: 'CORS'
+tags: [ 'CORS']
 ---
 
 http를 통해 웹 어플리케이션이 서버로 자원 요청을 보낼 때, 웹 어플리케이션의 origin(protocol, domain, port)과 자원 요청을 보내는 서버의 origin이 서로 다를 시에 발생되는 메커니즘이다.

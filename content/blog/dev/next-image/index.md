@@ -3,7 +3,7 @@ category: 'post'
 date: '2022-08-19'
 title: 'Next.js의 빌트인 Image 컴포넌트'
 description: 'next.js의 Image 컴포넌트 사용법과 사이즈를 설정하는 방법'
-tags: 'next, next.js, next/image, Image, image optimization, 이미지 최적화'
+tags: [ 'next, next.js, next/image, Image, image optimization, 이미지 최적화']
 ---
 
 [해당 글은 next.js v12.0.0 기준으로 작성되었습니다.]
