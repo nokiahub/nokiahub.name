@@ -50,7 +50,7 @@ const Layout = ({ location, children }: PageProps) => {
         <Header />
         <main>{children}</main>
         <Footer />
-        <ScrollToTop onClick={handleClickScrollToTop}>
+        <ScrollToTop onClick={handleClickScrollToTop} aria-label="scroll to top">
           <ArrowUp size={20} />
         </ScrollToTop>
       </Wrapper>

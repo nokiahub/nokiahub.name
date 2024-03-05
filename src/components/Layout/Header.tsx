@@ -37,29 +37,26 @@ const StyledHeading = styled.h1`
 const Header = () => {
   return (
     <StyledHeader>
-        <StyledHeading>
-          <Link to="/">형주의 블로그</Link>
-        </StyledHeading>
+      <StyledHeading>
+        <Link to="/">형주의 블로그</Link>
+      </StyledHeading>
       <RightSection>
         <StyledHeading>
-          <Link to="/projects">
-            Projects
-          </Link>
+          <Link to="/projects">Projects</Link>
         </StyledHeading>
         <StyledHeading>
           <ThemeSwitchToggle />
         </StyledHeading>
         <StyledHeading>
-          <Link target="_blank" to="https://github.com/nokiahub">
+          <Link target="_blank" to="https://github.com/nokiahub" aria-label="my github account">
             <GithubIcon />
           </Link>
         </StyledHeading>
         <StyledHeading>
-          <Link to="/about">
+          <Link to="/about" aria-label="about me">
             <Information size={24} />
           </Link>
         </StyledHeading>
-
       </RightSection>
     </StyledHeader>
   );
