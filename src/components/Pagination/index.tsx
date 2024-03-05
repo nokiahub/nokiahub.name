@@ -25,15 +25,15 @@ const Pagination = ({ totalPages, currentPage }: Props) => {
   return (
     <StyledList>
       {items.map((_, index) => (
-        <StyledLink
-          fontWeight={
-            index + 1 === currentPage ? typography.fontWeightBold : typography.fontWeightNormal
-          }
-          key={index}
-          to={index === 0 ? '/' : `/${index + 1}`}
-        >
-          {index + 1}
-        </StyledLink>
+        <li key={index}>
+          <StyledLink
+            fontWeight={
+              index + 1 === currentPage ? typography.fontWeightBold : typography.fontWeightNormal
+            }
+            to={index === 0 ? '/' : `/${index + 1}`}>
+            {index + 1}
+          </StyledLink>
+        </li>
       ))}
     </StyledList>
   );
