@@ -117,8 +117,7 @@ const GlobalStyle = createGlobalStyle`
     margin-right: ${spacing.spacing0};
     padding: ${spacing.spacing0};
     margin-bottom: ${spacing.spacing8};
-    list-style-position: outside;
-    list-style-image: none;
+    list-style: none outside none;
   }
 
   ul li,
