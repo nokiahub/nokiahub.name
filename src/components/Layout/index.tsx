@@ -6,7 +6,6 @@ import GlobalStyle from 'src/styles/GlobalStyle';
 import Header from './Header';
 import Footer from './Footer';
 import { spacing, size } from 'src/constants/styles';
-import { ArrowUp } from '@carbon/icons-react';
 
 const Wrapper = styled.div`
   margin: ${spacing.spacing0} auto;
@@ -28,6 +27,7 @@ const ScrollToTop = styled.button`
   height: 36px;
   border: 1px solid ${({ theme }) => theme.text};
   background-color: ${({ theme }) => theme.background};
+  font-size: 1.2rem;
 `;
 
 type PageProps = {
@@ -51,7 +51,7 @@ const Layout = ({ location, children }: PageProps) => {
         <main>{children}</main>
         <Footer />
         <ScrollToTop onClick={handleClickScrollToTop} aria-label="scroll to top">
-          <ArrowUp size={20} />
+          ↑
         </ScrollToTop>
       </Wrapper>
     </StyledThemeProvider>
