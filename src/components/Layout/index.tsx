@@ -6,6 +6,7 @@ import GlobalStyle from 'src/styles/GlobalStyle';
 import Header from './Header';
 import Footer from './Footer';
 import { spacing, size } from 'src/constants/styles';
+import { ArrowIcon } from 'src/assets/icons/ArrowIcon';
 
 const Wrapper = styled.div`
   margin: ${spacing.spacing0} auto;
@@ -51,7 +52,7 @@ const Layout = ({ location, children }: PageProps) => {
         <main>{children}</main>
         <Footer />
         <ScrollToTop onClick={handleClickScrollToTop} aria-label="scroll to top">
-          ↑
+          <ArrowIcon />
         </ScrollToTop>
       </Wrapper>
     </StyledThemeProvider>
