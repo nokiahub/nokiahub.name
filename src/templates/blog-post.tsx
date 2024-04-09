@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link, graphql } from 'gatsby';
+import { Link, graphql, PageProps } from 'gatsby';
 
 import Seo from '../components/seo';
 import styled from 'styled-components';
@@ -10,7 +10,43 @@ const StyledArticle = styled.article`
   margin: ${spacing.spacing4} ${spacing.spacing0} ${spacing.spacing4} ${spacing.spacing0};
 `;
 
-const BlogPostTemplate = ({ data }) => {
+type DataProps = {
+  site: {
+    siteMetadata: {
+      title: string;
+    };
+  };
+  markdownRemark: {
+    id: string;
+    excerpt: string;
+    html: string;
+    frontmatter: {
+      title: string;
+      date: string;
+      description: string;
+    };
+  };
+  previous: {
+    fields: {
+      slug: string;
+    };
+    frontmatter: {
+      title: string;
+    };
+  };
+  next: {
+    fields: {
+      slug: string;
+    };
+    frontmatter: {
+      title: string;
+    };
+  };
+};
+
+type Props = PageProps<DataProps>;
+
+const BlogPostTemplate = ({ data }: Props) => {
   const post = data.markdownRemark;
   const { previous, next } = data;
 
@@ -38,8 +74,7 @@ const BlogPostTemplate = ({ data }) => {
               justifyContent: `space-between`,
               listStyle: `none`,
               padding: 0
-            }}
-          >
+            }}>
             <li>
               {previous && (
                 <Link to={previous.fields.slug} rel="prev">

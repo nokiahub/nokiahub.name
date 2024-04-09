@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link, graphql } from 'gatsby';
+import { Link, graphql, PageProps } from 'gatsby';
 import styled from 'styled-components';
 
 import Pagination from 'src/components/Pagination';
@@ -26,7 +26,35 @@ const PostTitleLink = styled(Link)`
   color: ${(props) => props.theme.primary};
 `;
 
-const BlogPostListTemplate = ({ data, pageContext }) => {
+type DataProps = {
+  site: {
+    siteMetadata: {
+      title: string;
+    };
+  };
+  allMarkdownRemark: {
+    nodes: {
+      fields: {
+        slug: string;
+      };
+      frontmatter: {
+        date: string;
+        title: string;
+        description: string;
+      };
+      excerpt: string;
+    }[];
+  };
+};
+
+type Props = PageProps<DataProps> & {
+  pageContext: {
+    numPages: number;
+    currentPage: number;
+  };
+};
+
+const BlogPostListTemplate = ({ data, pageContext }: Props) => {
   const posts = data.allMarkdownRemark.nodes;
 
   return (
@@ -45,7 +73,7 @@ const BlogPostListTemplate = ({ data, pageContext }) => {
                       {title}
                     </PostTitleLink>
                   </PostTitle>
-                  <small style={{ fontSize: typography.fontSize2}}>{post.frontmatter.date}</small>
+                  <small style={{ fontSize: typography.fontSize2 }}>{post.frontmatter.date}</small>
                 </PostHeader>
                 <section>
                   <p
@@ -75,13 +103,8 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC },
-      filter: {
-        frontmatter: {
-          status: { ne: "draft" }
-          category: { eq: "post" }
-        }
-      },
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { frontmatter: { status: { ne: "draft" }, category: { eq: "post" } } }
       limit: $limit
       skip: $skip
     ) {
@@ -94,6 +117,7 @@ export const pageQuery = graphql`
           title
           description
         }
+        excerpt(pruneLength: 160)
       }
     }
   }
