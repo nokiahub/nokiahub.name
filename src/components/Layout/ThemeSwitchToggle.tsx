@@ -7,7 +7,7 @@ const ThemeSwitchToggle = () => {
   const { toggleTheme } = useContext(ThemeContext);
 
   return (
-    <span onClick={toggleTheme}>
+    <span onClick={() => toggleTheme?.()}>
       <ThemeIcon />
     </span>
   );
