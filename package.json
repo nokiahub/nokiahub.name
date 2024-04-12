@@ -8,9 +8,8 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "dependencies": {
-    "@carbon/icons-react": "^11.28.0",
-    "@vanilla-extract/css": "^1.13.0",
-    "@vanilla-extract/webpack-plugin": "^2.3.1",
+    "@vanilla-extract/css": "^1.14.2",
+    "@vanilla-extract/webpack-plugin": "^2.3.7",
     "babel-plugin-styled-components": "^2.0.7",
     "gatsby": "^4.25.8",
     "gatsby-plugin-feed": "^4.15.0",
@@ -24,7 +23,7 @@
     "gatsby-plugin-sharp": "^4.15.0",
     "gatsby-plugin-sitemap": "^5.18.0",
     "gatsby-plugin-styled-components": "^5.21.0",
-    "gatsby-plugin-vanilla-extract": "^4.0.1",
+    "gatsby-plugin-vanilla-extract": "^4.0.2",
     "gatsby-remark-copy-linked-files": "^5.15.0",
     "gatsby-remark-images": "^6.15.0",
     "gatsby-remark-prismjs": "^6.15.0",

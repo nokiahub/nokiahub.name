@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
-import { Information } from '@carbon/icons-react';
 
 import GithubIcon from 'src/assets/icons/GithubIcon';
 import { spacing, typography } from 'src/constants/styles';
 import ThemeSwitchToggle from 'src/components/Layout/ThemeSwitchToggle';
+import { AboutIcon } from 'src/assets/icons/AboutIcon';
 
 const StyledHeader = styled.nav`
   display: flex;
@@ -54,7 +54,7 @@ const Header = () => {
         </StyledHeading>
         <StyledHeading>
           <Link to="/about" aria-label="about me">
-            <Information size={24} />
+            <AboutIcon />
           </Link>
         </StyledHeading>
       </RightSection>
