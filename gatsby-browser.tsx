@@ -5,7 +5,6 @@ import 'typeface-merriweather';
 import type { GatsbyBrowser } from 'gatsby';
 
 // Highlighting for code blocks
-import 'prismjs/themes/prism-okaidia.css';
 
 import React from 'react';
 
