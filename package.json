@@ -62,6 +62,9 @@
     "type": "git",
     "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
   },
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
