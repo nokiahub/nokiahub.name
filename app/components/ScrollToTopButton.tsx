@@ -19,4 +19,4 @@ export const ScrollToTopButton = () => {
 };
 
 const style =
-  'flex justify-center items-center fixed bottom-4 right-4 cursor-pointer z-10 border-[1px] border-black bg-white size-9 rounded-full';
+  'flex justify-center items-center fixed bottom-4 right-4 cursor-pointer z-10 border-[1px] border-textLight size-9 rounded-full';

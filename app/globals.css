@@ -25,3 +25,8 @@
         --background: '#18181b';
     }
 }
+
+/*icon color for dark mode*/
+svg {
+    fill: currentColor;
+}
