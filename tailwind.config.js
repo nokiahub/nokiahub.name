@@ -9,7 +9,18 @@ export default {
     './src/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
-    extend: {}
+    extend: {
+      colors: {
+        primary: 'var(--primary)',
+        secondary: 'var(--secondary)',
+        text: 'var(--text)',
+        textLight: 'var(--text-light)',
+        heading: 'var(--heading)',
+        headingBlack: 'var(--heading-black)',
+        accent: 'var(--accent)',
+        background: 'var(--background)'
+      }
+    }
   },
   plugins: []
 };
