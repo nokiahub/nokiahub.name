@@ -37,6 +37,8 @@
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "react-syntax-highlighter": "^15.5.0",
+    "remark": "^15.0.1",
+    "remark-html": "^16.0.1",
     "styled-components": "^6.1.8",
     "typeface-merriweather": "0.0.72",
     "typeface-montserrat": "0.0.75",
