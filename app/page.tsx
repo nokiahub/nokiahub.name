@@ -1,3 +1,8 @@
+import { getPostsData } from '../lib/post';
+import { Posts } from './components/Posts';
+
 export default function Page() {
-  return <h1 className="text-3xl font-bold underline text-pink-600">Hello world!</h1>;
+  const posts = getPostsData();
+
+  return <Posts posts={posts} />;
 }
