@@ -1,5 +1,5 @@
 import './globals.css';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { Header } from './components/Header';
 import Footer from './components/Footer';
 import { ScrollToTopButton } from './components/ScrollToTopButton';

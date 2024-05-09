@@ -1,8 +1,6 @@
 'use client';
 
 import { useTheme } from 'next-themes';
-import * as React from 'react';
-
 const ThemeSwitchToggle = () => {
   const { theme, setTheme } = useTheme();
 

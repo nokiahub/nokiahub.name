@@ -1,4 +1,4 @@
-import { Post } from '../../lib/post';
+import { Post } from '@/lib/post';
 import { NextPage } from 'next';
 import Link from 'next/link';
 

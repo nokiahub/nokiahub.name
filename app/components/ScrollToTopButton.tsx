@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import { ArrowIcon } from '../icons/ArrowIcon';
 
 export const ScrollToTopButton = () => {

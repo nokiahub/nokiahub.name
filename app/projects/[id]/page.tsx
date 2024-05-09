@@ -1,4 +1,4 @@
-import { getProjectData } from '../../../lib/post';
+import { getProjectData } from '@/lib/post';
 
 type Props = {
   params: { id: string };

@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import React from 'react';
 import ThemeSwitchToggle from './ThemeSwitchTogle';
 import GithubIcon from '../icons/GithubIcon';
 import { AboutIcon } from '../icons/AboutIcon';

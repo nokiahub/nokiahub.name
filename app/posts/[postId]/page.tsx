@@ -1,4 +1,4 @@
-import { getAllPostIds, getPostData } from '../../../lib/post';
+import { getAllPostIds, getPostData } from '@/lib/post';
 import { Metadata } from 'next';
 
 type Props = {

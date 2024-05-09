@@ -1,4 +1,4 @@
-import { getProjectsData } from '../../lib/post';
+import { getProjectsData } from '@/lib/post';
 import { Projects } from '../components/Projects';
 
 export default function Page() {
