@@ -1,0 +1,26 @@
+---
+title: 'Hamchi'
+description: '사람과 햄스터를 이어주는 분양 및 입양 모바일 앱'
+category: 'project'
+---
+
+# 햄치🐹
+햄스터 분양 및 입양 모바일 어플리케이션입니다.
+진행 기간
+- 2021.5.3 ~ 2021.5.21(총 3주)
+
+## 기술 스택
+React-Native
+React로 모바일 앱을 만들 수 있기 때문에 React-Native 기반 모바일 앱을 만들었습니다.
+카메라 촬영 업로딩 기능, 실시간 채팅 기능을 위해 웹 보다는 모바일 앱이 더 적합하다고 생각하였습니다.
+
+## Redux-Toolkit
+- createReducer를 통해 실제로는 immutable하게 state를 업데이트하지만, 코드로는 직접 mutate 하듯이 reducer를 작성하여 단순한 형태의 reducer를 만들 수 있기 때문에 선택했습니다. 
+- 기존 redux에서처럼 action creator, reducer, container를 각각 다른 파일로 저장하지 않고, 하나의 slice 파일에서 state에 대한 모든 내용이 하나의 파일에 같이 존재하는 ducks 패턴을 적용해서 state의 흐름을 편하게 추적할 수 있도록했습니다.
+
+## Redux-Thunk
+- 데이터 비동기 처리를 하기 위해 사용했습니다. 
+- 서버와의 통신 상태를 관리하여 상태에 따른 UI를 나타내고, adapter를 사용하여 정규화된 state를 사용하기 위해 적용했습니다.
+
+## Socket.io
+- 사용자 사이에 실시간으로 메시지를 주고받을 수 있도록 하는 채팅 기능을 위해 적용했습니다.
