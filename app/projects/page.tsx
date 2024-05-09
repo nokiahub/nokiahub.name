@@ -1,3 +1,7 @@
+import { getProjectsData } from '../../lib/post';
+import { Projects } from '../components/Projects';
+
 export default function Page() {
-  return <div>My Project List</div>;
+  const projects = getProjectsData();
+  return <Projects items={projects} />;
 }
