@@ -10,7 +10,7 @@ export const Posts: NextPage<PostsProps> = ({ posts }) => {
   return (
     <ul>
       {posts.map((post) => (
-        <li className={'mb-2 list-none'}>
+        <li className={'mb-2 list-none'} key={post.id}>
           <Link href={`/posts/${post.id}`}>
             <div>{post.id}</div>
             <div>{post.category}</div>
