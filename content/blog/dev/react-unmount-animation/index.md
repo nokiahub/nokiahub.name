@@ -3,7 +3,7 @@ category: 'post'
 date: '2023-05-12'
 title: 'React 모달 컴포넌트 unmount 애니메이션'
 description: '애니메이션을 적용하려던 컴포넌트는 이미 unmount되고 없다'
-tags: [ 'react, animation, mount animation, unmount animation']
+tags: [ 'react', 'animation', 'mount animation', 'unmount animation']
 ---
 
 모달에서 닫기 버튼을 클릭하면 모달 컴포넌트가 unmount됩니다.<br>

@@ -3,7 +3,7 @@ category: 'post'
 date: '2022-08-24'
 title: 'Gatsby 프로젝트에 다크모드 적용하기'
 description: 'gatsby styled-components, context API'
-tags: [ '개츠비, 개츠비 다크모드, gatsby, gatsby dark mode, styled-components, context API']
+tags: [ '개츠비', '개츠비 다크모드', 'gatsby', 'gatsby dark mode', 'styled-components', 'context API']
 ---
 
 제 블로그에 다크모드를 적용해본 과정을 정리합니다.<br>

@@ -3,7 +3,7 @@ category: 'post'
 date: '2022-07-08'
 title: 'Javascript 메모리'
 description: '자바스크립트 엔진은 어떻게 메모리 관리를 할까?'
-tags: [ 'javascript memory, garbage collection, stack, heap memory']
+tags: [ 'javascript memory', 'garbage collection', 'stack', 'heap memory']
 ---
 
 처음 자바스크립트를 배우기 시작했을 때 직접 메모리 관리를 하지 않고도 자유롭게 동적인 객체나 배열을 사용할 수 있어 다른 언어들에 비해 자유로운 언어라는 것을 느꼈습니다.<br>

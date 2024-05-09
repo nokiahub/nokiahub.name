@@ -3,7 +3,7 @@ category: 'post'
 date: '2022-07-04'
 title: 'Javascript Map & Set'
 description: '자바스크립트 Map과 Set 사용하기'
-tags: [ 'map, hashmap, javascript, data structure']
+tags: [ 'map', 'hashmap', 'javascript', 'data structure']
 ---
 
 # 맵(Map)

@@ -3,7 +3,7 @@ status: 'draft'
 date: '2022-11-06'
 title: 'Nest.js Controller, Service and Module'
 description: 'Nest.js로 백앤드 아키텍쳐 관련 용어 익히기'
-tags: [ 'Nest.js, controller, service, module']
+tags: [ 'Nest.js', 'controller', 'service', 'module']
 ---
 
 회사에서 스터디를 할 때 주로 클린 코드나 아키텍쳐에 대해서 스터디를 하곤 하는데, 아키텍쳐 관련 스터디를 할 때 마다 서비스, 모듈, 의존성 주입 등 생소한 용어로 인해 개인적인 스터디의 효율이 떨어지는 것을 느꼈습니다.<br><br>

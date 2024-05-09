@@ -3,7 +3,7 @@ category: 'post'
 date: '2022-08-10'
 title: '브라우저에 URL을 입력하면 일어나는 일'
 description: '웹 브라우저 동작 방식'
-tags: [ 'web, browser, domain, web browser, 웹 브라우저, 브라우저, web server, hosting']
+tags: [ 'web', 'browser', 'domain', 'web browser', '웹 브라우저', '브라우저', 'web server', 'hosting']
 ---
 
 프론트엔드 기술 면접에서 받았던 질문입니다.
