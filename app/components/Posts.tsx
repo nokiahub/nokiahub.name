@@ -6,7 +6,7 @@ type PostsProps = {
   posts: Post[];
 };
 
-export const Posts: NextPage<PostsProps> = ({ posts }) => {
+export const Posts: NextPage<PostsProps> = ({ posts }: PostsProps) => {
   return (
     <ul>
       {posts.map((post) => (

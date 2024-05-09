@@ -6,7 +6,7 @@ type ProjectsProps = {
   items: Post[];
 };
 
-export const Projects: NextPage<ProjectsProps> = ({ items }) => {
+export const Projects: NextPage<ProjectsProps> = ({ items }: ProjectsProps) => {
   return (
     <ul>
       {items.map((post) => (
