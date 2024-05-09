@@ -1,5 +1,6 @@
 import { Post } from '../../lib/post';
 import { NextPage } from 'next';
+import Link from 'next/link';
 
 type PostsProps = {
   posts: Post[];
@@ -7,17 +8,19 @@ type PostsProps = {
 
 export const Posts: NextPage<PostsProps> = ({ posts }) => {
   return (
-    <div>
+    <ul>
       {posts.map((post) => (
         <li className={'mb-2 list-none'}>
-          <div>{post.id}</div>
-          <div>{post.category}</div>
-          <div>{post.published}</div>
-          <div>{post.date}</div>
-          <div>{post.title}</div>
-          <div>{post.description}</div>
+          <Link href={`/posts/${post.id}`}>
+            <div>{post.id}</div>
+            <div>{post.category}</div>
+            <div>{post.published}</div>
+            <div>{post.date}</div>
+            <div>{post.title}</div>
+            <div>{post.description}</div>
+          </Link>
         </li>
       ))}
-    </div>
+    </ul>
   );
 };
