@@ -23,7 +23,7 @@ export const Header = () => {
           </Link>
         </div>
         <div className={linkItemStyle}>
-          <Link href="/app/about/page" aria-label="about me">
+          <Link href="/about" aria-label="about me">
             <AboutIcon />
           </Link>
         </div>
