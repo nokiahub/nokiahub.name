@@ -20,9 +20,11 @@ export default async function Post({ params }: { params: { id: string } }) {
 
   return (
     <div>
-      <div>{postData.title}</div>
-      <div>{postData.date}</div>
+      <h1 className={"text-2xl"}>{postData.title}</h1>
+      <span className={"text-sm text-gray-500"}>{postData.date}</span>
+      <div className={"mt-6"}>
       <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+      </div>
     </div>
   );
 }
