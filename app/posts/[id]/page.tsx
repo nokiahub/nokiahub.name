@@ -1,5 +1,8 @@
 import { getAllPostIds, getPostData } from '@/lib/post';
 import { Metadata } from 'next';
+import Mdx from '@/app/components/Mdx';
+
+import { Post, allPosts } from 'contentlayer/generated';
 
 type Props = {
   params: { id: string };
@@ -15,15 +18,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     keywords: tags
   };
 }
-export default async function Post({ params }: { params: { id: string } }) {
-  const postData = await getPostData(params.id);
+
+export default async function PostItem({ params }: { params: { id: string } }) {
+  const postData = allPosts.find((post) => post._id.includes(params.id));
 
   return (
     <div>
       <h1 className={"text-2xl"}>{postData.title}</h1>
       <span className={"text-sm text-gray-500"}>{postData.date}</span>
       <div className={"mt-6"}>
-      <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+
+        <Mdx post={postData} />
       </div>
     </div>
   );

@@ -1,6 +1,5 @@
 ---
 category: 'post'
-published: false
 date: '2023-12-04'
 title: 'tailwind에서 style 우선순위 정하기'
 description: 'tailwind가 제공하는 utility class의 priority 룰과 vanilla-extract의 sprinkles API를 이용해 스타일 우선순위를 적용해보자'
@@ -12,8 +11,8 @@ tags: ['css', 'vanilla-extract', 'tailwind priority']
 <div class="text-red-500 text-blue-500">hello</div>
 ```
 위의 jsx 결과물을 보면 어떤 결과가 나올까요?
-보통은 cascading order에 따라서 마지막에 적용된 text-blue-500이 적용되었을 것이라 생각이 됩니다.<br>
-하지만 tailwind의 경우에는 text-red-500이 적용이 됩니다.<br>
+보통은 cascading order에 따라서 마지막에 적용된 text-blue-500이 적용되었을 것이라 생각이 됩니다.<br/>
+하지만 tailwind의 경우에는 text-red-500이 적용이 됩니다.<br/>
 
 이는 리액트로 개발을 할 때 문제가 될 수 있습니다. 
 스타일을 conditional하게 지정해야 할 때 마주칠 수 있는 문제는 다음과 같습니다.
@@ -22,7 +21,7 @@ tags: ['css', 'vanilla-extract', 'tailwind priority']
 <div className={'text-red-500', isBlue && 'text-blue-500'}>hello</div>
 ```
 
-기본 스타일이 존재하지만, 때에 따라서 다른 스타일을 주고 싶을 때 제대로 적용이 되지 않습니다.<br>
+기본 스타일이 존재하지만, 때에 따라서 다른 스타일을 주고 싶을 때 제대로 적용이 되지 않습니다.<br/>
 
 tailwind의 style 우선순위를 알기 위해 cascading을 간략하게 정리하면 다음과 같습니다.
 
@@ -90,7 +89,7 @@ It's fast, flexible, and reliable — with zero-runtime.
 ## 우선순위 처리방안
 ### style variant로 해결하기
 
-두가지 style이 충돌할 때 variant로 해결을 할 수 있습니다.<br>
+두가지 style이 충돌할 때 variant로 해결을 할 수 있습니다.<br/>
 ```ts
 import { cva } from 'cva';
 
@@ -112,7 +111,7 @@ const style = cva({
 ```
 
 ### twin.macro로 해결하기
-카카오 기술 블로그에서는 twin.macro를 사용해서 해결하고 있습니다.<br>
+카카오 기술 블로그에서는 twin.macro를 사용해서 해결하고 있습니다.<br/>
 
 ```jsx
 tw`text-red-400 text-blue-400`
@@ -120,7 +119,7 @@ tw`text-red-400 text-blue-400`
 
 ### 참고자료
 
-[MDN Specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity#tree_proximity_ignorance)<br>
-[MDN Cascade](https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade)<br>
-[MDN Cascading and inheritance](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance)<br>
-[tailwind class의 우선순위](https://fe-developers.kakaoent.com/2022/220303-tailwind-tips/#tailwind-class%EC%9D%98-%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84)<br>
+[MDN Specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity#tree_proximity_ignorance)<br/>
+[MDN Cascade](https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade)<br/>
+[MDN Cascading and inheritance](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance)<br/>
+[tailwind class의 우선순위](https://fe-developers.kakaoent.com/2022/220303-tailwind-tips/#tailwind-class%EC%9D%98-%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84)<br/>

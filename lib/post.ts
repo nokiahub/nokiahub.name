@@ -21,7 +21,7 @@ export function getPostsData() {
   return directoryNames.map((fileName) => {
     const id = fileName.replace(/\.md$/, '');
     const fullPath = path.join(postsDirectory, fileName);
-    const filePath = path.join(fullPath, 'index.md');
+    const filePath = path.join(fullPath, 'index.mdx');
     const fileContents = fs.readFileSync(filePath, 'utf8');
 
     const matterResult = matter(fileContents);
@@ -38,7 +38,7 @@ export function getProjectsData() {
   return directoryNames.map((fileName) => {
     const id = fileName.replace(/\.md$/, '');
     const fullPath = path.join(projectsDirectory, fileName);
-    const filePath = path.join(fullPath, 'index.md');
+    const filePath = path.join(fullPath, 'index.mdx');
     const fileContents = fs.readFileSync(filePath, 'utf8');
 
     const matterResult = matter(fileContents);
@@ -63,7 +63,7 @@ export function getAllPostIds() {
 
 export async function getPostData(id: string) {
   const fullPath = path.join(postsDirectory, `${id}`);
-  const filePath = path.join(fullPath, 'index.md');
+  const filePath = path.join(fullPath, 'index.mdx');
   const fileContents = fs.readFileSync(filePath, 'utf8');
 
   const matterResult = matter(fileContents);
@@ -80,7 +80,7 @@ export async function getPostData(id: string) {
 
 export async function getProjectData(id: string) {
   const fullPath = path.join(projectsDirectory, `${id}`);
-  const filePath = path.join(fullPath, 'index.md');
+  const filePath = path.join(fullPath, 'index.mdx');
   const fileContents = fs.readFileSync(filePath, 'utf8');
 
   const matterResult = matter(fileContents);

@@ -87,7 +87,7 @@ async function createSession(userId, redirectTo) {
 
 ## 3. 인증되지 않은 유저가 인증이 필요한 화면 요청을 할 때
 내 프로필 정보 수정하기 같은 화면은 인증이 꼭 필요한 화면이겠죠.<br/>
-일반적으로 인증이 필요한 화면같은 경우 미들웨어를 통해 redirect하는 것이 일반적이라 구글링해 본 결과 관련 이슈를 remix 깃헙의 Issues에서 처리하는 방법을 확인해 볼 수 있었습니다.<br><br>
+일반적으로 인증이 필요한 화면같은 경우 미들웨어를 통해 redirect하는 것이 일반적이라 구글링해 본 결과 관련 이슈를 remix 깃헙의 Issues에서 처리하는 방법을 확인해 볼 수 있었습니다.<br/><br/>
 
 
 [관련 이슈](https://github.com/remix-run/remix/discussions/1432)에 따르면 유저가 인증되지 않은 상태, 즉 세션에 아이디가 등록되지 않은 유저가 인증이 필요한 화면을 요청할 때에는 `loader` 내부에서 바로 유저의 role을 검사하도록 합니다.<br />
@@ -109,14 +109,14 @@ let loader: LoaderFunction = async ({ request }) => {
 };
 ```
 
-_Each route can define a loader function that provides data to the route when rendering._<br>
+_Each route can define a loader function that provides data to the route when rendering._<br/>
 
-_This function is only ever run on the server. On the initial server render, it will provide data to the HTML document._<br>
-_On navigations in the browser, Remix will call the function via fetch from the browser._<br>
+_This function is only ever run on the server. On the initial server render, it will provide data to the HTML document._<br/>
+_On navigations in the browser, Remix will call the function via fetch from the browser._<br/>
 
-_This means you can talk directly to your database, use server-only API secrets, etc. Any code that isn't used to render the UI will be removed from the browser bundle._<br>
+_This means you can talk directly to your database, use server-only API secrets, etc. Any code that isn't used to render the UI will be removed from the browser bundle._<br/>
 
-remix에서 `loader`는 페이지 요청 전에 init을 하듯이 로드, 또는 실행되는 함수를 실행하는 장치라고 이해를 했습니다.<br>
+remix에서 `loader`는 페이지 요청 전에 init을 하듯이 로드, 또는 실행되는 함수를 실행하는 장치라고 이해를 했습니다.<br/>
 더 나은 이해를 위해 문서를 찾아보니 loader 는 각 페이지의 라우트에서 렌더러에 데이터를 제공하는 역할을 하고,
 서버에서만 동작한다고 합니다. next.js의 `getServerSideProps`와 흡사한 기능을 하는 것 같습니다.
 

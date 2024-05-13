@@ -8,12 +8,12 @@ tags: [ 'web', 'browser', 'domain', 'web browser', '웹 브라우저', '브라�
 
 프론트엔드 기술 면접에서 받았던 질문입니다.
 
-**Q. 브라우저에 URL을 입력하면 일어나는 일들을 설명해주세요.**<br>
+**Q. 브라우저에 URL을 입력하면 일어나는 일들을 설명해주세요.**<br/>
 **A.** 브라우저가 주소창에 입력된 URL 값을 DNS 서버로 전송하여 IP주소를 받아옵니다.
 해당 IP 주소로 html과 같은 리소스 파일을 요청합니다.
 받아온 리소스 파일을 브라우저가 렌더링하여 사용자에게 보여줍니다.
 
-**Q. 그렇다면 브라우저가 받아온 리소스를 어떻게 렌더링하나요?**<br>
+**Q. 그렇다면 브라우저가 받아온 리소스를 어떻게 렌더링하나요?**<br/>
 **A.** 브라우저가 html 파일을 파싱하여 DOM 트리를 구성합니다. css 파일 또한 파싱하여 CSSOM 트리를 구성하고, 이 두 트리를 합쳐 렌더 트리를 구성합니다. 이 렌더 트리를 기반으로 렌더링하게 됩니다.
 
 제 답이 큰 틀에서 벗어나게 틀린 부분은 없었지만 말하면서도 중간 과정이 많이 생략된 것 같았습니다. 이 주제에 대해 조금 더 자세하게 정리해보겠습니다.
@@ -64,9 +64,9 @@ third party 서버에 요청이 많은 웹 사이트에서 사용하면 요청 �
 
 ### 2. 웹 브라우저가 서버와의 TCP 연결 시작
 
-인터넷에 연결된 웹 브라우저 요청 패킷은 일반적으로 **TCP/IP라고 하는 전송 제어 프로토콜**을 사용하여 라우터, 인터넷 서비스 제공회사 교환기를 통해 이동됩니다.<br>
+인터넷에 연결된 웹 브라우저 요청 패킷은 일반적으로 **TCP/IP라고 하는 전송 제어 프로토콜**을 사용하여 라우터, 인터넷 서비스 제공회사 교환기를 통해 이동됩니다.<br/>
 통신 회사간 경로인 **라우팅 테이블**을 따라서 연결할 IP 주소가 있는 웹 서버를 찾습니다.
-traceroute <domain-name> 명령어를 통해 거쳐야 하는 라우터의 정보를 알 수 있습니다.
+traceroute domain-name 명령어를 통해 거쳐야 하는 라우터의 정보를 알 수 있습니다.
 
 ```shell
 hyeongju@jeonghyeongjuui-MacBookAir ~ % traceroute nokiahub.site
@@ -96,14 +96,14 @@ HTTPS를 사용하는 경우에는 TLS 핸드셰이크라는 과정을 통해 �
 - 요청 헤더
 - 본문
 
-**요청 라인**<br>
+**요청 라인**<br/>
 HTTP의 요청 라인에 클라이언트가 수행하려는 작업에 대한 정보를 포함합니다.
 
 ```shell
 GET /blog/hello-world HTTP/1.1
 ```
 
-**요청 헤더**<br>
+**요청 헤더**<br/>
 
 ```shell
 Host: 호스트
@@ -113,7 +113,7 @@ Accept: 클라이언트가 이해 가능한 컨텐츠 타입이 무엇인지를 
 
 ### 4. 웹 서버가 요청을 처리하고 응답을 다시 전송
 
-웹 서버는 받은 요청 정보를 통해 경로에 위치한 콘텐츠를 클라이언트에게 응답합니다.<br>
+웹 서버는 받은 요청 정보를 통해 경로에 위치한 콘텐츠를 클라이언트에게 응답합니다.<br/>
 응답에는 다음이 포함됩니다.
 
 - 요청 상태
@@ -122,14 +122,14 @@ Accept: 클라이언트가 이해 가능한 컨텐츠 타입이 무엇인지를 
 
 ### 5. 웹 브라우저가 콘텐츠 렌더링
 
-웹 브라우저가 서버로부터 받은 응답의 헤더를 검사하여 리소스의 타입을 알아낸 후, 해당 타입의 리소스를 렌더링하는 방법을 확인합니다.<br>
-응답 처리 방법을 알려주는 응답 헤더인 **Content-Type**은 이러한 리소스의 타입을 나타냅니다.<br>
-**Content-Type을 보고 웹 브라우저가 어떤 방식으로 렌더링**을 할지 정하게 됩니다.<br>
+웹 브라우저가 서버로부터 받은 응답의 헤더를 검사하여 리소스의 타입을 알아낸 후, 해당 타입의 리소스를 렌더링하는 방법을 확인합니다.<br/>
+응답 처리 방법을 알려주는 응답 헤더인 **Content-Type**은 이러한 리소스의 타입을 나타냅니다.<br/>
+**Content-Type을 보고 웹 브라우저가 어떤 방식으로 렌더링**을 할지 정하게 됩니다.<br/>
 
 받은 HTML 파일이 다른 CSS, Javascript를 참조할 수 있고, 이에 대한 추가적인 요청을 해야할 수 있습니다.
-추가적으로 웹 브라우저는 CSS 파일을 요청하게 되고 요청에 대해 또 다시 Content-Type 헤더가 브라우저에게 CSS 파일은 어떤 방식으로 렌더링 할지 정하게 됩니다.<br>
+추가적으로 웹 브라우저는 CSS 파일을 요청하게 되고 요청에 대해 또 다시 Content-Type 헤더가 브라우저에게 CSS 파일은 어떤 방식으로 렌더링 할지 정하게 됩니다.<br/>
 
 ### 참고자료
 
-[Amazon Web Services - 웹 브라우저에 URL을 입력하면 어떤 일이 생기나요?](https://aws.amazon.com/ko/blogs/korea/what-happens-when-you-type-a-url-into-your-browser/)<br>
-[mdn - Using dns-prefetch](https://developer.mozilla.org/en-US/docs/Web/Performance/dns-prefetch)<br>
+[Amazon Web Services - 웹 브라우저에 URL을 입력하면 어떤 일이 생기나요?](https://aws.amazon.com/ko/blogs/korea/what-happens-when-you-type-a-url-into-your-browser/)<br/>
+[mdn - Using dns-prefetch](https://developer.mozilla.org/en-US/docs/Web/Performance/dns-prefetch)<br/>
