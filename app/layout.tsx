@@ -13,10 +13,10 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className="bg-background">
+      <body>
         <Providers>
           <Header />
-          <main className={'mt-[52px] p-2 pt-1 pb-3'}>{children}</main>
+          <main className={'flex justify-center mt-[52px] p-2 pt-1 pb-3'}>{children}</main>
           <Footer />
           <ScrollToTopButton />
         </Providers>
