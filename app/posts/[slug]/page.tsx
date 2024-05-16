@@ -5,12 +5,12 @@ import Mdx from '@/app/components/Mdx';
 import { Post, allPosts } from 'contentlayer/generated';
 
 type Props = {
-  params: { id: string };
+  params: { slug: string };
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { title, description, tags } = await getPostData(params.id);
+  const { title, description, tags } = await getPostData(params.slug);
 
   return {
     title,
@@ -19,8 +19,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function PostItem({ params }: { params: { id: string } }) {
-  const postData = allPosts.find((post) => post._id.includes(params.id));
+export default async function PostItem({ params }: { params: { slug: string } }) {
+  const postData = allPosts.find((post) => post._id.includes(params.slug));
 
   return (
     <div>
