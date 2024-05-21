@@ -5,7 +5,6 @@ export default function Mdx({ post }) {
 
   return (
     <>
-      <div>hello</div>
       <MDXComponent />
     </>
   )
