@@ -42,12 +42,17 @@ const Post = defineDocumentType(() => ({
   }
 }));
 
-const options = {};
+const options = {
+  theme: {
+    light: 'rose-pine-dawn',
+    dark: 'rose-pine'
+  }
+};
 
 export default makeSource({
   contentDirPath: 'content/blog/dev/',
   documentTypes: [Post],
   mdx: {
-    rehypePlugins: [[rehypePrettyCode, options]]
+    rehypePlugins: [[rehypePrettyCode, options]],
   }
 });
