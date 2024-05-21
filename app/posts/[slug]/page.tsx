@@ -2,7 +2,7 @@ import { getAllPostIds, getPostData } from '@/lib/post';
 import { Metadata } from 'next';
 import Mdx from '@/app/components/Mdx';
 
-import { Post, allPosts } from 'contentlayer/generated';
+import {  allPosts } from 'contentlayer/generated';
 
 type Props = {
   params: { slug: string };
@@ -24,11 +24,13 @@ export default async function PostItem({ params }: { params: { slug: string } })
 
   return (
     <div>
-      <h1 className={"text-2xl"}>{postData.title}</h1>
-      <span className={"text-sm text-gray-500"}>{postData.date}</span>
+      <h1 className={"text-2xl"}>{postData?.title}</h1>
+      <span className={"text-sm text-gray-500"}>{postData?.date}</span>
       <div className={"mt-6"}>
-
+        {
+          postData &&
         <Mdx post={postData} />
+        }
       </div>
     </div>
   );
