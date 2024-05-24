@@ -28,7 +28,7 @@ const Post = defineDocumentType(() => ({
     },
     description: {
       type: 'string',
-      description: 'The sammary of the post',
+      description: 'The summary of the post',
       required: true,
     },
     tags: {
