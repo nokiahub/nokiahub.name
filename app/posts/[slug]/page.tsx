@@ -26,7 +26,7 @@ export default async function PostItem({ params }: { params: { slug: string } })
     <div>
       <h1 className={"text-2xl"}>{postData?.title}</h1>
       <span className={"text-sm text-gray-500"}>{postData?.date}</span>
-      <article className={"prose mt-6"}>
+      <article className={"prose dark:prose-invert mt-6"}>
         {
           postData &&
         <Mdx post={postData} />
