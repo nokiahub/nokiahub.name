@@ -31,6 +31,12 @@ svg {
     fill: currentColor;
 }
 
+/*반응형에서 코드블럭 overflow가 되지 않도록 조정*/
+.prose {
+    max-width: 90vw;
+}
+
+
 html[data-theme*="light"] code span {
     color: var(--shiki-light);
     background-color: var(--shiki-light-bg);

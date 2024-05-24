@@ -1,4 +1,4 @@
-import { getPostsData } from '../lib/post';
+import { getPostsData } from '@/lib/post';
 import { Posts } from './components/Posts';
 
 export default function Page() {
