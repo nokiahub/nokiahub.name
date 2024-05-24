@@ -11,9 +11,6 @@ export const Header = () => {
       </div>
       <div className={'flex gap-[1.5rem]'}>
         <div className={'flex flex-col justify-center text-lg m-0'}>
-          <Link href={'/projects'}>Projects</Link>
-        </div>
-        <div className={'flex flex-col justify-center text-lg m-0'}>
           <ThemeSwitchToggle />
         </div>
         <div className={'flex flex-col justify-center text-lg m-0'}>
