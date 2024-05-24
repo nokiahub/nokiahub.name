@@ -36,7 +36,18 @@ html[data-theme*="light"] code span {
     background-color: var(--shiki-light-bg);
 }
 
+html[data-theme*="light"] pre {
+    color: var(--shiki-light);
+    background-color: var(--shiki-light-bg);
+}
+
+
 html[data-theme*="dark"] code span {
+    color: var(--shiki-dark);
+    background-color: var(--shiki-dark-bg);
+}
+
+html[data-theme*="dark"] pre {
     color: var(--shiki-dark);
     background-color: var(--shiki-dark-bg);
 }
