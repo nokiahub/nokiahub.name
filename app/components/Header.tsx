@@ -5,7 +5,7 @@ import { AboutIcon } from '../icons/AboutIcon';
 
 export const Header = () => {
   return (
-    <nav className={'bg-inherit  flex justify-between items-center fixed top-0 left-0 w-full border-b p-[1.25rem] pt-[0.75rem] pb-[1rem]'}>
+    <nav className={'bg-inherit flex justify-between items-center w-full border-b p-[1.25rem] pt-[0.75rem] pb-[1rem]'}>
       <div className={"bg-opacity-10"}>
         <Link href={'/'}>형주의 블로그</Link>
       </div>

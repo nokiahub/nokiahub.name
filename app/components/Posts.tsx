@@ -19,12 +19,13 @@ export const Posts: NextPage<PostsProps> = ({ posts }: PostsProps) => {
 };
 
 const PostCard = ({ post }: { post: Post }) => {
-  const { id, title, description } = post;
+  const { id, title, description, date } = post;
 
   return (
-    <Link href={`/posts/${id}`} >
-      <h2 className={"text-xl mb-2"}>{title}</h2>
-      <h3>{description}</h3>
+    <Link className={'no-underline'} href={`/posts/${id}`} >
+      <h2 className={"text-xl mb-2 font-bold"}>{title}</h2>
+      <p>{description}</p>
+      <p className={'text-sm text-gray-400'}>{date}</p>
     </Link>
   );
 }

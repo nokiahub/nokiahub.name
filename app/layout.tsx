@@ -16,7 +16,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         <Providers>
           <Header />
-          <main className={'flex justify-center mt-[52px] pt-10 pb-3'}>{children}</main>
+          <main className={'flex justify-center'}>
+            <div className={'px-6 py-8'}>
+            {children}
+            </div>
+          </main>
           <Footer />
           <ScrollToTopButton />
         </Providers>

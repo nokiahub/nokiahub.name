@@ -2,40 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-    :root {
-        --primary: '#005b99';
-        --secondary: '#0077c7';
-        --text: '#282a36';
-        --text-light: '#44475a';
-        --heading: '#1a202c';
-        --heading-black: '#282a36';
-        --accent: '#d1dce5';
-        --background: '#fff';
-    }
-
-    .dark {
-        --primary: '#bd93f9';
-        --secondary: '#0077c7';
-        --text: '#f4f4f5';
-        --text-light: '#deded9';
-        --heading: '#f4f4f5';
-        --heading-black: '#f8f8f2';
-        --accent: '#2e353f';
-        --background: '#18181b';
-    }
-}
-
 /*icon color for dark mode*/
 svg {
     fill: currentColor;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
 }
 
 /*반응형에서 코드블럭 overflow가 되지 않도록 조정*/
 .prose {
     max-width: 90vw;
 }
-
 
 html[data-theme*="light"] code span {
     color: var(--shiki-light);
