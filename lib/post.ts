@@ -18,18 +18,27 @@ export type Post = {
 };
 export function getPostsData() {
   const directoryNames = fs.readdirSync(postsDirectory);
-  return directoryNames.map((fileName) => {
+
+
+  const postDatas = directoryNames.map((fileName) => {
     const id = fileName.replace(/\.md$/, '');
     const fullPath = path.join(postsDirectory, fileName);
     const filePath = path.join(fullPath, 'index.mdx');
     const fileContents = fs.readFileSync(filePath, 'utf8');
-
     const matterResult = matter(fileContents);
 
     return {
       id,
       ...matterResult.data
     } as Post;
+  });
+
+  return postDatas.sort((a, b) => {
+    if (a.date < b.date) {
+      return 1;
+    } else {
+      return -1;
+    }
   });
 }
 
@@ -42,6 +51,7 @@ export function getProjectsData() {
     const fileContents = fs.readFileSync(filePath, 'utf8');
 
     const matterResult = matter(fileContents);
+
 
     return {
       id,
