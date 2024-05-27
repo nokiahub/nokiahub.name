@@ -16,7 +16,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         <Providers>
           <Header />
-          <main className={'flex justify-center'}>
+          <main className={'flex justify-center mx-auto max-w-[680px]'}>
             <div className={'px-6 py-8'}>
             {children}
             </div>
