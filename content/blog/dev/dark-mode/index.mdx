@@ -1,9 +1,17 @@
 ---
-category: 'post'
-date: '2022-08-24'
-title: 'Gatsby 프로젝트에 다크모드 적용하기'
-description: 'gatsby styled-components, context API'
-tags: [ '개츠비', '개츠비 다크모드', 'gatsby', 'gatsby dark mode', 'styled-components', 'context API']
+category: "post"
+date: "2022-08-24"
+title: "Gatsby 프로젝트에 다크모드 적용하기"
+description: "gatsby styled-components, context API"
+tags:
+  [
+    "개츠비",
+    "개츠비 다크모드",
+    "gatsby",
+    "gatsby dark mode",
+    "styled-components",
+    "context API",
+  ]
 ---
 
 제 블로그에 다크모드를 적용해본 과정을 정리합니다.<br/>
@@ -13,25 +21,25 @@ tags: [ '개츠비', '개츠비 다크모드', 'gatsby', 'gatsby dark mode', 'st
 
 ```javascript
 // themeContext.js
-import { createContext, useState } from 'react';
+import { createContext, useState } from "react";
 
 const ThemeContext = createContext({
-  theme: 'light',
-  toggleTheme: null
+  theme: "light",
+  toggleTheme: null,
 });
 
 const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState("dark");
 
   const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
+    setTheme(theme === "dark" ? "light" : "dark");
   };
 
   return (
     <ThemeContext.Provider
       value={{
         theme,
-        toggleTheme
+        toggleTheme,
       }}
     >
       {children}
@@ -53,15 +61,17 @@ ThemeProvider를 랩핑하여 위에서 만들어둔 ThemeContext의 값에 따�
 ```javascript
 // StyledThemeProvider.js
 
-import { ThemeProvider } from 'styled-components';
-import { ThemeContext } from '../contexts/themeContext';
-import { theme as themeByMode } from '../constants/styles';
+import { ThemeProvider } from "styled-components";
+import { ThemeContext } from "../contexts/themeContext";
+import { theme as themeByMode } from "../constants/styles";
 
 const StyledThemeProvider = ({ children }) => {
   const { theme } = React.useContext(ThemeContext);
 
   return (
-    <ThemeProvider theme={theme === 'dark' ? themeByMode.dark : themeByMode.light}>
+    <ThemeProvider
+      theme={theme === "dark" ? themeByMode.dark : themeByMode.light}
+    >
       {children}
     </ThemeProvider>
   );
@@ -74,9 +84,9 @@ const StyledThemeProvider = ({ children }) => {
 
 ```javascript
 // Layout.jsx
-import ThemeProvider from '../contexts/themeContext';
-import StyledThemeProvider from '../styles/StyledThemeProvider';
-import GlobalStyle from '../styles/GlobalStyle';
+import ThemeProvider from "../contexts/themeContext";
+import StyledThemeProvider from "../styles/StyledThemeProvider";
+import GlobalStyle from "../styles/GlobalStyle";
 
 const Layout = ({ children }) => {
   // ...
@@ -113,8 +123,8 @@ wrapPageElement는 Layout과 같이 어플리케이션 내에서 UI를 일관적
 
 ```javascript
 // gatsby-ssr.js, gatsby-browser.js
-import { ThemeProvider } from './src/contexts/themeContext';
-import Layout from './src/components/Layout';
+import { ThemeProvider } from "./src/contexts/themeContext";
+import Layout from "./src/components/Layout";
 
 export const wrapRootElement = ({ element }) => {
   return <ThemeProvider>{element}</ThemeProvider>;
@@ -134,8 +144,8 @@ Context Provider를 gatsby-ssr.js로 옮겼기 때문에 Layout에서 ThemeProvi
 
 ```javascript
 // Layout.jsx
-import StyledThemeProvider from '../styles/StyledThemeProvider';
-import GlobalStyle from '../styles/GlobalStyle';
+import StyledThemeProvider from "../styles/StyledThemeProvider";
+import GlobalStyle from "../styles/GlobalStyle";
 
 const Layout = ({ children }) => {
   // ...

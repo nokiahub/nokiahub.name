@@ -1,11 +1,11 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-import { remark } from 'remark';
-import html from 'remark-html';
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import { remark } from "remark";
+import html from "remark-html";
 
-const postsDirectory = path.join(process.cwd(), 'content/blog/dev');
-const projectsDirectory = path.join(process.cwd(), 'content/blog/projects');
+const postsDirectory = path.join(process.cwd(), "content/blog/dev");
+const projectsDirectory = path.join(process.cwd(), "content/blog/projects");
 
 export type Post = {
   id: string;
@@ -19,17 +19,16 @@ export type Post = {
 export function getPostsData() {
   const directoryNames = fs.readdirSync(postsDirectory);
 
-
   const postDatas = directoryNames.map((fileName) => {
-    const id = fileName.replace(/\.md$/, '');
+    const id = fileName.replace(/\.md$/, "");
     const fullPath = path.join(postsDirectory, fileName);
-    const filePath = path.join(fullPath, 'index.mdx');
-    const fileContents = fs.readFileSync(filePath, 'utf8');
+    const filePath = path.join(fullPath, "index.mdx");
+    const fileContents = fs.readFileSync(filePath, "utf8");
     const matterResult = matter(fileContents);
 
     return {
       id,
-      ...matterResult.data
+      ...matterResult.data,
     } as Post;
   });
 
@@ -45,17 +44,16 @@ export function getPostsData() {
 export function getProjectsData() {
   const directoryNames = fs.readdirSync(projectsDirectory);
   return directoryNames.map((fileName) => {
-    const id = fileName.replace(/\.md$/, '');
+    const id = fileName.replace(/\.md$/, "");
     const fullPath = path.join(projectsDirectory, fileName);
-    const filePath = path.join(fullPath, 'index.mdx');
-    const fileContents = fs.readFileSync(filePath, 'utf8');
+    const filePath = path.join(fullPath, "index.mdx");
+    const fileContents = fs.readFileSync(filePath, "utf8");
 
     const matterResult = matter(fileContents);
 
-
     return {
       id,
-      ...matterResult.data
+      ...matterResult.data,
     } as Post;
   });
 }
@@ -65,42 +63,46 @@ export function getAllPostIds() {
   return fileNames.map((fileName) => {
     return {
       params: {
-        id: fileName.replace(/\.md$/, '')
-      }
+        id: fileName.replace(/\.md$/, ""),
+      },
     };
   });
 }
 
 export async function getPostData(id: string) {
   const fullPath = path.join(postsDirectory, `${id}`);
-  const filePath = path.join(fullPath, 'index.mdx');
-  const fileContents = fs.readFileSync(filePath, 'utf8');
+  const filePath = path.join(fullPath, "index.mdx");
+  const fileContents = fs.readFileSync(filePath, "utf8");
 
   const matterResult = matter(fileContents);
 
-  const processedContent = await remark().use(html).process(matterResult.content);
+  const processedContent = await remark()
+    .use(html)
+    .process(matterResult.content);
   const contentHtml = processedContent.toString();
 
   return {
     id,
     contentHtml,
-    ...matterResult.data
+    ...matterResult.data,
   } as Post & { contentHtml: string };
 }
 
 export async function getProjectData(id: string) {
   const fullPath = path.join(projectsDirectory, `${id}`);
-  const filePath = path.join(fullPath, 'index.mdx');
-  const fileContents = fs.readFileSync(filePath, 'utf8');
+  const filePath = path.join(fullPath, "index.mdx");
+  const fileContents = fs.readFileSync(filePath, "utf8");
 
   const matterResult = matter(fileContents);
 
-  const processedContent = await remark().use(html).process(matterResult.content);
+  const processedContent = await remark()
+    .use(html)
+    .process(matterResult.content);
   const contentHtml = processedContent.toString();
 
   return {
     id,
     contentHtml,
-    ...matterResult.data
+    ...matterResult.data,
   } as Post & { contentHtml: string };
 }

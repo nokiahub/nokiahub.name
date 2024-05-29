@@ -1,9 +1,9 @@
 ---
-category: 'post'
-date: '2023-04-19'
-title: 'useInfiniteQuery를 이용한 무한 스크롤 구현'
-description: 'next.js에서 react-query의 useInfiniteQuery를 이용하여 무한 스크롤 만들기'
-tags: [ 'react-query', 'useInfiniteQuery', 'next.js infinite query']
+category: "post"
+date: "2023-04-19"
+title: "useInfiniteQuery를 이용한 무한 스크롤 구현"
+description: "next.js에서 react-query의 useInfiniteQuery를 이용하여 무한 스크롤 만들기"
+tags: ["react-query", "useInfiniteQuery", "next.js infinite query"]
 ---
 
 ### 무한 스크롤이란?
@@ -27,9 +27,9 @@ react-query의 useInfiniteQuery 훅을 사용하여 깔끔하게 무한스크롤
 ```javascript
 const { ref, inView } = useInView();
 const { data, fetchNextPage } = useInfiniteQuery(
-  ['items'],
+  ["items"],
   async ({ pageParam }) => {
-    return await fetch('/items', { ...pageParam });
+    return await fetch("/items", { ...pageParam });
   },
   {
     getNextPageParam: (lastPage, allPages) => {
@@ -37,10 +37,10 @@ const { data, fetchNextPage } = useInfiniteQuery(
 
       return {
         page: allPages.length + 1,
-        size: pageSize
+        size: pageSize,
       };
-    }
-  }
+    },
+  },
 );
 
 useEffect(() => {

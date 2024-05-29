@@ -1,24 +1,26 @@
 ---
-category: 'post'
-date: '2023-12-04'
-title: 'tailwind에서 style 우선순위 정하기'
-description: 'tailwind가 제공하는 utility class의 priority 룰과 vanilla-extract의 sprinkles API를 이용해 스타일 우선순위를 적용해보자'
-tags: ['css', 'vanilla-extract', 'tailwind priority']
+category: "post"
+date: "2023-12-04"
+title: "tailwind에서 style 우선순위 정하기"
+description: "tailwind가 제공하는 utility class의 priority 룰과 vanilla-extract의 sprinkles API를 이용해 스타일 우선순위를 적용해보자"
+tags: ["css", "vanilla-extract", "tailwind priority"]
 ---
 
 ## tailwind에서 style 우선순위 정하기
+
 ```jsx
-<div class="text-red-500 text-blue-500">hello</div>
+<div class="text-blue-500 text-red-500">hello</div>
 ```
+
 위의 jsx 결과물을 보면 어떤 결과가 나올까요?
 보통은 cascading order에 따라서 마지막에 적용된 text-blue-500이 적용되었을 것이라 생각이 됩니다.<br/>
 하지만 tailwind의 경우에는 text-red-500이 적용이 됩니다.<br/>
 
-이는 리액트로 개발을 할 때 문제가 될 수 있습니다. 
+이는 리액트로 개발을 할 때 문제가 될 수 있습니다.
 스타일을 conditional하게 지정해야 할 때 마주칠 수 있는 문제는 다음과 같습니다.
-    
+
 ```jsx
-<div className={'text-red-500', isBlue && 'text-blue-500'}>hello</div>
+<div className={("text-red-500", isBlue && "text-blue-500")}>hello</div>
 ```
 
 기본 스타일이 존재하지만, 때에 따라서 다른 스타일을 주고 싶을 때 제대로 적용이 되지 않습니다.<br/>
@@ -38,13 +40,13 @@ tailwind의 style 우선순위를 알기 위해 cascading을 간략하게 정리
 - **user stylesheets**: 브라우저 익스텐션 등으로 사용자가 변경할 수 있는 스타일시트
 
 ## cascading order
+
 캐스케이딩 순서 결정에는 다음과 같이 4가지의 기준이 있습니다.
 
 1. **Relevance:** 엘리먼트에 적용되는 룰만 필터링된다.
 2. **Origin and importance:** origin과 !important 여부에 따라서 order가 결정된다.
 3. **Specificity:** 같은 origin이라면 selector의 specificity를 비교하여 highest specificity가 이긴다.
 4. **Order of appearance:** In the origin with precedence, 동일한 specificity를 갖는다면 정의된 순서중 가장 마지막에 정의된 스타일이 적용된다.
-
 
 - origin & importance > specificity > order of appearance
 - specificity가 동일하면 style이 작성된 순서중 가장 마지막 style이 적용
@@ -53,16 +55,16 @@ tailwind의 style 우선순위를 알기 위해 cascading을 간략하게 정리
 The h1 elements will be purple because when declarations have the same specificity, the last declared selector has precedence.
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>JS Bin</title>
-</head>
-<body>
-  <h1 class="red blue">hello</h1>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>JS Bin</title>
+  </head>
+  <body>
+    <h1 class="red blue">hello</h1>
+  </body>
 </html>
 ```
 
@@ -75,46 +77,49 @@ The h1 elements will be purple because when declarations have the same specifici
   color: red;
 }
 ```
+
 // 먼저 선언이 된 blue가 적용이 됨
 
-
 ## tailwind는 utility class를 어떻게 제공할까?
+
 Tailwind CSS works by scanning all of your HTML files, JavaScript components, and any other templates for class names, generating the corresponding styles and then writing them to a static CSS file.
 
 It's fast, flexible, and reliable — with zero-runtime.
 
 생성된 static css에 정의된 순서대로 우선순위가 적용된다.
 
-
 ## 우선순위 처리방안
+
 ### style variant로 해결하기
 
 두가지 style이 충돌할 때 variant로 해결을 할 수 있습니다.<br/>
+
 ```ts
-import { cva } from 'cva';
+import { cva } from "cva";
 
 const style = cva({
   defaultVariants: {
-    color: 'red',
+    color: "red",
   },
   variants: {
     color: {
-      red: 'text-red-500',
-      blue: 'text-blue-500',
+      red: "text-red-500",
+      blue: "text-blue-500",
     },
   },
 });
 ```
 
 ```jsx
-<div className={style({ color: isBlue && 'blue' })}>hello</div>
+<div className={style({ color: isBlue && "blue" })}>hello</div>
 ```
 
 ### twin.macro로 해결하기
+
 카카오 기술 블로그에서는 twin.macro를 사용해서 해결하고 있습니다.<br/>
 
 ```jsx
-tw`text-red-400 text-blue-400`
+tw`text-red-400 text-blue-400`;
 ```
 
 ### 참고자료

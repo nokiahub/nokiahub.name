@@ -1,9 +1,9 @@
 ---
-category: 'post'
-date: '2022-05-29'
-title: 'Webpack'
-description: '웹팩에 대한 정리글'
-tags: [ 'webpack']
+category: "post"
+date: "2022-05-29"
+title: "Webpack"
+description: "웹팩에 대한 정리글"
+tags: ["webpack"]
 ---
 
 브라우저에서는 script 태그에 js 파일을 로드하여 자바스크립트를 실행합니다.<br/>
@@ -51,15 +51,15 @@ webpack.config의 entry 에서 엔트리 포인트간에 공통으로 사용되�
 module.exports = {
   entry: {
     index: {
-      import: './src/index.js',
-      dependOn: 'shared'
+      import: "./src/index.js",
+      dependOn: "shared",
     },
     another: {
-      import: './src/another-module.js',
-      dependOn: 'shared'
+      import: "./src/another-module.js",
+      dependOn: "shared",
     },
-    shared: 'lodash'
-  }
+    shared: "lodash",
+  },
 };
 ```
 
@@ -116,11 +116,11 @@ import() 구문을 사용하여 필요할 때(ex. 버튼을 클릭 할 때, 로�
 
 ```javascript
 async function getComponent() {
-  const element = document.createElement('div');
+  const element = document.createElement("div");
   const isCurrentDateShown = false;
 
   if (isCurrentDateShown) {
-    const { default: moment } = await import('moment');
+    const { default: moment } = await import("moment");
 
     element.innerHTML = moment().format();
   }
@@ -138,11 +138,11 @@ getComponent().then((component) => {
 
 ```javascript
 async function getButtonComponent() {
-  const button = document.createElement('button');
+  const button = document.createElement("button");
 
-  button.innerText = 'click me';
+  button.innerText = "click me";
   button.onclick = async () => {
-    const { default: moment } = await import('moment');
+    const { default: moment } = await import("moment");
 
     alert(moment().format());
   };

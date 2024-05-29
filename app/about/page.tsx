@@ -1,12 +1,12 @@
-import { Metadata } from 'next';
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'About',
-  description: '안녕하세요. 프론트엔드 개발자 정형주입니다.'
+  title: "About",
+  description: "안녕하세요. 프론트엔드 개발자 정형주입니다.",
 };
 
 export default function Page() {
-  const startDay = new Date('2021-07');
+  const startDay = new Date("2021-07");
   const today = new Date();
   const diff = today.getTime() - startDay.getTime();
   const diffYear = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
@@ -22,11 +22,12 @@ export default function Page() {
       </p>
 
       <p>
-        <br />더 자세한 내용은{' '}
+        <br />더 자세한 내용은{" "}
         <a
           target="_blank"
           rel="noreferrer"
-          href="https://hazel-case-679.notion.site/29-Frontend-Developer-80d76411929b4b9e9d1cc034177385b7?pvs=4">
+          href="https://hazel-case-679.notion.site/29-Frontend-Developer-80d76411929b4b9e9d1cc034177385b7?pvs=4"
+        >
           이력서
         </a>
         에서 확인하실 수 있습니다.

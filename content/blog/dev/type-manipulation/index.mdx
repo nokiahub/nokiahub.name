@@ -1,9 +1,9 @@
 ---
-category: 'post'
-date: '2022-07-11'
-title: '타입을 사용하여 타입 구성하기'
-description: '타입스크립트에서 키워드, index 등을 이용해 타입을 구성하는 방법'
-tags: ['typescript, types']
+category: "post"
+date: "2022-07-11"
+title: "타입을 사용하여 타입 구성하기"
+description: "타입스크립트에서 키워드, index 등을 이용해 타입을 구성하는 방법"
+tags: ["typescript, types"]
 ---
 
 타입스크립트 공부를 하면서 어려운 점 중 하나는 value의 관점이 아닌 해당 value의 타입의 관점으로 봐야한다는 점 같습니다.<br/>
@@ -23,12 +23,12 @@ type Person = {
 
 type PersonKeys = keyof Person;
 
-const personName: PersonKeys = 'name';
-const personAge: PersonKeys = 'age';
-const personAddress: PersonKeys = 'address';
+const personName: PersonKeys = "name";
+const personAge: PersonKeys = "age";
+const personAddress: PersonKeys = "address";
 // OK
 
-const personSalary: PersonKeys = 'salary';
+const personSalary: PersonKeys = "salary";
 // Error
 ```
 
@@ -52,7 +52,7 @@ type FooReturn = ReturnType<typeof foo>;
 
 const coordinate1: FooReturn = { x: 10, y: 24 };
 // OK
-const coordinate2: FooReturn = { x: 10, y: '24' };
+const coordinate2: FooReturn = { x: 10, y: "24" };
 // Error
 ```
 
@@ -69,7 +69,7 @@ type Person = {
   isFemale: boolean;
 };
 
-type Gender = Person['isFemale'];
+type Gender = Person["isFemale"];
 
 const bool1: Gender = true;
 const bool2: Gender = false;
@@ -78,10 +78,10 @@ const bool2: Gender = false;
 const num: Gender = 1;
 // Error
 
-type ObjectProperty = Person['name' | 'age'];
+type ObjectProperty = Person["name" | "age"];
 
 const key1: ObjectProperty = 1;
-const key2: ObjectProperty = '1';
+const key2: ObjectProperty = "1";
 // OK
 
 const key3: ObjectProperty = true;
@@ -94,16 +94,16 @@ Person의 name키의 타입은 string, age키의 타입은 number이기 때문�
 
 ```typescript
 const Villagers = [
-  { name: 'John', age: 20 },
-  { name: 'Jane', age: 23 },
-  { name: 'James', age: 17 }
+  { name: "John", age: 20 },
+  { name: "Jane", age: 23 },
+  { name: "James", age: 17 },
 ];
 
-type Villager = typeof Villagers[number];
+type Villager = (typeof Villagers)[number];
 // { name: string, age: number };
-type Age = typeof Villagers[number]['age'];
+type Age = (typeof Villagers)[number]["age"];
 // string
-type Name = typeof Villagers[number]['name'];
+type Name = (typeof Villagers)[number]["name"];
 // string
 ```
 

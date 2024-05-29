@@ -1,9 +1,9 @@
 ---
-category: 'post'
-date: '2022-05-20'
-title: 'Promise, async and await'
-description: '비동기함수를 순서대로 처리하는 여러가지 방법'
-tags: [ 'asynchronous']
+category: "post"
+date: "2022-05-20"
+title: "Promise, async and await"
+description: "비동기함수를 순서대로 처리하는 여러가지 방법"
+tags: ["asynchronous"]
 ---
 
 자바스크립트에서 비동기 함수를 순차적으로 호출하는 방법 중에는 콜백, Promise, async 함수를 이용한 방법이 있습니다.
@@ -13,8 +13,8 @@ tags: [ 'asynchronous']
 ```javascript
 function pickApple(callback) {
   setTimeout(() => {
-    console.log('picking an apple...');
-    callback('apple');
+    console.log("picking an apple...");
+    callback("apple");
   }, 1000);
 }
 
@@ -56,8 +56,8 @@ pickApple((food) => {
 function pickApple() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      console.log('picking an apple...');
-      resolve('apple');
+      console.log("picking an apple...");
+      resolve("apple");
     }, 1000);
   });
 }
@@ -117,12 +117,12 @@ function delay() {
 
 async function pickApple() {
   await delay();
-  return 'apple';
+  return "apple";
 }
 
 async function pickBanana() {
   await delay();
-  return 'banana';
+  return "banana";
 }
 
 async function asyncPickAllFruits() {
@@ -131,12 +131,12 @@ async function asyncPickAllFruits() {
   const apple = await applePromise;
   const banana = await bananaPromise;
 
-  console.log([apple, banana].join(' + '));
+  console.log([apple, banana].join(" + "));
 }
 
 function pickAllFruits() {
   Promise.all([pickApple(), pickBanana()]).then((fruits) => {
-    console.log(fruits.join(' + '));
+    console.log(fruits.join(" + "));
   });
 }
 
@@ -157,8 +157,8 @@ async function waitAndMaybeReject() {
   // Toss a coin
   const isHeads = Boolean(Math.round(Math.random()));
 
-  if (isHeads) return 'yay';
-  throw Error('Boo!');
+  if (isHeads) return "yay";
+  throw Error("Boo!");
 }
 ```
 
@@ -169,7 +169,7 @@ async function foo() {
   try {
     waitAndMaybeReject();
   } catch (e) {
-    return 'caught';
+    return "caught";
   }
 }
 ```
@@ -186,7 +186,7 @@ async function foo() {
   try {
     await waitAndMaybeReject();
   } catch (e) {
-    return 'caught';
+    return "caught";
   }
 }
 ```
@@ -201,7 +201,7 @@ async function foo() {
   try {
     return waitAndMaybeReject();
   } catch (e) {
-    return 'caught';
+    return "caught";
   }
 }
 ```
@@ -215,7 +215,7 @@ async function foo() {
   try {
     return await waitAndMaybeReject();
   } catch (e) {
-    return 'caught';
+    return "caught";
   }
 }
 ```

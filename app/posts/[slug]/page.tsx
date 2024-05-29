@@ -1,8 +1,8 @@
-import { getAllPostIds, getPostData } from '@/lib/post';
-import { Metadata } from 'next';
-import Mdx from '@/app/components/Mdx';
+import { getAllPostIds, getPostData } from "@/lib/post";
+import { Metadata } from "next";
+import Mdx from "@/app/components/Mdx";
 
-import {  allPosts } from 'contentlayer/generated';
+import { allPosts } from "contentlayer/generated";
 
 type Props = {
   params: { slug: string };
@@ -15,22 +15,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description,
-    keywords: tags
+    keywords: tags,
   };
 }
 
-export default async function PostItem({ params }: { params: { slug: string } }) {
+export default async function PostItem({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const postData = allPosts.find((post) => post._id.includes(params.slug));
 
   return (
     <div>
       <h1 className={"text-2xl"}>{postData?.title}</h1>
       <span className={"text-sm text-gray-500"}>{postData?.date}</span>
-      <article className={"prose dark:prose-invert mt-6"}>
-        {
-          postData &&
-        <Mdx post={postData} />
-        }
+      <article className={"prose mt-6 dark:prose-invert"}>
+        {postData && <Mdx post={postData} />}
       </article>
     </div>
   );

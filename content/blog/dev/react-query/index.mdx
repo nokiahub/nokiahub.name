@@ -1,9 +1,10 @@
 ---
-category: 'post'
-date: '2022-10-02'
-title: '리액트 쿼리(react-query)'
-description: '리액트 쿼리 라이브러리 문서를 위주로 내용을 정리한 글입니다.'
-tags: [ 'react-query', 'async', 'state management', '비동기 상태관리', '상태관리']
+category: "post"
+date: "2022-10-02"
+title: "리액트 쿼리(react-query)"
+description: "리액트 쿼리 라이브러리 문서를 위주로 내용을 정리한 글입니다."
+tags:
+  ["react-query", "async", "state management", "비동기 상태관리", "상태관리"]
 ---
 
 react-query는 리액트에서 비동기로 받아오는 데이터의 상태, 즉 서버에 대한 상태관리를 도와주는 라이브러리입니다.<br/>
@@ -51,13 +52,13 @@ react-query는 query key를 사용하여 캐싱을 합니다.<br/>
 
 ```javascript
 // todo key
-useQuery(['todo']);
+useQuery(["todo"]);
 
 // todo key with variables
-useQuery(['todo'], { type: 'done' });
+useQuery(["todo"], { type: "done" });
 
 // query function depends on todoId variable
-useQuery(['todo', todoId], () => fetchTodoById(todoId));
+useQuery(["todo", todoId], () => fetchTodoById(todoId));
 ```
 
 #### query functions
@@ -122,7 +123,7 @@ useMutation의 콜백함수에 변수를 넘겨서 업데이트할 수 있습니
 
 ```javascript
 const mutation = useMutation((newTodo) => {
-  return axios.post('/todos', newTodo);
+  return axios.post("/todos", newTodo);
 });
 ```
 

@@ -1,58 +1,58 @@
-import { defineDocumentType,  makeSource } from 'contentlayer/source-files'
-import rehypePrettyCode from 'rehype-pretty-code';
+import { defineDocumentType, makeSource } from "contentlayer/source-files";
+import rehypePrettyCode from "rehype-pretty-code";
 
 const Post = defineDocumentType(() => ({
-  name: 'Post',
+  name: "Post",
   filePathPattern: `**/*.@(md|mdx)`,
-  contentType: 'mdx',
+  contentType: "mdx",
   fields: {
     title: {
-      type: 'string',
-      description: 'The title of the post',
+      type: "string",
+      description: "The title of the post",
       required: true,
     },
     category: {
-      type: 'string',
-      description: 'The category of the post',
+      type: "string",
+      description: "The category of the post",
       required: false,
     },
     status: {
-      type: 'string',
-      description: 'The status of the post',
+      type: "string",
+      description: "The status of the post",
       required: false,
     },
     date: {
-      type: 'date',
-      description: 'The date of the post',
+      type: "date",
+      description: "The date of the post",
       required: true,
     },
     description: {
-      type: 'string',
-      description: 'The summary of the post',
+      type: "string",
+      description: "The summary of the post",
       required: true,
     },
     tags: {
-      type: 'list',
+      type: "list",
       of: {
-        type: 'string',
+        type: "string",
       },
-      description: 'The tags of the post',
+      description: "The tags of the post",
       required: false,
     },
-  }
+  },
 }));
 
 const options = {
   theme: {
-    light: 'rose-pine-dawn',
-    dark: 'rose-pine'
-  }
+    light: "rose-pine-dawn",
+    dark: "rose-pine",
+  },
 };
 
 export default makeSource({
-  contentDirPath: 'content/blog/dev/',
+  contentDirPath: "content/blog/dev/",
   documentTypes: [Post],
   mdx: {
     rehypePlugins: [[rehypePrettyCode, options]],
-  }
+  },
 });

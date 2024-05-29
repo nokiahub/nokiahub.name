@@ -4,36 +4,35 @@
 
 /*icon color for dark mode*/
 svg {
-    fill: currentColor;
+  fill: currentColor;
 }
 
 ul {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 /*반응형에서 코드블럭 overflow가 되지 않도록 조정*/
 .prose {
-    max-width: 90vw;
+  max-width: 90vw;
 }
 
 html[data-theme*="light"] code span {
-    color: var(--shiki-light);
-    background-color: var(--shiki-light-bg);
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
 }
 
 html[data-theme*="light"] pre {
-    color: var(--shiki-light);
-    background-color: var(--shiki-light-bg);
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
 }
 
-
 html[data-theme*="dark"] code span {
-    color: var(--shiki-dark);
-    background-color: var(--shiki-dark-bg);
+  color: var(--shiki-dark);
+  background-color: var(--shiki-dark-bg);
 }
 
 html[data-theme*="dark"] pre {
-    color: var(--shiki-dark);
-    background-color: var(--shiki-dark-bg);
+  color: var(--shiki-dark);
+  background-color: var(--shiki-dark-bg);
 }
