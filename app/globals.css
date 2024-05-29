@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --background: #fafaf9;
+    --foreground: #0c0a09;
+    --border: #eae9e8;
+  }
+
+  .dark {
+    --background: #0c0a09;
+    --foreground: #fafaf9;
+    --border: #525252;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
 /*icon color for dark mode*/
 svg {
   fill: currentColor;
@@ -17,22 +37,22 @@ ul {
   max-width: 90vw;
 }
 
-html[data-theme*="light"] code span {
+.light code span {
   color: var(--shiki-light);
   background-color: var(--shiki-light-bg);
 }
 
-html[data-theme*="light"] pre {
+.light pre {
   color: var(--shiki-light);
   background-color: var(--shiki-light-bg);
 }
 
-html[data-theme*="dark"] code span {
+.dark code span {
   color: var(--shiki-dark);
   background-color: var(--shiki-dark-bg);
 }
 
-html[data-theme*="dark"] pre {
+.dark pre {
   color: var(--shiki-dark);
   background-color: var(--shiki-dark-bg);
 }

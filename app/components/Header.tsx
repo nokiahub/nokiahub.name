@@ -7,7 +7,7 @@ export const Header = () => {
   return (
     <nav
       className={
-        "flex w-full items-center justify-between border-b bg-inherit p-[1.25rem] pb-[1rem] pt-[0.75rem]"
+        "border-border flex w-full items-center justify-between border-b p-[1.25rem] pb-[1rem] pt-[0.75rem]"
       }
     >
       <div className={"bg-opacity-10"}>
