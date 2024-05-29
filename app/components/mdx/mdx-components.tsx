@@ -1,4 +1,5 @@
 import { useMDXComponent } from "next-contentlayer/hooks";
+import { Pre } from "@/app/components/mdx/mdx-pre";
 
 type Props = {
   post: {
@@ -7,12 +8,16 @@ type Props = {
     };
   };
 };
-export default function Mdx({ post }: Props) {
+
+const mdxComponents = {
+  pre: Pre,
+};
+export default function MdxComponents({ post }: Props) {
   const MDXComponent = useMDXComponent(post?.body?.code || "");
 
   return (
     <>
-      <MDXComponent />
+      <MDXComponent components={mdxComponents} />
     </>
   );
 }

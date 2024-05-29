@@ -1,6 +1,6 @@
 import { getAllPostIds, getPostData } from "@/lib/post";
 import { Metadata } from "next";
-import Mdx from "@/app/components/Mdx";
+import MdxComponents from "@/app/components/mdx/mdx-components";
 
 import { allPosts } from "contentlayer/generated";
 
@@ -31,7 +31,7 @@ export default async function PostItem({
       <h1 className={"text-2xl"}>{postData?.title}</h1>
       <span className={"text-sm text-gray-500"}>{postData?.date}</span>
       <article className={"prose mt-6 dark:prose-invert"}>
-        {postData && <Mdx post={postData} />}
+        {postData && <MdxComponents post={postData} />}
       </article>
     </div>
   );
