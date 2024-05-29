@@ -11,7 +11,7 @@ export const ScrollToTopButton = () => {
   };
 
   return (
-    <button className={style} onClick={scrollToTop}>
+    <button className={style} onClick={scrollToTop} aria-label={"Scroll to top"}>
       <ArrowIcon />
     </button>
   );
