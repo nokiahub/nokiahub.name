@@ -8,8 +8,14 @@ const ThemeSwitchToggle = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
   };
 
+  const isLightTheme  = theme === 'light';
+
   return (
-    <button onClick={handleToggleTheme}>
+    <button
+      onClick={handleToggleTheme}
+      aria-label={isLightTheme ? 'Activate dark theme' : 'Activate light theme'}
+      aria-pressed={!isLightTheme}
+    >
       <svg
         width="24"
         height="24"
