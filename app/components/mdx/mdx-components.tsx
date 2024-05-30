@@ -1,5 +1,5 @@
 import { useMDXComponent } from "next-contentlayer/hooks";
-import { Pre } from "@/app/components/mdx/mdx-pre";
+import { Figcaption } from "@/app/components/mdx/mdx-figcaption";
 
 type Props = {
   post: {
@@ -10,7 +10,7 @@ type Props = {
 };
 
 const mdxComponents = {
-  pre: Pre,
+  figcaption: Figcaption,
 };
 export default function MdxComponents({ post }: Props) {
   const MDXComponent = useMDXComponent(post?.body?.code || "");
