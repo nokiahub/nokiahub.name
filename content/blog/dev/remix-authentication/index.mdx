@@ -32,7 +32,7 @@ tags:
 Remix에서 페이지를 만들 때 프로젝트 최상단에 `/routes` 디렉토리에 `login.tsx` 파일을 생성합니다.
 UI는 리액트의 jsx 문법을 사용하여 다음과 같이 만듭니다.
 
-```tsx
+```tsx title="routes/login.tsx"
 export async function Login() {
   // 로그인 페이지 UI
 }
@@ -46,7 +46,7 @@ action 함수가 사용자의 입력값을 받고, 내부에서 입력값 검증
 
 ### 2-1. request에서 사용자 입력값 검증하기.
 
-```ts
+```ts title="routes/login.tsx"
 export async function action(request) {
   const form = request.form;
   const username = await form.get("username");
@@ -60,7 +60,7 @@ export async function action(request) {
 
 사용자가 입력한 아이디와 비밀번호가 db를 조회하여 확인합니다.
 
-```ts
+```ts title="utils/session.server.ts"
 export const login = async (username: string, password: string) => {
   const user = await prisma.user.findUnique({
     where: {
@@ -87,7 +87,7 @@ export const login = async (username: string, password: string) => {
 action에서 세션을 새로 생성하는 `createSession()` 함수를 완성해 봅시다. `createSession()` 또한 서버와 관련된 코드임으로 `/utils/server` 디렉토리 하위의 `session.server.ts` 내에 작성합니다.<br/>
 기존에 세션이 있는 경우에는 새로운 세션 id가 이전 값을 덮어쓰게 됩니다.
 
-```ts
+```ts title="utils/session.server.ts"
 async function createSession(userId, redirectTo) {
   const session = await storage.getSession();
   session.set("sessionId", userId);
@@ -103,7 +103,7 @@ async function createSession(userId, redirectTo) {
 
 [관련 이슈](https://github.com/remix-run/remix/discussions/1432)에 따르면 유저가 인증되지 않은 상태, 즉 세션에 아이디가 등록되지 않은 유저가 인증이 필요한 화면을 요청할 때에는 `loader` 내부에서 바로 유저의 role을 검사하도록 합니다.<br />
 
-```ts
+```ts title="utils/session.server.ts"
 async function verifyUserRole(request: Request, expectedRole: string) {
   const user = await getAuthenticatedUser(request); // somehow get the user
   if (user.role === expectedRole) return user;
@@ -111,7 +111,7 @@ async function verifyUserRole(request: Request, expectedRole: string) {
 }
 ```
 
-```ts
+```ts title="routes/profile.tsx"
 let loader: LoaderFunction = async ({ request }) => {
   const user = await verifyUserRole(request, "userWithAccount");
   // code here will only run if user has account and logged in.
