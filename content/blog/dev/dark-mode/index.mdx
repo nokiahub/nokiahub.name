@@ -19,8 +19,7 @@ tags:
 
 ### 1. ThemeContext, ThemeProvider 생성
 
-```javascript
-// themeContext.js
+```javascript title="themeContext.js"
 import { createContext, useState } from "react";
 
 const ThemeContext = createContext({
@@ -58,9 +57,7 @@ styled-components의 ThemeProvider는 props를 통해 theme을 제공하는 컴�
 CSR의 경우 이 컴포넌트를 앤트리 파일의 최상단 컴포넌트로 지정하면 전역적으로 styled 컴포넌트의 props로 props.theme에 접근하여 ThemeProvider의 theme 값을 사용할 수 있습니다.<br/>
 ThemeProvider를 랩핑하여 위에서 만들어둔 ThemeContext의 값에 따라 다른 theme을 props로 내려주는 StyledThemeProvider라는 컴포넌트를 만들었습니다.<br/>
 
-```javascript
-// StyledThemeProvider.js
-
+```javascript title="StyledThemeProvider.js"
 import { ThemeProvider } from "styled-components";
 import { ThemeContext } from "../contexts/themeContext";
 import { theme as themeByMode } from "../constants/styles";
@@ -82,8 +79,7 @@ const StyledThemeProvider = ({ children }) => {
 
 개츠비는 CSR처럼 index.js같은 앤트리 파일이 따로 없고 각각의 페이지가 최상단 파일이기 때문에 모든 페이지에 wrapper로 적용되어있는 Layout 컴포넌트에 위의 두 컴포넌트 ThemeProvider, StyledThemeProvider를 적용해봤습니다.
 
-```javascript
-// Layout.jsx
+```javascript title="Layout.jsx"
 import ThemeProvider from "../contexts/themeContext";
 import StyledThemeProvider from "../styles/StyledThemeProvider";
 import GlobalStyle from "../styles/GlobalStyle";
@@ -121,14 +117,16 @@ context API, Redux store에서 사용하는 Provider 컴포넌트를 내부에�
 
 wrapPageElement는 Layout과 같이 어플리케이션 내에서 UI를 일관적으로 나타낼 수 있습니다.<br/>
 
-```javascript
-// gatsby-ssr.js, gatsby-browser.js
-import { ThemeProvider } from "./src/contexts/themeContext";
-import Layout from "./src/components/Layout";
+```javascript title="gatsby-ssr.js"
+import { ThemeProvider } from "@/contexts/themeContext";
 
 export const wrapRootElement = ({ element }) => {
   return <ThemeProvider>{element}</ThemeProvider>;
 };
+```
+
+```javascript title="gatsby-browser.js"
+import Layout from "@/components/Layout";
 
 export const wrapPageElement = ({ element, props }) => {
   return <Layout {...props}>{element}</Layout>;
@@ -142,8 +140,7 @@ gatsby-ssr.js, gatsby-browser.js 파일에 동일하게 wrapRootElement, wrapPag
 
 Context Provider를 gatsby-ssr.js로 옮겼기 때문에 Layout에서 ThemeProvider를 삭제합니다.<br/>
 
-```javascript
-// Layout.jsx
+```javascript title="Layout.jsx"
 import StyledThemeProvider from "../styles/StyledThemeProvider";
 import GlobalStyle from "../styles/GlobalStyle";
 
