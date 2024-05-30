@@ -17,6 +17,8 @@ export default function MdxComponents({ post }: Props) {
 
   return (
     <>
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/*@ts-expect-error*/}
       <MDXComponent components={mdxComponents} />
     </>
   );
