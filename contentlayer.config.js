@@ -75,7 +75,7 @@ export default makeSource({
             }
 
             for (const child of node.children) {
-              if (child.tagName === "pre") {
+              if (child.tagName === "figcaption") {
                 child.properties["raw"] = node.raw;
               }
             }
