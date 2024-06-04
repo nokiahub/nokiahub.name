@@ -18,7 +18,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en">
       <body>
         <Providers>
+          <div className={"fixed w-full"}>
           <Header />
+          </div>
+          <div className={"h-12"} />
           <main className={"mx-auto flex max-w-[680px] justify-center"}>
             <div className={"px-6 py-8"}>{children}</div>
           </main>
