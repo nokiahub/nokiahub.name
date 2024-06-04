@@ -24,14 +24,15 @@ export default async function PostItem({
 }: {
   params: { slug: string };
 }) {
-  const postData = allPosts.find((post) => post._id.includes(params.slug));
+  const rawPost = await getPostData(params.slug);
+  const postForMdx = allPosts.find((post) => post._id.includes(params.slug));
 
   return (
     <div>
-      <h1 className={"text-2xl"}>{postData?.title}</h1>
-      <span className={"text-sm text-gray-500"}>{postData?.date}</span>
+      <h1 className={"text-2xl"}>{rawPost?.title}</h1>
+      <span className={"text-sm text-gray-500"}>{rawPost?.date}</span>
       <article className={"prose mt-6 dark:prose-invert"}>
-        {postData && <MdxComponents post={postData} />}
+        {postForMdx && <MdxComponents post={postForMdx} />}
       </article>
     </div>
   );
