@@ -22,20 +22,23 @@ npm dev
 ## Stacks
 
 **Rendering Framework:**
-- Next.js
+- [Next.js](https://nextjs.org/docs)
 
 **Markdown and File Processor:**
-- contentlayer
-- unist-util-visit
-- remark
-- remark-html
+- [contentlayer](https://contentlayer.dev/)
+- [unist-util-visit](https://github.com/syntax-tree/unist-util-visit#readme)
+- [remark](https://remark.js.org/)
+- [remark-html](https://github.com/remarkjs/remark-html)
 
 **Markdown Processor for Code Block:**
-- rehype-pretty-code
-- shiki
+- [rehype-pretty-code, shiki](https://rehype-pretty.pages.dev/)
 
 **UI Library**:
-- tailwind
-- daisyUI
+- [tailwind](https://tailwindcss.com/)
+- [daisyUI](https://daisyui.com/)
+
+
+**Typography:**
+- [@tailwindcss/typography](https://github.com/tailwindlabs/tailwindcss-typography)
 
 
