@@ -13,7 +13,7 @@ export const ScrollToTopButton = () => {
   return (
     <button
       className={
-        "border-border fixed bottom-4 right-4 z-10 flex size-9 border-spacing-1 cursor-pointer items-center justify-center rounded-full border-[1px]"
+        "fixed bottom-4 right-4 z-10 flex size-9 border-spacing-1 cursor-pointer items-center justify-center rounded-full border-[1px] border-border"
       }
       onClick={scrollToTop}
       aria-label={"Scroll to top"}
