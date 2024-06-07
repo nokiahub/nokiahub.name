@@ -12,11 +12,8 @@ export const ScrollToTopButton = () => {
 
   return (
     <button
-      className={
-        "fixed bottom-4 right-4 z-10 flex size-9 border-spacing-1 cursor-pointer items-center justify-center rounded-full border-[1px] border-border"
-      }
       onClick={scrollToTop}
-      aria-label={"Scroll to top"}
+      className="btn btn-circle fixed bottom-4 right-4"
     >
       <ArrowIcon />
     </button>
