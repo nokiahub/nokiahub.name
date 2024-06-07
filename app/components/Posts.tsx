@@ -22,10 +22,12 @@ const PostCard = ({ post }: { post: Post }) => {
   const { id, title, description, date } = post;
 
   return (
-    <Link className={"no-underline"} href={`/posts/${id}`}>
-      <h2 className={"mb-2 text-xl font-bold"}>{title}</h2>
-      <p>{description}</p>
-      <p className={"text-sm text-gray-400"}>{date}</p>
+    <Link className={"card card-bordered"} href={`/posts/${id}`}>
+      <div className={"card-body"}>
+        <h2 className={"card-title"}>{title}</h2>
+        <p>{description}</p>
+        <p className={"text-sm text-gray-400"}>{date}</p>
+      </div>
     </Link>
   );
 };

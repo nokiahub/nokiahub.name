@@ -8,7 +8,10 @@ type Props = {
 
 export const Figcaption = ({ children, raw, ...props }: Props) => {
   return (
-    <figcaption {...props} className={"text-center text-sm text-gray-500"}>
+    <figcaption
+      {...props}
+      className={"bg-background text-center text-sm text-gray-500"}
+    >
       <div className={"flex justify-between"}>
         {children}
         <CopyCodeButton text={raw} />

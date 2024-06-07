@@ -5,19 +5,15 @@ import { AboutIcon } from "../icons/AboutIcon";
 
 export const Header = () => {
   return (
-    <nav
-      className={
-        "flex w-full items-center justify-between border-b border-border bg-background p-[1.25rem] pb-[1rem] pt-[0.75rem]"
-      }
-    >
-      <div className={"bg-opacity-10"}>
-        <Link href={"/"}>형주의 블로그</Link>
+    <nav className={"navbar sticky top-0 bg-background px-6"}>
+      <div className={"navbar-start"}>
+        <Link className={"text-xl font-bold"} href={"/"}>
+          형주의 블로그
+        </Link>
       </div>
-      <div className={"flex gap-[1.5rem]"}>
-        <div className={"m-0 flex flex-col justify-center text-lg"}>
+      <div className={"navbar-end"}>
+        <ul className={"menu menu-horizontal flex gap-6 px-1"}>
           <ThemeSwitchToggle />
-        </div>
-        <div className={"m-0 flex flex-col justify-center text-lg"}>
           <Link
             target="_blank"
             href="https://github.com/nokiahub"
@@ -25,12 +21,10 @@ export const Header = () => {
           >
             <GithubIcon />
           </Link>
-        </div>
-        <div className={"m-0 flex flex-col justify-center text-lg"}>
           <Link href="/about" aria-label="about me">
             <AboutIcon />
           </Link>
-        </div>
+        </ul>
       </div>
     </nav>
   );
