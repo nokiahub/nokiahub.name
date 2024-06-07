@@ -10,7 +10,7 @@ export const Posts: NextPage<PostsProps> = ({ posts }: PostsProps) => {
   return (
     <ul>
       {posts.map((post) => (
-        <li className={"mb-8 list-none"} key={post.id}>
+        <li className={"mb-4 list-none"} key={post.id}>
           <PostCard post={post} />
         </li>
       ))}
