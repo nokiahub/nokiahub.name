@@ -3,7 +3,17 @@ category: "post"
 date: "2024-05-30"
 title: "못생긴 블로그 코드블럭 개선하기"
 description: "Gatsby에서 Next.js로 블로그 리뉴얼했어요."
-tags: ["next","next.js","gatsby to nextjs","gatsby", "rehype-pretty-code", "next-contentlayer", "mdx-code", "mdx-code-block"]
+tags:
+  [
+    "next",
+    "next.js",
+    "gatsby to nextjs",
+    "gatsby",
+    "rehype-pretty-code",
+    "next-contentlayer",
+    "mdx-code",
+    "mdx-code-block",
+  ]
 ---
 
 Gatsby로 블로그를 개발하고 운영하다보니 다음과 같은 아쉬움이 눈에 띄었습니다.
@@ -18,10 +28,11 @@ Gatsby로 블로그를 개발하고 운영하다보니 다음과 같은 아쉬�
 이번 포스트에서는 Next.js로 블로그를 개선하면서 가장 재미있었던 코드블럭 스타일을 개선하는 방법을 소개하겠습니다.<br />
 
 ## rehype-pretty-code로 코드블럭 스타일 개선
+
 여러 개발자분들의 블로그를 많이 참고했고, 그 중에 다크 테마가 코드블럭까지 지원하는 블로그들의 코드를 주로 본 결과 `rehype-pretty-code`패키지를 사용하여 코드블럭 스타일 커스텀을 하는 것을 알게 되었습니다.<br />
 
-
 ### next-contentlayer
+
 컨텐츠를 코드에서 데이터로 사용하기 위해 사용한 라이브러리 입니다.<br />
 마크다운 컨텐츠가 데이터로 변경되기 전에 tree 구조인 node에 접근하여 요소를 조작하는 것이 가능합니다.<br />
 마크다운을 렌더링시켜주기 전에 tree 구조로 변경되는데, 이때 `rehype-pretty-code`를 사용하여 코드블럭을 예쁘게 만들어줄 수 있습니다.<br />
@@ -39,25 +50,25 @@ const Post = defineDocumentType(() => ({
     title: {
       type: "string",
       description: "The title of the post",
-      required: true
+      required: true,
     },
     date: {
       type: "date",
       description: "The date of the post",
-      required: true
+      required: true,
     },
     description: {
       type: "string",
       description: "The summary of the post",
-      required: true
+      required: true,
     },
     tags: {
       type: "list",
       of: {
-        type: "string"
+        type: "string",
       },
       description: "The tags of the post",
-      required: false
+      required: false,
     },
   },
 }));
@@ -67,25 +78,22 @@ const Post = defineDocumentType(() => ({
 const options = {
   theme: {
     light: "rose-pine-dawn",
-    dark: "rose-pine"
-  }
+    dark: "rose-pine",
+  },
 };
 
 export default makeSource({
   contentDirPath: "content/blog/posts/",
   documentTypes: [Post],
   mdx: {
-    rehypePlugins: [
-      [rehypePrettyCode, options]
-    ]
-  }
+    rehypePlugins: [[rehypePrettyCode, options]],
+  },
 });
 ```
 
 `options`에 여러개의 테마를 심어줄 수 있습니다.<br />
 위처럼 적절히 2가지 테마를 골라 옵션으로 지정하면 컨텐츠에서 html 요소로 변한 코드 블럭 태그에 관련 css 클래스가 적용이 됩니다.<br />
 그 후에 `global.css`에서 각각 테마에 해당하는 클래스의 하위에 위치한 코드 블럭 관련 태그들에 대해 생성된 css variable로 스타일을 적용해주면 됩니다.<br />
-
 
 ```css title="global.css"
 @tailwind base;
@@ -114,8 +122,11 @@ export default makeSource({
 ```
 
 ## 코드블럭에 UI 요소 추가하기
+
 ### 클립보드 copy button
+
 코드블럭의 copy button은 사용자 인터렉션이 필요하기 때문에 마크다운으로 표현할 수가 없고, 컨텐츠가 데이터로 바뀌는 시점에 트리 노드에 접근해서 직접 추가해주어야 합니다.<br />
+
 ```js title="contentlayer.config.js"
 () => (tree) => {
   visit(tree, (node) => {
@@ -131,7 +142,7 @@ export default makeSource({
       }
     }
   });
-}
+};
 ```
 
 위 코드는 구글링하다 발견한 [블로그](https://claritydev.net/blog/copy-to-clipboard-button-nextjs-mdx-rehype)에서 로직을 가져와 사용했고,<br />
@@ -184,15 +195,15 @@ export const Figcaption = ({ children, raw, ...props }: Props) => {
 ```
 
 ### 후기
+
 처음 `next-contentlayer`가 동작하는 방식이 이해가 되지 않아 1차로 멘붕이 오고, 클립보드 카피에 필요한 내용을 raw로 넘겨주기 위해 트리를 순회하는 코드를 봤을 때 2차 멘붕이 왔지만 결과를 보니 보람있는 작업이었습니다.<br />
 다음에 코드를 봐도 이해할 수 있도록 까먹기 전에 리팩토링을 잘 해놔야겠습니다.ㅎㅎ<br />
 코드블럭 스타일링과 클립보드 카피 버튼을 추가하는 것에 집중했지만, 다음에는 코드블럭에 라인 넘버를 추가하거나, 특정 단어만 하이라이팅하 처리하는 것을 구현해보는 것도 재미있을 것 같습니다.<br />
+
 ## 참고한 링크
+
 - [https://kilee.dev/blog/next-js-blog-codeblock-styling](https://kilee.dev/blog/next-js-blog-codeblock-styling)
 - [https://claritydev.net/blog/copy-to-clipboard-button-nextjs-mdx-rehype](https://claritydev.net/blog/copy-to-clipboard-button-nextjs-mdx-rehype)
 - [https://github.com/witch-factory/witch-next-blog](https://github.com/witch-factory/witch-next-blog)
 - [https://nextjs.org/docs/app/building-your-application/configuring/mdx](https://nextjs.org/docs/app/building-your-application/configuring/mdx)
 - [https://contentlayer.dev/docs/concepts/how-contentlayer-works-da5b2220#transformation-content-into-data](https://contentlayer.dev/docs/concepts/how-contentlayer-works-da5b2220#transformation-content-into-data)
-
-
-
