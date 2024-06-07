@@ -51,7 +51,7 @@ const options = {
 };
 
 export default makeSource({
-  contentDirPath: "content/blog/dev/",
+  contentDirPath: "content/blog/posts/",
   documentTypes: [Post],
   mdx: {
     rehypePlugins: [

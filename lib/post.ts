@@ -4,7 +4,7 @@ import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
 
-const postsDirectory = path.join(process.cwd(), "content/blog/dev");
+const postsDirectory = path.join(process.cwd(), "content/blog/posts");
 const projectsDirectory = path.join(process.cwd(), "content/blog/projects");
 
 export type Post = {
@@ -22,8 +22,7 @@ export function getPostsData() {
   const postDatas = directoryNames.map((fileName) => {
     const id = fileName.replace(/\.md$/, "");
     const fullPath = path.join(postsDirectory, fileName);
-    const filePath = path.join(fullPath, "index.mdx");
-    const fileContents = fs.readFileSync(filePath, "utf8");
+    const fileContents = fs.readFileSync(fullPath, "utf8");
     const matterResult = matter(fileContents);
 
     return {
@@ -46,8 +45,7 @@ export function getProjectsData() {
   return directoryNames.map((fileName) => {
     const id = fileName.replace(/\.md$/, "");
     const fullPath = path.join(projectsDirectory, fileName);
-    const filePath = path.join(fullPath, "index.mdx");
-    const fileContents = fs.readFileSync(filePath, "utf8");
+    const fileContents = fs.readFileSync(fullPath, "utf8");
 
     const matterResult = matter(fileContents);
 
@@ -71,9 +69,7 @@ export function getAllPostIds() {
 
 export async function getPostData(id: string) {
   const fullPath = path.join(postsDirectory, `${id}`);
-  const filePath = path.join(fullPath, "index.mdx");
-  const fileContents = fs.readFileSync(filePath, "utf8");
-
+  const fileContents = fs.readFileSync(fullPath, "utf8");
   const matterResult = matter(fileContents);
 
   const processedContent = await remark()
@@ -90,7 +86,7 @@ export async function getPostData(id: string) {
 
 export async function getProjectData(id: string) {
   const fullPath = path.join(projectsDirectory, `${id}`);
-  const filePath = path.join(fullPath, "index.mdx");
+  const filePath = path.join(fullPath, "**.mdx");
   const fileContents = fs.readFileSync(filePath, "utf8");
 
   const matterResult = matter(fileContents);
