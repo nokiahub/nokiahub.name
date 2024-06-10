@@ -1,7 +1,7 @@
 "use client";
 
-import { ArrowIcon } from "@/components/icons/ArrowIcon";
 import { Button } from "@/components/ui/button";
+import { MoveUp } from "lucide-react";
 
 export const ScrollToTopButton = () => {
   const scrollToTop = () => {
@@ -17,7 +17,7 @@ export const ScrollToTopButton = () => {
       variant={"outline"}
       className="fixed bottom-4 right-4 size-10 rounded-full p-0"
     >
-      <ArrowIcon />
+      <MoveUp />
     </Button>
   );
 };
