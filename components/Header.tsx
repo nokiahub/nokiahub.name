@@ -1,7 +1,7 @@
 import Link from "next/link";
 import ThemeSwitchToggle from "./ThemeSwitchTogle";
-import GithubIcon from "../app/icons/GithubIcon";
-import { AboutIcon } from "@/app/icons/AboutIcon";
+import GithubIcon from "@/components/icons/GithubIcon";
+import { AboutIcon } from "@/components/icons/AboutIcon";
 
 export const Header = () => {
   return (

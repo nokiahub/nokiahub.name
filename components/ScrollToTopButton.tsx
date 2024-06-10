@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowIcon } from "@/app/icons/ArrowIcon";
+import { ArrowIcon } from "@/components/icons/ArrowIcon";
 import { Button } from "@/components/ui/button";
 
 export const ScrollToTopButton = () => {
