@@ -7,7 +7,7 @@ export const Header = () => {
   return (
     <nav
       className={
-        "sticky top-0 flex justify-between border-b border-border bg-background px-6 py-3"
+        "border-border/45 sticky top-0 flex justify-between border-b bg-background px-6 py-3"
       }
     >
       <Link className={"text-xl font-bold"} href={"/"}>
