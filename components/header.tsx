@@ -16,20 +16,20 @@ export const Header = () => {
       </Link>
       <ul className={"flex items-center px-1"}>
         <ThemeSwitchToggle />
-        <Button variant={"ghost"}>
-          <Link
-            target="_blank"
-            href="https://github.com/nokiahub"
-            aria-label="my github account"
-          >
+        <Link
+          target="_blank"
+          href="https://github.com/nokiahub"
+          aria-label="my github account"
+        >
+          <Button variant={"ghost"}>
             <Github />
-          </Link>
-        </Button>
-        <Button variant={"ghost"}>
-          <Link href="/about" aria-label="about me">
+          </Button>
+        </Link>
+        <Link href="/about" aria-label="about me">
+          <Button variant={"ghost"}>
             <Info />
-          </Link>
-        </Button>
+          </Button>
+        </Link>
       </ul>
     </nav>
   );
