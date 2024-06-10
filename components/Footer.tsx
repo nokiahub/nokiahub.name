@@ -2,7 +2,7 @@ import GithubIcon from "@/app/icons/GithubIcon";
 
 const Footer = () => {
   return (
-    <footer className={"footer footer-center p-10"}>
+    <footer className={"flex flex-col items-center gap-3 p-10"}>
       <a
         target="_blank"
         href="https://github.com/nokiahub"
@@ -10,11 +10,11 @@ const Footer = () => {
       >
         <GithubIcon />
       </a>
-      <aside className={"grid-flow-col items-center"}>
+      <div>
         © {new Date().getFullYear()}, Built with
         <a href="https://nextjs.org/">Next.js</a>
-        <p>Copyright © 2024 - All right reserved</p>
-      </aside>
+      </div>
+      <p>Copyright © 2024 - All right reserved</p>
     </footer>
   );
 };

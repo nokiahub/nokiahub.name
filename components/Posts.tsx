@@ -1,6 +1,12 @@
 import { Post } from "@/lib/post";
 import { NextPage } from "next";
 import Link from "next/link";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+} from "@/components/ui/card";
 
 type PostsProps = {
   posts: Post[];
@@ -22,12 +28,16 @@ const PostCard = ({ post }: { post: Post }) => {
   const { id, title, description, date } = post;
 
   return (
-    <Link className={"card card-bordered"} href={`/posts/${id}`}>
-      <div className={"card-body"}>
-        <h2 className={"card-title"}>{title}</h2>
-        <p>{description}</p>
-        <p className={"text-sm text-gray-400"}>{date}</p>
-      </div>
+    <Link href={`/posts/${id}`}>
+      <Card>
+        <CardHeader>
+          <h2 className={"font-bold"}>{title}</h2>
+          <CardDescription>{date}</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <CardDescription>{description}</CardDescription>
+        </CardContent>
+      </Card>
     </Link>
   );
 };

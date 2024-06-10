@@ -1,6 +1,7 @@
 "use client";
 
-import { ArrowIcon } from "../app/icons/ArrowIcon";
+import { ArrowIcon } from "@/app/icons/ArrowIcon";
+import { Button } from "@/components/ui/button";
 
 export const ScrollToTopButton = () => {
   const scrollToTop = () => {
@@ -11,11 +12,12 @@ export const ScrollToTopButton = () => {
   };
 
   return (
-    <button
+    <Button
       onClick={scrollToTop}
-      className="btn btn-circle fixed bottom-4 right-4"
+      variant={"outline"}
+      className="fixed bottom-4 right-4 size-10 rounded-full p-0"
     >
       <ArrowIcon />
-    </button>
+    </Button>
   );
 };
