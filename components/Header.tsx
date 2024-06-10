@@ -6,7 +6,9 @@ import { AboutIcon } from "@/components/icons/AboutIcon";
 export const Header = () => {
   return (
     <nav
-      className={"sticky top-0 flex justify-between bg-background px-6 py-3"}
+      className={
+        "sticky top-0 flex justify-between border-b border-border bg-background px-6 py-3"
+      }
     >
       <Link className={"text-xl font-bold"} href={"/"}>
         형주의 블로그
