@@ -29,8 +29,8 @@ export default async function PostItem({
 
   return (
     <div>
-      <h1 className={"text-2xl"}>{rawPost?.title}</h1>
-      <span className={"text-sm text-gray-500"}>{rawPost?.date}</span>
+      <h1 className={"text-2xl font-bold"}>{rawPost?.title}</h1>
+      <span className={"text-sm text-zinc-600"}>{rawPost?.date}</span>
       <article className={"prose mt-6 dark:prose-invert"}>
         {postForMdx && <MdxComponents post={postForMdx} />}
       </article>
