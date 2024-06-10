@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { CopyCodeButton } from "@/app/components/mdx/copy-code-button";
+import { CopyCodeButton } from "@/components/mdx/copy-code-button";
 
 type Props = {
   children: ReactNode;

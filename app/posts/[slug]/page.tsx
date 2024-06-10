@@ -1,6 +1,6 @@
 import { getAllPostIds, getPostData } from "@/lib/post";
 import { Metadata } from "next";
-import MdxComponents from "@/app/components/mdx/mdx-components";
+import MdxComponents from "@/components/mdx/mdx-components";
 
 import { allPosts } from "contentlayer/generated";
 

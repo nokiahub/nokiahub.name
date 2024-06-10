@@ -1,9 +1,9 @@
 import "@/styles/globals.css";
 import { ReactNode } from "react";
-import { Header } from "./components/Header";
-import Footer from "./components/Footer";
-import { ScrollToTopButton } from "./components/ScrollToTopButton";
-import { Providers } from "./components/providers";
+import { Header } from "../components/Header";
+import Footer from "../components/Footer";
+import { ScrollToTopButton } from "../components/ScrollToTopButton";
+import { Providers } from "../components/providers";
 
 export const metadata = {
   title: "형주의 블로그",

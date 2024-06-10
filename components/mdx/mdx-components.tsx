@@ -1,5 +1,5 @@
 import { useMDXComponent } from "next-contentlayer/hooks";
-import { Figcaption } from "@/app/components/mdx/mdx-figcaption";
+import { Figcaption } from "@/components/mdx/mdx-figcaption";
 
 type Props = {
   post: {

@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowIcon } from "../icons/ArrowIcon";
+import { ArrowIcon } from "../app/icons/ArrowIcon";
 
 export const ScrollToTopButton = () => {
   const scrollToTop = () => {
