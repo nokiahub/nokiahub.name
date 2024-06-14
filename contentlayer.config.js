@@ -76,38 +76,41 @@ const options = {
   },
 };
 
+const createRawCodeInCodeBlock = () => (tree) => {
+  visit(tree, (node) => {
+    if (node?.type === "element" && node?.tagName === "pre") {
+      const [codeEl] = node.children;
+
+      if (codeEl.tagName !== "code") return;
+
+      node.raw = codeEl.children?.[0].value;
+    }
+  });
+};
+
+const rehypeFigcaption = () => (tree) => {
+  visit(tree, (node) => {
+    if (node?.type === "element" && node?.tagName === "figure") {
+      if (!("data-rehype-pretty-code-figure" in node.properties)) {
+        return;
+      }
+
+      for (const child of node.children) {
+        if (child.tagName === "figcaption") {
+          child.properties["raw"] = node.raw;
+        }
+      }
+    }
+  });
+};
 export default makeSource({
   contentDirPath: "content",
   documentTypes: [Post, Project],
   mdx: {
     rehypePlugins: [
-      () => (tree) => {
-        visit(tree, (node) => {
-          if (node?.type === "element" && node?.tagName === "pre") {
-            const [codeEl] = node.children;
-
-            if (codeEl.tagName !== "code") return;
-
-            node.raw = codeEl.children?.[0].value;
-          }
-        });
-      },
+      createRawCodeInCodeBlock,
       [rehypePrettyCode, options],
-      () => (tree) => {
-        visit(tree, (node) => {
-          if (node?.type === "element" && node?.tagName === "figure") {
-            if (!("data-rehype-pretty-code-figure" in node.properties)) {
-              return;
-            }
-
-            for (const child of node.children) {
-              if (child.tagName === "figcaption") {
-                child.properties["raw"] = node.raw;
-              }
-            }
-          }
-        });
-      },
+      rehypeFigcaption,
     ],
   },
 });

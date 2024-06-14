@@ -4,7 +4,7 @@ import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
 
-type Post = {
+export type Post = {
   id: string;
   category: string;
   published: boolean;
@@ -16,7 +16,7 @@ type Post = {
 
 const postsDirectory = path.join(process.cwd(), "content/posts");
 
-const compareByDate = (a: any, b: any) => {
+const compareByDate = (a: Post, b: Post) => {
   if (a.date < b.date) {
     return 1;
   } else {
@@ -24,8 +24,12 @@ const compareByDate = (a: any, b: any) => {
   }
 };
 
-const removeMdExtension = (fileName: string) => {
-  return fileName.replace(/\.mdx$/, "");
+const getFileNamesFrom = (contentPath: string) => {
+  return fs.readdirSync(contentPath);
+};
+
+const trimFileExtension = (fileName: string) => {
+  return fileName.replace(/\.[^/.]+$/, "");
 };
 
 const getMatterFrom = (ContentPath: string, fileName: string) => {
@@ -35,11 +39,10 @@ const getMatterFrom = (ContentPath: string, fileName: string) => {
 };
 
 export function getPostsData() {
-  const directoryNames = fs.readdirSync(postsDirectory);
+  const directoryNames = getFileNamesFrom(postsDirectory);
   const postsData = directoryNames.map((fileName) => {
-    const id = removeMdExtension(fileName);
+    const id = trimFileExtension(fileName);
     const matterResult = getMatterFrom(postsDirectory, fileName);
-
     return {
       id,
       ...matterResult.data,
@@ -50,11 +53,11 @@ export function getPostsData() {
 }
 
 export function getAllPostIds() {
-  const fileNames = fs.readdirSync(postsDirectory);
+  const fileNames = getFileNamesFrom(postsDirectory);
   return fileNames.map((fileName) => {
     return {
       params: {
-        id: removeMdExtension(fileName),
+        id: trimFileExtension(fileName),
       },
     };
   });
