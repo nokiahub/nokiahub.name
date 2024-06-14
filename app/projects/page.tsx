@@ -6,7 +6,7 @@ export default async function Projects() {
   return (
     <ul>
       {allProjects.map((project) => (
-        <li key={project.title} className={"mb-4"}>
+        <li key={project.title} className={"prose mb-4"}>
           <Card className="w-full max-w-[640px] p-4">
             <CardContent>
               <MdxComponents post={project} />

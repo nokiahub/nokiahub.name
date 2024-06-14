@@ -1,5 +1,5 @@
 import { getPostsData } from "@/lib/post";
-import { Posts } from "../../components/posts";
+import { Posts } from "@/components/posts";
 
 const PostsPage = () => {
   const posts = getPostsData();
