@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         <Providers>
           <Header />
-          <main className={"mx-auto flex max-w-[680px] justify-center"}>
+          <main className={"mx-auto flex max-w-[60rem] justify-center"}>
             {/*TODO: x-scroll overflow-hidden으로 임시 해결(원인 파악하기)*/}
             <div className={"overflow-hidden px-6 py-8"}>{children}</div>
           </main>

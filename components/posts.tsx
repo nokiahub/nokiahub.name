@@ -5,6 +5,7 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
 } from "@/components/ui/card";
 
@@ -14,13 +15,13 @@ type PostsProps = {
 
 export const Posts: NextPage<PostsProps> = ({ posts }: PostsProps) => {
   return (
-    <ul>
+    <div className={"grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"}>
       {posts.map((post) => (
-        <li className={"mb-4 list-none"} key={post.id}>
+        <li className={"list-none"} key={post.id}>
           <PostCard post={post} />
         </li>
       ))}
-    </ul>
+    </div>
   );
 };
 
@@ -29,14 +30,16 @@ const PostCard = ({ post }: { post: Post }) => {
 
   return (
     <Link href={`/posts/${id}`}>
-      <Card>
+      <Card className={"rounded-sm hover:border-foreground"}>
         <CardHeader>
-          <h2 className={"font-bold"}>{title}</h2>
-          <CardDescription>{date}</CardDescription>
+          <h2 className={"line-clamp-2 h-[2lh] font-bold"}>{title}</h2>
         </CardHeader>
-        <CardContent>
+        <CardContent className={"line-clamp-4 h-[4lh]"}>
           <CardDescription>{description}</CardDescription>
         </CardContent>
+        <CardFooter>
+          <CardDescription>{date.split("-").join(".")}</CardDescription>
+        </CardFooter>
       </Card>
     </Link>
   );
