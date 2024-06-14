@@ -10,16 +10,15 @@ const ThemeSwitchToggle = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
-  const isLightTheme = theme === "light";
+  const isLightTheme = theme === "light" || !theme;
 
   return (
     <Button
       variant={"ghost"}
       onClick={handleToggleTheme}
-      aria-label={isLightTheme ? "Activate dark theme" : "Activate light theme"}
-      aria-pressed={!isLightTheme}
+      aria-label={isLightTheme ? "Switch to dark mode" : "Switch to light mode"}
     >
-      {theme === "light" ? <Bird /> : <Rat />}
+      {isLightTheme ? <Bird /> : <Rat />}
     </Button>
   );
 };

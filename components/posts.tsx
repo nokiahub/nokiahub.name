@@ -15,13 +15,13 @@ type PostsProps = {
 
 export const Posts: NextPage<PostsProps> = ({ posts }: PostsProps) => {
   return (
-    <div className={"grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"}>
+    <ol className={"grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"}>
       {posts.map((post) => (
         <li className={"list-none"} key={post.id}>
           <PostCard post={post} />
         </li>
       ))}
-    </div>
+    </ol>
   );
 };
 
