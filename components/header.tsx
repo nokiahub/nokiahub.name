@@ -15,6 +15,9 @@ export const Header = () => {
         형주의 블로그
       </Link>
       <ul className={"flex items-center px-1"}>
+        <Link href={"/projects"} aria-label={"projects"}>
+          <Button variant={"ghost"}>Projects</Button>
+        </Link>
         <ThemeSwitchToggle />
         <Link
           target="_blank"

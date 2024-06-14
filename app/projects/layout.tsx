@@ -1,4 +1,4 @@
 import { ReactNode } from "react";
 export default function ProjectLayout({ children }: { children: ReactNode }) {
-  return <div>{children}</div>;
+  return <div className={"max-w-[40rem]"}>{children}</div>;
 }
