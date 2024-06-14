@@ -4,7 +4,7 @@ import { visit } from "unist-util-visit";
 
 const Post = defineDocumentType(() => ({
   name: "Post",
-  filePathPattern: `**/*.@(md|mdx)`,
+  filePathPattern: `posts/*.@(md|mdx)`,
   contentType: "mdx",
   fields: {
     title: {
@@ -43,6 +43,32 @@ const Post = defineDocumentType(() => ({
   },
 }));
 
+const Project = defineDocumentType(() => ({
+  name: "Project",
+  filePathPattern: `projects/*.@(md|mdx)`,
+  contentType: "mdx",
+  fields: {
+    title: {
+      type: "string",
+      description: "The title of the project",
+      required: true,
+    },
+    description: {
+      type: "string",
+      description: "The summary of the project",
+      required: true,
+    },
+    tags: {
+      type: "list",
+      of: {
+        type: "string",
+      },
+      description: "The tags of the project",
+      required: false,
+    },
+  },
+}));
+
 const options = {
   theme: {
     light: "rose-pine-dawn",
@@ -51,8 +77,8 @@ const options = {
 };
 
 export default makeSource({
-  contentDirPath: "content/blog/posts/",
-  documentTypes: [Post],
+  contentDirPath: "content",
+  documentTypes: [Post, Project],
   mdx: {
     rehypePlugins: [
       () => (tree) => {
