@@ -4,10 +4,7 @@ import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
 
-const postsDirectory = path.join(process.cwd(), "content/posts");
-const projectsDirectory = path.join(process.cwd(), "content/projects");
-
-export type Post = {
+type Post = {
   id: string;
   category: string;
   published: boolean;
@@ -16,14 +13,32 @@ export type Post = {
   description: string;
   tags: string[];
 };
+
+const postsDirectory = path.join(process.cwd(), "content/posts");
+
+const compareByDate = (a: any, b: any) => {
+  if (a.date < b.date) {
+    return 1;
+  } else {
+    return -1;
+  }
+};
+
+const removeMdExtension = (fileName: string) => {
+  return fileName.replace(/\.mdx$/, "");
+};
+
+const getMatterFrom = (ContentPath: string, fileName: string) => {
+  const fullPath = path.join(ContentPath, fileName);
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+  return matter(fileContents);
+};
+
 export function getPostsData() {
   const directoryNames = fs.readdirSync(postsDirectory);
-
-  const postDatas = directoryNames.map((fileName) => {
-    const id = fileName.replace(/\.mdx$/, "");
-    const fullPath = path.join(postsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, "utf8");
-    const matterResult = matter(fileContents);
+  const postsData = directoryNames.map((fileName) => {
+    const id = removeMdExtension(fileName);
+    const matterResult = getMatterFrom(postsDirectory, fileName);
 
     return {
       id,
@@ -31,13 +46,7 @@ export function getPostsData() {
     } as Post;
   });
 
-  return postDatas.sort((a, b) => {
-    if (a.date < b.date) {
-      return 1;
-    } else {
-      return -1;
-    }
-  });
+  return postsData.sort(compareByDate);
 }
 
 export function getAllPostIds() {
@@ -45,69 +54,14 @@ export function getAllPostIds() {
   return fileNames.map((fileName) => {
     return {
       params: {
-        id: fileName.replace(/\.mdx$/, ""),
+        id: removeMdExtension(fileName),
       },
     };
   });
 }
 
 export async function getPostData(id: string) {
-  const fullPath = path.join(postsDirectory, `${id}.mdx`);
-  const fileContents = fs.readFileSync(fullPath, "utf8");
-  const matterResult = matter(fileContents);
-
-  const processedContent = await remark()
-    .use(html)
-    .process(matterResult.content);
-  const contentHtml = processedContent.toString();
-
-  return {
-    id,
-    contentHtml,
-    ...matterResult.data,
-  } as Post & { contentHtml: string };
-}
-
-export type Project = {
-  id: string;
-  category: string;
-  published: boolean;
-  date: string;
-  title: string;
-  description: string;
-  tags: string[];
-};
-
-export function getProjects() {
-  const directoryNames = fs.readdirSync(projectsDirectory);
-  const posts = directoryNames.map((fileName) => {
-    const id = fileName.replace(/\.mdx$/, "");
-    const fullPath = path.join(projectsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, "utf8");
-
-    const matterResult = matter(fileContents);
-
-    return {
-      id,
-      ...matterResult.data,
-    } as Project;
-  });
-  return posts.sort((a, b) => {
-    if (a.date < b.date) {
-      return 1;
-    } else {
-      return -1;
-    }
-  });
-}
-
-export async function getProjectData(id: string) {
-  const fullPath = path.join(projectsDirectory, `${id}`);
-  const filePath = path.join(fullPath, "**.mdx");
-  const fileContents = fs.readFileSync(filePath, "utf8");
-
-  const matterResult = matter(fileContents);
-
+  const matterResult = getMatterFrom(postsDirectory, `${id}.mdx`);
   const processedContent = await remark()
     .use(html)
     .process(matterResult.content);
