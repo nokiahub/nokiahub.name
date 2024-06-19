@@ -14,7 +14,7 @@ export const Header = () => {
       <Link className={"text-end text-xl"} href={"/"}>
         형주의 블로그
       </Link>
-      <div className={"flex items-center px-1"}>
+      <div className={"flex items-center"}>
         <Link href={"/projects"} aria-label={"projects"}>
           <Button variant={"ghost"}>Projects</Button>
         </Link>
@@ -24,12 +24,12 @@ export const Header = () => {
           href="https://github.com/nokiahub"
           aria-label="my github account"
         >
-          <Button aria-label={"github"} variant={"ghost"}>
+          <Button size={"icon"} aria-label={"github"} variant={"ghost"}>
             <Github />
           </Button>
         </Link>
         <Link href="/about" aria-label="about me">
-          <Button aria-label={"more about me"} variant={"ghost"}>
+          <Button size={"icon"} aria-label={"more about me"} variant={"ghost"}>
             <Info />
           </Button>
         </Link>
