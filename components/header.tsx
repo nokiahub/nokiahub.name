@@ -13,26 +13,30 @@ export const Header = () => {
         형주의 블로그
       </Link>
       <div className={"flex items-center"}>
-        <Link href={"/posts"} aria-label={"posts"}>
-          <Button variant={"ghost"}>Posts</Button>
-        </Link>
-        <Link href={"/projects"} aria-label={"projects"}>
-          <Button variant={"ghost"}>Projects</Button>
-        </Link>
-        <Link href="/about" aria-label="about me">
-          <Button variant={"ghost"} aria-label={"more about me"}>
+        <Button asChild variant={"ghost"}>
+          <Link href={"/posts"} aria-label={"posts"}>
+            Posts
+          </Link>
+        </Button>
+        <Button variant={"ghost"} asChild>
+          <Link href={"/projects"} aria-label={"projects"}>
+            Projects
+          </Link>
+        </Button>
+        <Button asChild variant={"ghost"} aria-label={"more about me"}>
+          <Link href="/about" aria-label="about me">
             Info
-          </Button>
-        </Link>
-        <Link
-          target="_blank"
-          href="https://github.com/nokiahub"
-          aria-label="my github account"
-        >
-          <Button variant={"ghost"} aria-label={"github"}>
+          </Link>
+        </Button>
+        <Button asChild variant={"ghost"} aria-label={"github"}>
+          <Link
+            target="_blank"
+            href="https://github.com/nokiahub"
+            aria-label="my github account"
+          >
             Github
-          </Button>
-        </Link>
+          </Link>
+        </Button>
         <ThemeSwitchToggle />
       </div>
     </nav>
