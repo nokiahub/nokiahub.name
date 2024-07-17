@@ -13,6 +13,9 @@ export const Header = () => {
         형주의 블로그
       </Link>
       <div className={"flex items-center"}>
+        <Link href={"/posts"} aria-label={"posts"}>
+          <Button variant={"ghost"}>Posts</Button>
+        </Link>
         <Link href={"/projects"} aria-label={"projects"}>
           <Button variant={"ghost"}>Projects</Button>
         </Link>
