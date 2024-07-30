@@ -4,9 +4,11 @@ import MdxComponents from "@/components/mdx/mdx-components";
 
 import { allPosts } from "contentlayer/generated";
 
+import { URLSearchParams } from "url";
+
 type Props = {
   params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: URLSearchParams;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
