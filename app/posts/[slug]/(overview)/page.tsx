@@ -19,24 +19,35 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function PostItem({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const rawPost = await getPostData(params.slug);
-  const postForMdx = allPosts.find((post) => post._id.includes(params.slug));
-
+export default async function PostItem({ params }: Props) {
   return (
-    <div>
-      <h1 className={"text-2xl font-bold"}>{rawPost?.title}</h1>
-      <span className={"text-sm text-zinc-600"}>{rawPost?.date}</span>
-      <article className={"prose mt-6 dark:prose-invert"}>
-        {postForMdx && <MdxComponents post={postForMdx} />}
-      </article>
-    </div>
+    <>
+      <PostSummary name={params.slug} />
+      <PostContent name={params.slug} />
+    </>
   );
 }
+
+const PostSummary = async ({ name }: { name: string }) => {
+  const rawPost = await getPostData(name);
+
+  return (
+    <>
+      <h1 className={"text-2xl font-bold"}>{rawPost?.title}</h1>
+      <span className={"text-sm text-zinc-600"}>{rawPost?.date}</span>
+    </>
+  );
+};
+
+const PostContent = ({ name }: { name: string }) => {
+  const postForMdx = allPosts.find((post) => post._id.includes(name));
+
+  return (
+    <article className={"prose mt-6 dark:prose-invert"}>
+      {postForMdx && <MdxComponents post={postForMdx} />}
+    </article>
+  );
+};
 
 export async function generateStaticParams() {
   return getAllPostIds();
