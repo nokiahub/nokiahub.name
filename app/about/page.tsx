@@ -35,16 +35,14 @@ export default function Page() {
           </p>
         </div>
       </div>
-      <div>
-        <div className={cn("row-span-5")}>
-          <Image
-            className={"rotate-3 rounded-xl"}
-            src={"/images/me.jpeg"}
-            alt={"profile picture"}
-            width={300}
-            height={400}
-          />
-        </div>
+      <div className={cn("row-span-5")}>
+        <Image
+          className={"rotate-3 rounded-xl"}
+          src={"/images/me.jpeg"}
+          alt={"profile picture"}
+          width={200}
+          height={300}
+        />
       </div>
     </div>
   );
