@@ -1,8 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About",
-  description: "안녕하세요. 프론트엔드 개발자 정형주입니다.",
+  title: "I'm Hyungju.",
 };
 
 export default function Page() {
