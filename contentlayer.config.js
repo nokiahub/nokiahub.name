@@ -69,12 +69,6 @@ const Project = defineDocumentType(() => ({
   },
 }));
 
-const AboutMe = defineDocumentType(() => ({
-  name: "AboutMe",
-  filePathPattern: `about-me.@(md|mdx)`,
-  contentType: "mdx",
-}));
-
 const options = {
   theme: {
     light: "rose-pine-dawn",
@@ -111,7 +105,7 @@ const rehypeFigcaption = () => (tree) => {
 };
 export default makeSource({
   contentDirPath: "content",
-  documentTypes: [Post, Project, AboutMe],
+  documentTypes: [Post, Project],
   mdx: {
     rehypePlugins: [
       createRawCodeInCodeBlock,
