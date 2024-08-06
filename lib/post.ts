@@ -63,6 +63,17 @@ export function getAllPostIds() {
   });
 }
 
+export function getAllTags() {
+  const posts = getPostsData();
+  const tags = new Set<string>();
+  posts.forEach((post) => {
+    post.tags.forEach((tag) => {
+      tags.add(tag);
+    });
+  });
+  return Array.from(tags);
+}
+
 export async function getPostData(id: string) {
   const matterResult = getMatterFrom(postsDirectory, `${id}.mdx`);
   const processedContent = await remark()
