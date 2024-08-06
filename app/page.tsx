@@ -1,8 +1,12 @@
-import { getPostsData } from "@/lib/post";
 import { Posts } from "@/components/posts";
+import { cn } from "@/lib/utils";
+import { Tags } from "@/components/tags";
 
 export default function Page() {
-  const posts = getPostsData();
-
-  return <Posts posts={posts} />;
+  return (
+    <div className={cn("flex flex-col gap-6")}>
+      <Tags />
+      <Posts />
+    </div>
+  );
 }

@@ -1,4 +1,4 @@
-import { Post } from "@/lib/post";
+import { getPostsData, Post } from "@/lib/post";
 import { NextPage } from "next";
 import Link from "next/link";
 import {
@@ -9,11 +9,9 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 
-type PostsProps = {
-  posts: Post[];
-};
+export const Posts: NextPage = () => {
+  const posts = getPostsData();
 
-export const Posts: NextPage<PostsProps> = ({ posts }: PostsProps) => {
   return (
     <ol className={"grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"}>
       {posts.map((post) => (
