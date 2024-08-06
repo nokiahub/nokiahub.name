@@ -9,8 +9,12 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 
-export const Posts: NextPage = () => {
-  const posts = getPostsData();
+type Props = {
+  filterBy?: string;
+};
+
+export const Posts: NextPage<Props> = ({ filterBy }) => {
+  const posts = getPostsData(filterBy);
 
   return (
     <ol className={"grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"}>

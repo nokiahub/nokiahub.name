@@ -38,7 +38,7 @@ const getMatterFrom = (ContentPath: string, fileName: string) => {
   return matter(fileContents);
 };
 
-export function getPostsData() {
+export function getPostsData(filterBy?: string) {
   const directoryNames = getFileNamesFrom(postsDirectory);
   const postsData = directoryNames.map((fileName) => {
     const id = trimFileExtension(fileName);
@@ -49,7 +49,11 @@ export function getPostsData() {
     } as Post;
   });
 
-  return postsData.sort(compareByDate);
+  return postsData
+    .filter((postsData) => {
+      return !filterBy || postsData.tags.includes(filterBy);
+    })
+    .sort(compareByDate);
 }
 
 export function getAllPostIds() {
