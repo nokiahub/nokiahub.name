@@ -12,7 +12,7 @@ export function Tags({ currentTag }: Props) {
   const tags = getAllTags();
 
   return (
-    <div className="flex flex-wrap gap-4 self-center">
+    <div className="flex flex-wrap gap-3 self-center">
       {tags.map((tag) => (
         <Link href={`/posts/tag/${tag}`} key={tag}>
           <Badge
