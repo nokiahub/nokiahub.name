@@ -8,7 +8,7 @@ type Props = {
   currentTag?: string;
 };
 
-export function Tags({ currentTag }: Props) {
+export function Tags({ currentTag = "all" }: Props) {
   const tags = getAllTags();
 
   return (
