@@ -17,7 +17,7 @@ export function Tags({ currentTag }: Props) {
         <Link href={`/posts/tag/${tag}`} key={tag}>
           <Badge
             className={cn("cursor-pointer")}
-            variant={currentTag === tag ? "secondary" : undefined}
+            variant={currentTag === tag ? "default" : "secondary"}
           >
             {tag}
           </Badge>
