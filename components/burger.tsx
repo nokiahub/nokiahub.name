@@ -1,18 +1,19 @@
 "use client";
 
-import { useState } from "react";
 import RightNav from "@/components/right-nav";
 import { Menu } from "lucide-react";
 
-export default function Burger() {
-  const [open, setOpen] = useState(false);
+import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 
+export default function Burger() {
   return (
-    <>
-      <button onClick={() => setOpen(true)}>
+    <Drawer>
+      <DrawerTrigger>
         <Menu />
-      </button>
-      {open && <RightNav onClose={() => setOpen(false)} />}
-    </>
+      </DrawerTrigger>
+      <DrawerContent>
+        <RightNav />
+      </DrawerContent>
+    </Drawer>
   );
 }

@@ -1,12 +1,6 @@
 import Link from "next/link";
-import { cn } from "@/lib/utils";
-import { ArrowRight } from "lucide-react";
 import ThemeSwitchToggle from "@/components/theme-switch-toggle";
-import { MouseEvent } from "react";
-
-type Props = {
-  onClose: () => void;
-};
+import { cn } from "@/lib/utils";
 
 const links = [
   { href: "/posts", label: "Posts" },
@@ -14,34 +8,19 @@ const links = [
   { href: "/about", label: "Info" },
 ];
 
-export default function RightNav({ onClose }: Props) {
-  const handleInnerClick = (e: MouseEvent) => {
-    e.stopPropagation();
-  };
-
+export default function RightNav() {
   return (
-    <div
-      className={cn("fixed inset-0 backdrop-brightness-50")}
-      onClick={onClose}
-    >
-      <div
-        className={cn("fixed inset-y-0 right-0 w-[75%] bg-background p-4 px-6")}
-        onClick={handleInnerClick}
-      >
-        <button onClick={onClose}>
-          <ArrowRight />
-        </button>
-        <ul>
-          {links.map(({ href, label }) => (
-            <li key={href}>
-              <Link href={href} onClick={onClose}>
-                {label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <ThemeSwitchToggle />
-      </div>
+    <div className={cn("p-6")}>
+      <ul className={cn("flex flex-col items-center gap-2")}>
+        {links.map(({ href, label }) => (
+          <li key={href}>
+            <Link href={href}>{label}</Link>
+          </li>
+        ))}
+        <li>
+          <ThemeSwitchToggle />
+        </li>
+      </ul>
     </div>
   );
 }
