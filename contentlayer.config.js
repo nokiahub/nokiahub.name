@@ -58,12 +58,14 @@ const Project = defineDocumentType(() => ({
       description: "The summary of the project",
       required: true,
     },
-    tags: {
-      type: "list",
-      of: {
-        type: "string",
-      },
-      description: "The tags of the project",
+    date: {
+      type: "date",
+      description: "The date of the project",
+      required: true,
+    },
+    private: {
+      type: "boolean",
+      description: "The privacy of the project",
       required: false,
     },
   },
