@@ -14,7 +14,7 @@ export default function Page() {
     <div className={cn("grid grid-cols-1 gap-12 gap-y-8 pt-6 sm:grid-cols-2")}>
       <div>
         <p>
-          안녕하세요. 3년차 프론트엔드 개발자 정형주입니다.
+          <h1 className={cn("text-xl")}>안녕하세요. 정형주입니다.</h1>
           <br />
           css 스타일링, 애니메이션, 클린코드, 리팩토링에 관심이 있습니다.
           <br />
@@ -22,7 +22,7 @@ export default function Page() {
           <br />
         </p>
         <Separator className={"my-6"} />
-        <ul className={cn("flex flex-col gap-2 *:flex")}>
+        <ul className={cn("flex flex-col gap-2")}>
           <li>
             <Link
               target="_blank"
