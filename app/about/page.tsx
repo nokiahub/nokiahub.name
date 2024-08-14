@@ -1,6 +1,9 @@
 import { Metadata } from "next";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import Link from "next/link";
+import { Separator } from "@/components/ui/separator";
+import { Github } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "I'm Hyungju.",
@@ -8,40 +11,47 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div className={cn("grid grid-cols-1  gap-8 sm:grid-cols-2")}>
-      <div className={cn("row-span-3")}>
+    <div className={cn("grid grid-cols-1 gap-12 gap-y-8 pt-6 sm:grid-cols-2")}>
+      <div>
         <p>
           안녕하세요. 3년차 프론트엔드 개발자 정형주입니다.
           <br />
-          알고리즘, 클린코드, 리팩토링에 관심이 있습니다.
+          css 스타일링, 애니메이션, 클린코드, 리팩토링에 관심이 있습니다.
           <br />
           유연하고 확장 가능한 프로그램 설계를 좋아합니다.
           <br />
         </p>
-
-        <div className={cn("row-span-2")}>
-          <p>
-            <br />더 자세한 내용은{" "}
-            <a
+        <Separator className={"my-6"} />
+        <ul className={cn("flex flex-col gap-2 *:flex")}>
+          <li>
+            <Link
+              target="_blank"
+              href="https://github.com/nokiahub"
+              aria-label="my github account"
+            >
+              Github
+            </Link>
+          </li>
+          <li>
+            <Link
               target="_blank"
               rel="noreferrer"
               href="https://hazel-case-679.notion.site/29-Frontend-Developer-80d76411929b4b9e9d1cc034177385b7?pvs=4"
             >
-              이력서
-            </a>
-            에서 확인하실 수 있습니다.
-            <br />
-            감사합니다!
-          </p>
-        </div>
+              Resume
+            </Link>
+          </li>
+        </ul>
+        <Separator className={"my-6"} />
+        <Link href={"mailto:jeonghj157@gmail.com"}>jeonghj157@gmail.com</Link>
       </div>
-      <div className={cn("row-span-5")}>
+      <div className={cn("relative h-full")}>
         <Image
-          className={"rotate-3 rounded-xl"}
+          className={"aspect-square rotate-[-4deg] rounded-xl"}
           src={"/images/me.png"}
           alt={"profile picture"}
-          width={200}
-          height={300}
+          width={300}
+          height={200}
         />
       </div>
     </div>
