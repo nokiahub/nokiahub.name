@@ -38,7 +38,7 @@ export default function Page() {
       <div className={cn("row-span-5")}>
         <Image
           className={"rotate-3 rounded-xl"}
-          src={"/images/me.jpeg"}
+          src={"/images/me.png"}
           alt={"profile picture"}
           width={200}
           height={300}
