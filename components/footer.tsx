@@ -1,6 +1,3 @@
-import Github from "@/components/icons/github";
-import { Button } from "@/components/ui/button";
-
 const Footer = () => {
   return (
     <footer className={"flex flex-col items-center gap-3 p-10"}>
