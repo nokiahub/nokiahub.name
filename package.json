@@ -1,6 +1,11 @@
 {
-  "name": "hyungju-blog",
+  "name": "nokiahub.name",
   "version": "0.1.0",
+  "description": "nokiahub.name website",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nokiahub/nokiahub.name"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",
