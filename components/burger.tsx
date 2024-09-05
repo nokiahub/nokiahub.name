@@ -8,7 +8,7 @@ import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 export default function Burger() {
   return (
     <Drawer>
-      <DrawerTrigger>
+      <DrawerTrigger aria-label={"open menu"}>
         <Menu />
       </DrawerTrigger>
       <DrawerContent>
