@@ -2,7 +2,18 @@ import { Posts } from "@/components/posts";
 import { Tags } from "@/components/tags";
 import { cn } from "@/lib/utils";
 
-const PostsPage = () => {
+const getViews = async () => {
+  const response = await fetch("http://localhost:3000" + "/posts/views", {
+    method: "GET",
+  });
+
+  return response.json();
+};
+
+const PostsPage = async () => {
+  const views = await getViews();
+  console.log(views);
+
   return (
     <div className={cn("flex flex-col gap-6")}>
       <Tags />
