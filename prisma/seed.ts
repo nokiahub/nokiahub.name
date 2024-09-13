@@ -10,7 +10,7 @@ async function main() {
   const allPostIds = getAllPostIds();
   const allPostSlugs = allPostIds.map((post) => post.params.id);
   const allPosts = await db.post.findMany();
-  const allPostSlugsInDb = allPosts.map((post) => post.slug);
+  const allPostSlugsInDb = allPosts.map((post: { slug: string }) => post.slug);
   const newPosts = allPostSlugs.filter(
     (slug) => !allPostSlugsInDb.includes(slug),
   );
