@@ -1,0 +1,17 @@
+// schema.prismaServer
+generator client {
+  provider = "prismaServer-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Post {
+  id        String   @id @default(cuid())
+  slug      String
+  createdAt DateTime @default(now())
+  views     Int      @default(0)
+}
