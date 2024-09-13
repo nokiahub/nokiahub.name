@@ -3,7 +3,7 @@ import { Tags } from "@/components/tags";
 import { cn } from "@/lib/utils";
 
 const getViews = async () => {
-  const response = await fetch("http://localhost:3000" + "/posts/views", {
+  const response = await fetch(process.env.NEXT_PUBLIC_URL + "/posts/views", {
     method: "GET",
   });
 
