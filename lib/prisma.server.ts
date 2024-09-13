@@ -3,10 +3,15 @@ import { PrismaClient } from "@prisma/client";
 let prisma: PrismaClient;
 
 declare global {
-  let prisma: PrismaClient;
+  // eslint-disable-next-line no-var
+  var prisma: PrismaClient;
 }
 
-if (process.env.NODE_ENV === "production") {
+declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+}
+
+if (process.env.APP_ENV === "production") {
   prisma = new PrismaClient();
 } else {
   if (!global.prisma) {
