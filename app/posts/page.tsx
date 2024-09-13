@@ -11,6 +11,8 @@ const getViews = async () => {
     },
   });
 
+  console.log("prisma get views");
+
   // return like this:
   // { "slug": 0, "slug2": 0, "slug3": 0 ... }
   return Object.fromEntries(
