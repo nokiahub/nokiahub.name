@@ -25,6 +25,7 @@ const getViews = async () => {
 
 const PostsPage = async () => {
   const views = await getViews();
+  console.log(views);
 
   return (
     <div className={cn("flex flex-col gap-6")}>
