@@ -12,7 +12,10 @@ export async function GET() {
   // return like this:
   // { "slug": 0, "slug2": 0, "slug3": 0 ... }
   const viewsBySlug = Object.fromEntries(
-    posts.map((post) => [post.slug, post.views]),
+    posts.map((post: { slug: string; views: number }) => [
+      post.slug,
+      post.views,
+    ]),
   );
 
   return new Response(JSON.stringify(viewsBySlug));
