@@ -4,14 +4,17 @@ import { cn } from "@/lib/utils";
 import prisma from "@/lib/prisma.server";
 
 const getViews = async () => {
-  const posts = await prisma.post.findMany({
-    select: {
-      slug: true,
-      views: true,
-    },
-  });
-
-  console.log("prisma get views");
+  let posts;
+  try {
+    posts = await prisma.post.findMany({
+      select: {
+        slug: true,
+        views: true,
+      },
+    });
+  } catch (error) {
+    console.error(error);
+  }
 
   // return like this:
   // { "slug": 0, "slug2": 0, "slug3": 0 ... }
@@ -25,12 +28,11 @@ const getViews = async () => {
 
 const PostsPage = async () => {
   const views = await getViews();
-  console.log(views);
 
   return (
     <div className={cn("flex flex-col gap-6")}>
       <Tags />
-      <Posts />
+      <Posts views={views} />
     </div>
   );
 };

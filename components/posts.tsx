@@ -8,26 +8,29 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
+import { Eye } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 type Props = {
   filterBy?: string;
+  views: Record<string, number>;
 };
 
-export const Posts: NextPage<Props> = ({ filterBy }) => {
+export const Posts: NextPage<Props> = ({ filterBy, views }) => {
   const posts = getPostsData(filterBy);
 
   return (
     <ol className={"grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"}>
       {posts.map((post) => (
         <li className={"list-none"} key={post.id}>
-          <PostCard post={post} />
+          <PostCard post={post} views={views[post.id]} />
         </li>
       ))}
     </ol>
   );
 };
 
-const PostCard = ({ post }: { post: Post }) => {
+const PostCard = ({ post, views }: { post: Post; views: number }) => {
   const { id, title, description, date } = post;
 
   return (
@@ -40,7 +43,13 @@ const PostCard = ({ post }: { post: Post }) => {
           <CardDescription>{description}</CardDescription>
         </CardContent>
         <CardFooter>
-          <CardDescription>{date.split("-").join(".")}</CardDescription>
+          <CardDescription className={cn("flex w-full justify-between")}>
+            <div>{date.split("-").join(".")}</div>
+            <div className={cn("flex items-center gap-1")}>
+              <Eye size={16} />
+              {views}
+            </div>
+          </CardDescription>
         </CardFooter>
       </Card>
     </Link>
