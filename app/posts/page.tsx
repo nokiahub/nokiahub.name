@@ -16,6 +16,10 @@ const getViews = async () => {
     console.error(error);
   }
 
+  if (!posts) {
+    return {};
+  }
+
   // return like this:
   // { "slug": 0, "slug2": 0, "slug3": 0 ... }
   return Object.fromEntries(
