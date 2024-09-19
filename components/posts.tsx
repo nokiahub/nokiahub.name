@@ -44,11 +44,11 @@ const PostCard = ({ post, views }: { post: Post; views: number }) => {
         </CardContent>
         <CardFooter>
           <CardDescription className={cn("flex w-full justify-between")}>
-            <div>{date.split("-").join(".")}</div>
-            <div className={cn("flex items-center gap-1")}>
+            <span>{date.split("-").join(".")}</span>
+            <span className={cn("flex items-center gap-1")}>
               <Eye size={16} />
               {views}
-            </div>
+            </span>
           </CardDescription>
         </CardFooter>
       </Card>
