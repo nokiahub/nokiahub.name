@@ -3,6 +3,9 @@ import { Tags } from "@/components/tags";
 import { cn } from "@/lib/utils";
 import prisma from "@/lib/prisma.server";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 const getViews = async () => {
   let posts;
   try {

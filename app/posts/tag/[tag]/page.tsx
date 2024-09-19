@@ -8,6 +8,9 @@ type Props = {
   params: { tag: string };
 };
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 const getViews = async () => {
   let posts;
   try {
