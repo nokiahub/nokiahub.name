@@ -1,5 +1,6 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
 import rehypePrettyCode from "rehype-pretty-code";
+import rehypeMermaid from "rehype-mermaid";
 import { visit } from "unist-util-visit";
 
 const Post = defineDocumentType(() => ({
@@ -111,6 +112,7 @@ export default makeSource({
   mdx: {
     rehypePlugins: [
       createRawCodeInCodeBlock,
+      rehypeMermaid,
       [rehypePrettyCode, options],
       rehypeFigcaption,
     ],
