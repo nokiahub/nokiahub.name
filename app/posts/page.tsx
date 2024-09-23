@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 const PostsPage = () => {
   return (
-    <div className={cn("flex flex-col gap-6")}>
+    <div className={cn("flex flex-col gap-12")}>
       <Tags />
       <Posts />
     </div>
