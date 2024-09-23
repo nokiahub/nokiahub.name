@@ -68,14 +68,19 @@ export function getAllPostIds() {
 }
 
 export function getAllTags() {
-  const posts = getPostsData();
-  const tags = new Set<string>();
-  posts.forEach((post) => {
-    post.tags.forEach((tag) => {
-      tags.add(tag);
-    });
-  });
-  return Array.from(tags);
+  const tags = [
+    "all",
+    "blog making",
+    "git",
+    "react",
+    "nextjs",
+    "remix",
+    "web",
+    "typescript",
+    "javascript",
+  ];
+
+  return tags.sort();
 }
 
 export async function getPostData(id: string) {
