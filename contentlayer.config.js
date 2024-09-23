@@ -74,8 +74,8 @@ const Project = defineDocumentType(() => ({
 
 const options = {
   theme: {
-    light: "rose-pine-dawn",
-    dark: "rose-pine",
+    light: "catppuccin-latte",
+    dark: "catppuccin-mocha",
   },
 };
 

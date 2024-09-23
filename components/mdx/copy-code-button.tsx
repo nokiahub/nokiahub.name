@@ -17,7 +17,7 @@ export const CopyCodeButton = ({ text }: { text: string }) => {
   return (
     <button
       className={
-        "rounded-t bg-pink-200 px-1 py-0.5 text-zinc-600 hover:bg-pink-300"
+        "rounded-t bg-[#89b4fa] px-1 py-0.5 text-[#585b70] hover:bg-[#89b4fa]"
       }
       disabled={isCopied}
       onClick={copy}
