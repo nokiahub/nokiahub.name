@@ -8,7 +8,7 @@ tags: ["git"]
 
 ## 한번에 여러개 commit을 revert하기
 여러개 commit을 revert하고 싶을 때는 `git revert`를 여러번 사용해야 한다.
-하지만 `git revert`를 여러번 사용하면 commit history가 꼬일 수 있기 때문에 `git revert`를 한번에 여러개 사용하는 방법을 알아보자.
+하지만 `git revert`를 커밋 갯수만큼 여러번 사용하면 힘들기 때문에 때문에 한번에 여러 커밋을 revert하는 방법을 알아보자.
 
 ---
 title: nokia's git history
@@ -24,7 +24,7 @@ commit id: "코드 포맷"
 commit id: "성능 이슈 발생!"
 
 "이전 커밋"으로 git history는 남기면서 돌아가고 싶을 때는 revert를 쓰면 된다.<br/>
-revert할 커밋이 많을 때는 커밋 이전의 hash만으로도 revert가 가능하다.
+커밋이 많을 때는 커밋 이전의 hash만으로도 revert가 가능하다.
 
 ```bash
 git revert --no-commit <"이전 커밋"의 hash>..HEAD
