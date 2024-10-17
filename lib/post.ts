@@ -78,6 +78,7 @@ export function getAllTags() {
     "web",
     "typescript",
     "javascript",
+    "travel",
   ];
 
   return tags.sort();
