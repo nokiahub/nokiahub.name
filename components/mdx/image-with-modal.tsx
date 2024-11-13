@@ -10,12 +10,15 @@ import {
 } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { useRef } from "react";
+import { IMAGE_URL } from "@/consts/envVariables";
 
 type Props = {
   src: string;
   alt: string;
   ariaDescribedby?: string;
 };
+
+console.log("메타", IMAGE_URL);
 
 function ImageWithModal({ src, alt, ariaDescribedby }: Props) {
   const imageRef = useRef<HTMLImageElement>(null);
@@ -52,14 +55,20 @@ function ImageWithModal({ src, alt, ariaDescribedby }: Props) {
   return (
     <Dialog>
       <DialogTrigger>
-        <Image ref={imageRef} alt={alt} width={300} height={300} src={src} />
+        <Image
+          ref={imageRef}
+          alt={alt}
+          width={300}
+          height={300}
+          src={`${IMAGE_URL}${src}`}
+        />
       </DialogTrigger>
       <DialogContent className={cn("max-h-screen max-w-screen-2xl")}>
         <DialogTitle className={cn("hidden")}>{alt}</DialogTitle>
         <div className={cn("size-screen relative flex justify-center")}>
           <Image
             alt={alt}
-            src={src}
+            src={`${IMAGE_URL}${src}`}
             sizes="100vw"
             style={getImageStyle()}
             width={500}
