@@ -23,17 +23,13 @@ function ImageWithModal({ src, alt, ariaDescribedby }: Props) {
 
   return (
     <Dialog>
-      <DialogTrigger>
+      <DialogTrigger className={cn("flex w-full justify-center")}>
         <Image
-          style={{
-            width: "100%",
-            height: "auto",
-          }}
-          sizes="(max-width: 500px) 90vw, 450px"
+          sizes="(max-width: 500px) 80vw, 400px"
           ref={imageRef}
           alt={alt}
-          width={500}
-          height={500}
+          width={400}
+          height={400}
           placeholder="blur"
           blurDataURL={`${IMAGE_URL}${src}`}
           src={`${IMAGE_URL}${src}`}
