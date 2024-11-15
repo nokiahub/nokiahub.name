@@ -52,6 +52,13 @@ export default function Page() {
           width={300}
           height={200}
         />
+        <div
+          className={cn(
+            "absolute bottom-3 left-5 rounded-b-xl rounded-tl-xl bg-emerald-50 p-2 py-1.5 text-sm font-bold text-emerald-600",
+          )}
+        >
+          제가 키우는 반려토끼에요.
+        </div>
       </div>
     </div>
   );
