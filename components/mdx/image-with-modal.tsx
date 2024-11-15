@@ -18,59 +18,38 @@ type Props = {
   ariaDescribedby?: string;
 };
 
-console.log("메타", IMAGE_URL);
-
 function ImageWithModal({ src, alt, ariaDescribedby }: Props) {
   const imageRef = useRef<HTMLImageElement>(null);
-
-  const getImageWidthAndHeight = () => {
-    if (imageRef.current) {
-      const { naturalWidth, naturalHeight } = imageRef.current;
-
-      return { width: naturalWidth, height: naturalHeight };
-    }
-  };
-
-  const getImageStyle = () => {
-    const { width, height } = getImageWidthAndHeight() ?? {
-      width: 1,
-      height: 1,
-    };
-
-    if (width > height) {
-      return {
-        width: "80%",
-        maxWidth: "80vw",
-        height: "auto",
-      };
-    }
-
-    return {
-      width: "auto",
-      height: "80%",
-      maxHeight: "80vh",
-    };
-  };
 
   return (
     <Dialog>
       <DialogTrigger>
         <Image
+          style={{
+            width: "100%",
+            height: "auto",
+          }}
+          sizes="(max-width: 500px) 90vw, 450px"
           ref={imageRef}
           alt={alt}
-          width={300}
-          height={300}
+          width={500}
+          height={500}
+          placeholder="blur"
+          blurDataURL={`${IMAGE_URL}${src}`}
           src={`${IMAGE_URL}${src}`}
         />
       </DialogTrigger>
       <DialogContent className={cn("max-h-screen max-w-screen-2xl")}>
         <DialogTitle className={cn("hidden")}>{alt}</DialogTitle>
-        <div className={cn("size-screen relative flex justify-center")}>
+        <div className={cn("relative flex w-full justify-center")}>
           <Image
+            style={{
+              width: "100%",
+              height: "auto",
+            }}
             alt={alt}
             src={`${IMAGE_URL}${src}`}
             sizes="100vw"
-            style={getImageStyle()}
             width={500}
             height={500}
           />
