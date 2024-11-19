@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 
 export const metadata: Metadata = {
-  title: "I'm Hyungju.",
+  title: "about me",
 };
 
 export default function Page() {
