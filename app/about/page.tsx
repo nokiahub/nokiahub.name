@@ -31,15 +31,6 @@ export default function Page() {
               Github
             </Link>
           </li>
-          <li>
-            <Link
-              target="_blank"
-              rel="noreferrer"
-              href="https://hazel-case-679.notion.site/29-Frontend-Developer-80d76411929b4b9e9d1cc034177385b7?pvs=4"
-            >
-              Resume
-            </Link>
-          </li>
         </ul>
         <Separator className={"my-6"} />
         <Link href={"mailto:jeonghj157@gmail.com"}>jeonghj157@gmail.com</Link>
