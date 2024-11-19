@@ -13,7 +13,7 @@ export default function Page() {
     <div className={cn("grid grid-cols-1 gap-12 gap-y-8 pt-6 sm:grid-cols-2")}>
       <div>
         <p>
-          <h1 className={cn("text-xl")}>안녕하세요. 정형주입니다.</h1>
+          <h1 className={cn("text-xl")}>안녕하세요.</h1>
           <br />
           css 스타일링, 애니메이션, 클린코드, 리팩토링에 관심이 있습니다.
           <br />

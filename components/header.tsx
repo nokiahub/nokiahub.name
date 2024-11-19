@@ -11,7 +11,7 @@ export const Header = () => {
       }
     >
       <Link className={"text-end text-xl"} href={"/"}>
-        형주의 블로그
+        nokia's blog
       </Link>
       <div className={cn("hidden md:block")}>
         <Nav />

@@ -1,4 +1,4 @@
-import { getAllPostIds, getPostData } from "@/lib/post";
+import { getAllPostIds, getPostData, getPostsData } from "@/lib/post";
 import { Metadata } from "next";
 import MdxComponents from "@/components/mdx/mdx-components";
 
@@ -22,22 +22,41 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function PostItem({ params }: Props) {
-  return (
-    <>
-      <PostSummary name={params.slug} />
-      <PostContent name={params.slug} />
-    </>
-  );
-}
-
-const PostSummary = async ({ name }: { name: string }) => {
-  const rawPost = await getPostData(name);
+  const rawPost = await getPostData(params.slug);
+  const tag = rawPost.tags.filter((tag) => tag !== "all")[0];
 
   return (
     <>
       <h1 className={"text-2xl font-bold"}>{rawPost?.title}</h1>
       <span className={"text-sm text-zinc-600"}>{rawPost?.date}</span>
+      <PostContent name={params.slug} />
+      <RelatedPosts tag={tag} currentPostSlug={params.slug} />
     </>
+  );
+}
+
+const RelatedPosts = async ({
+  tag,
+  currentPostSlug,
+}: {
+  tag: string;
+  currentPostSlug: string;
+}) => {
+  const relatedPosts = getPostsData(tag).filter(
+    (post) => post.id !== currentPostSlug,
+  );
+
+  return (
+    <div className={"mt-6"}>
+      <h2 className={"text-xl font-bold"}>Related Posts</h2>
+      <ul>
+        {relatedPosts.map((post) => (
+          <li key={post.id}>
+            <a href={`/posts/${post.id}`}>{post.title}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
