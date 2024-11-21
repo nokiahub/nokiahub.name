@@ -6,11 +6,12 @@ import { ScrollToTopButton } from "@/components/scroll-to-top-button";
 import { Providers } from "@/components/providers";
 
 import localFont from "next/font/local";
+import { cn } from "@/lib/utils";
 
-const pretendard = localFont({
-  src: "./fonts/PretendardVariable.woff2",
+const helveticaNeue = localFont({
+  src: "./fonts/HelveticaNeueCyr-Medium.woff2",
   display: "swap",
-  weight: "45 920",
+  weight: "500",
 });
 
 export const metadata = {
@@ -24,7 +25,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang={"ko"} suppressHydrationWarning>
-      <body className={pretendard.className}>
+      <body className={cn(helveticaNeue.className)}>
         <Providers>
           <Header />
           <main className={"mx-auto flex max-w-[60rem] justify-center"}>
