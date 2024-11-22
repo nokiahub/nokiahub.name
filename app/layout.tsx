@@ -25,7 +25,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang={"ko"} suppressHydrationWarning>
-      <body className={cn(helveticaNeue.className)}>
+      <body className={cn(helveticaNeue.className, "antialiased")}>
         <Providers>
           <Header />
           <main className={"mx-auto flex max-w-[60rem] justify-center"}>
