@@ -4,8 +4,8 @@ import ThemeSwitchToggle from "@/components/theme-switch-toggle";
 import { cn } from "@/lib/utils";
 
 export const links = [
-  { href: "/posts", label: "Posts", ariaLabel: "posts" },
-  { href: "/about", label: "Info", ariaLabel: "about me" },
+  { href: "/posts", label: "dev", ariaLabel: "dev" },
+  { href: "/about", label: "info", ariaLabel: "about me" },
   {
     href: "https://github.com/nokiahub",
     label: "Github",
