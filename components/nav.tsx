@@ -3,33 +3,31 @@ import Link from "next/link";
 import ThemeSwitchToggle from "@/components/theme-switch-toggle";
 import { cn } from "@/lib/utils";
 
+export const links = [
+  { href: "/posts", label: "Posts", ariaLabel: "posts" },
+  { href: "/about", label: "Info", ariaLabel: "about me" },
+  {
+    href: "https://github.com/nokiahub",
+    label: "Github",
+    ariaLabel: "my github account",
+    external: true,
+  },
+];
+
 export default function Nav() {
   return (
     <div className={cn("flex items-center")}>
-      <Button asChild variant={"ghost"}>
-        <Link href={"/posts"} aria-label={"posts"}>
-          Posts
-        </Link>
-      </Button>
-      <Button variant={"ghost"} asChild>
-        <Link href={"/projects"} aria-label={"projects"}>
-          Projects
-        </Link>
-      </Button>
-      <Button asChild variant={"ghost"} aria-label={"more about me"}>
-        <Link href="/about" aria-label="about me">
-          Info
-        </Link>
-      </Button>
-      <Button asChild variant={"ghost"} aria-label={"github"}>
-        <Link
-          target="_blank"
-          href="https://github.com/nokiahub"
-          aria-label="my github account"
-        >
-          Github
-        </Link>
-      </Button>
+      {links.map(({ href, label, ariaLabel, external }) => (
+        <Button key={label} asChild variant="ghost" aria-label={ariaLabel}>
+          <Link
+            href={href}
+            {...(external && { target: "_blank" })}
+            aria-label={ariaLabel}
+          >
+            {label}
+          </Link>
+        </Button>
+      ))}
       <ThemeSwitchToggle />
     </div>
   );
