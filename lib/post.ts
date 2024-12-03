@@ -67,23 +67,6 @@ export function getAllPostIds() {
   });
 }
 
-export function getAllTags() {
-  const tags = [
-    "all",
-    "blog making",
-    "git",
-    "react",
-    "nextjs",
-    "remix",
-    "web",
-    "typescript",
-    "javascript",
-    "travel",
-  ];
-
-  return tags.sort();
-}
-
 export async function getPostData(id: string) {
   const matterResult = getMatterFrom(postsDirectory, `${id}.mdx`);
   const processedContent = await remark()

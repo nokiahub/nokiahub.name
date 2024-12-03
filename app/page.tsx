@@ -1,11 +1,12 @@
 import { Posts } from "@/components/posts";
 import { cn } from "@/lib/utils";
-import { Tags } from "@/components/tags";
+import { Tag, Tags } from "@/components/tags";
+import { devTags } from "@/consts/tags";
 
-export default function Page() {
+export default async function Page() {
   return (
     <div className={cn("flex flex-col gap-12")}>
-      <Tags />
+      <Tags items={devTags} />
       <Posts />
     </div>
   );

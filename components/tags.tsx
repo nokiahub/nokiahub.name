@@ -1,26 +1,38 @@
+"use client";
+
 import { Badge } from "@/components/ui/badge";
 
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { getAllTags } from "@/lib/post";
+import { TagItem } from "@/app/posts/page";
+import { usePathname } from "next/navigation";
 
 type Props = {
-  currentTag?: string;
+  items: TagItem[];
 };
+export function Tags({ items }: Props) {
+  const pathname = usePathname();
 
-export function Tags({ currentTag = "all" }: Props) {
   return (
     <div className="flex flex-wrap gap-3 self-center">
-      {getAllTags().map((tag) => (
-        <Link href={`/posts/tag/${tag}`} key={tag}>
+      {items.map(({ href, name }) => (
+        <Link href={href}>
           <Badge
             className={cn("cursor-pointer")}
-            variant={currentTag === tag ? "default" : "secondary"}
+            variant={href === pathname ? "default" : "secondary"}
           >
-            {tag}
+            {name}
           </Badge>
         </Link>
       ))}
     </div>
+  );
+}
+
+export function Tag({ tag, href }: { tag: string; href: string }) {
+  return (
+    <Link href={href}>
+      <Badge className={cn("cursor-pointer")}>{tag}</Badge>
+    </Link>
   );
 }

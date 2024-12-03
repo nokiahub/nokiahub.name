@@ -1,7 +1,7 @@
 import { Posts } from "@/components/posts";
-import { Tags } from "@/components/tags";
+import { Tag, Tags } from "@/components/tags";
 import { cn } from "@/lib/utils";
-import { getAllTags } from "@/lib/post";
+import { devTags } from "@/consts/tags";
 
 type Props = {
   params: { tag: string };
@@ -9,7 +9,7 @@ type Props = {
 const PostsPage = ({ params }: Props) => {
   return (
     <div className={cn("flex flex-col gap-12")}>
-      <Tags currentTag={decodeURI(params.tag)} />
+      <Tags items={devTags} />
       <Posts filterBy={decodeURI(params.tag)} />
     </div>
   );
@@ -18,5 +18,15 @@ const PostsPage = ({ params }: Props) => {
 export default PostsPage;
 
 export async function generateStaticParams() {
-  return getAllTags();
+  return [
+    "all",
+    "blog making",
+    "git",
+    "react",
+    "nextjs",
+    "remix",
+    "web",
+    "typescript",
+    "javascript",
+  ];
 }
