@@ -39,7 +39,15 @@ export const devTags = [
 
 export const etcTags = [
   {
+    name: "all",
+    href: "/etc",
+  },
+  {
     name: "travel",
     href: "/etc/tag/travel",
+  },
+  {
+    name: "music",
+    href: "/etc/tag/music",
   },
 ];
