@@ -28,9 +28,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className={cn(helveticaNeue.className, "antialiased")}>
         <Providers>
           <Header />
-          <main className={"mx-auto flex max-w-[60rem] justify-center"}>
-            {/*TODO: x-scroll overflow-hidden으로 임시 해결(원인 파악하기)*/}
-            <div className={"overflow-hidden px-6 py-8"}>{children}</div>
+          <main className={"flex justify-center py-8"}>
+            <div className={cn(" w-full max-w-[960px]")}>{children}</div>
           </main>
           <Footer />
           <ScrollToTopButton />
