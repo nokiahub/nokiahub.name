@@ -29,7 +29,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Providers>
           <Header />
           <main className={"flex justify-center py-8"}>
-            <div className={cn(" w-full max-w-[960px]")}>{children}</div>
+            <div className={cn("w-full max-w-[960px]")}>{children}</div>
           </main>
           <Footer />
           <ScrollToTopButton />
