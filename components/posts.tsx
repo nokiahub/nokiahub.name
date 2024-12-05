@@ -1,4 +1,4 @@
-import { getPostsData, Post } from "@/lib/post";
+import { Post } from "@/lib/post";
 import { NextPage } from "next";
 import Link from "next/link";
 import {
@@ -10,17 +10,15 @@ import {
 } from "@/components/ui/card";
 
 type Props = {
-  filterBy?: string;
+  items: Post[];
 };
 
-export const Posts: NextPage<Props> = ({ filterBy }) => {
-  const posts = getPostsData(filterBy);
-
+export const Posts: NextPage<Props> = ({ items }) => {
   return (
     <ol className={"grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"}>
-      {posts.map((post) => (
-        <li className={"list-none"} key={post.id}>
-          <PostCard post={post} />
+      {items.map((item) => (
+        <li className={"list-none"} key={item.id}>
+          <PostCard post={item} />
         </li>
       ))}
     </ol>

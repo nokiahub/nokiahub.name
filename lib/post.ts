@@ -14,8 +14,6 @@ export type Post = {
   tags: string[];
 };
 
-const postsDirectory = path.join(process.cwd(), "content/posts");
-
 const compareByDate = (a: Post, b: Post) => {
   if (a.date < b.date) {
     return 1;
@@ -38,7 +36,8 @@ const getMatterFrom = (ContentPath: string, fileName: string) => {
   return matter(fileContents);
 };
 
-export function getPostsData(filterBy?: string) {
+export function getPostsData(filterBy?: string, tag?: string) {
+  const postsDirectory = path.join(process.cwd(), "content/posts");
   const directoryNames = getFileNamesFrom(postsDirectory);
   const postsData = directoryNames.map((fileName) => {
     const id = trimFileExtension(fileName);
@@ -51,12 +50,17 @@ export function getPostsData(filterBy?: string) {
 
   return postsData
     .filter((postsData) => {
-      return !filterBy || postsData.tags.includes(filterBy);
+      return !filterBy || postsData.category === filterBy;
+    })
+    .filter((postsData) => {
+      return !tag || postsData.tags.includes(tag);
     })
     .sort(compareByDate);
 }
 
 export function getAllPostIds() {
+  const postsDirectory = path.join(process.cwd(), "content/posts");
+
   const fileNames = getFileNamesFrom(postsDirectory);
   return fileNames.map((fileName) => {
     return {
@@ -68,6 +72,8 @@ export function getAllPostIds() {
 }
 
 export async function getPostData(id: string) {
+  const postsDirectory = path.join(process.cwd(), "content/posts");
+
   const matterResult = getMatterFrom(postsDirectory, `${id}.mdx`);
   const processedContent = await remark()
     .use(html)

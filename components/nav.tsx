@@ -5,13 +5,15 @@ import { cn } from "@/lib/utils";
 
 export const links = [
   { href: "/posts", label: "dev", ariaLabel: "dev" },
-  { href: "/about", label: "info", ariaLabel: "about me" },
+  { href: "/etc", label: "etc", ariaLabel: "more personal stuff" },
+
   {
     href: "https://github.com/nokiahub",
     label: "Github",
     ariaLabel: "my github account",
     external: true,
   },
+  { href: "/about", label: "info", ariaLabel: "about me" },
 ];
 
 export default function Nav() {

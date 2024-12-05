@@ -16,10 +16,10 @@ export function Tags({ items }: Props) {
   return (
     <div className="flex flex-wrap gap-3 self-center">
       {items.map(({ href, name }) => (
-        <Link href={href}>
+        <Link href={href} key={name}>
           <Badge
             className={cn("cursor-pointer")}
-            variant={href === pathname ? "default" : "secondary"}
+            variant={href === decodeURI(pathname) ? "default" : "secondary"}
           >
             {name}
           </Badge>
