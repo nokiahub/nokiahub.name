@@ -1,6 +1,7 @@
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { Figcaption } from "@/components/mdx/mdx-figcaption";
 import { ImageWithModal } from "@/components/mdx/image-with-modal";
+import { YouTube } from "@/components/mdx/youtube";
 
 type Props = {
   post: {
@@ -13,6 +14,7 @@ type Props = {
 const mdxComponents = {
   figcaption: Figcaption,
   ImageWithModal: ImageWithModal,
+  YouTube: YouTube,
 };
 export default function MdxComponents({ post }: Props) {
   const MDXComponent = useMDXComponent(post?.body?.code || "");
