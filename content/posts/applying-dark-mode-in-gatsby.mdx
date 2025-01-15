@@ -10,7 +10,7 @@ tags:
 제 블로그에 다크모드를 적용해본 과정을 정리합니다.<br/>
 예전에 프로젝트를 진행하면서 styled-components로 웹사이트의 테마를 적용해본 경험이 있었지만, 개츠비 블로그(SSG)에 CSR 프로젝트에서 적용했던 것과 같은 방법으로 테마를 적용했을 때 마주쳤던 문제점들과 이를 해결하는 과정을 정리해보겠습니다.<br/>
 
-### 1. ThemeContext, ThemeProvider 생성
+## 1. ThemeContext, ThemeProvider 생성
 
 ```javascript title="themeContext.js"
 import { createContext, useState } from "react";
@@ -44,7 +44,7 @@ const ThemeProvider = ({ children }) => {
 
 ThemeProvider를 통해 theme의 state와 toggleTheme을 해당 컴포넌트 하위 자식 컴포넌트가 useContext를 통해 theme에 대한 정보를 알 수 있게하고, theme의 값을 업데이트 할 수 있도록 했습니다.<br/>
 
-### 2. StyledThemeProvider 컴포넌트
+## 2. StyledThemeProvider 컴포넌트
 
 styled-components의 ThemeProvider는 props를 통해 theme을 제공하는 컴포넌트입니다.<br/>
 CSR의 경우 이 컴포넌트를 앤트리 파일의 최상단 컴포넌트로 지정하면 전역적으로 styled 컴포넌트의 props로 props.theme에 접근하여 ThemeProvider의 theme 값을 사용할 수 있습니다.<br/>
@@ -68,7 +68,7 @@ const StyledThemeProvider = ({ children }) => {
 };
 ```
 
-### 3. 공통 Layout 컴포넌트에 ThemeProvider 적용
+## 3. 공통 Layout 컴포넌트에 ThemeProvider 적용
 
 개츠비는 CSR처럼 index.js같은 앤트리 파일이 따로 없고 각각의 페이지가 최상단 파일이기 때문에 모든 페이지에 wrapper로 적용되어있는 Layout 컴포넌트에 위의 두 컴포넌트 ThemeProvider, StyledThemeProvider를 적용해봤습니다.
 
@@ -90,13 +90,13 @@ const Layout = ({ children }) => {
 };
 ```
 
-#### 문제점
+### 문제점
 
 SSG는 페이지를 이동할 때마다 해당 페이지를 서버로 요청합니다. 그럴 경우 클라이언트에 context API와 Layout 컴포넌트 모두 초기화되기 때문에 사용자가 테마를 업데이트해도 페이지를 이동하면 theme이 초기화되는 문제가 발생합니다.<br/>
 
 그렇다면 개츠비에서는 페이지를 이동할 때마다 context가 초기화되니 상태관리를 할 수 없는 것일까요? 구글링한 결과 개츠비 공식 사이트에서 wrapRootElement라는 API를 사용하여 위의 문제를 해결할 수 있었습니다.<br/>
 
-### 4. Gatsby Server Rendering APIs
+## 4. Gatsby Server Rendering APIs
 
 **wrapRootElement**
 
@@ -148,7 +148,7 @@ const Layout = ({ children }) => {
 };
 ```
 
-### To Do
+## To Do
 
 **가시성 좋은 다크 모드 컬러 조사 후 적용하기**<br/>
 현재 다크모드 컬러는 라이트모드와 똑같은 primary 컬러를 사용하는데 배경색과 대비가 잘 되지 않아 더 잘 보이는 컬러로 업데이트 할 예정입니다.<br/>
@@ -156,7 +156,7 @@ const Layout = ({ children }) => {
 **사용자가 다시 블로그를 방문해도 theme 유지하기**<br/>
 사용자가 블로그를 껐다가 다시 방문하거나 새로고침하면 theme이 초기화가 됩니다. localStorage등에 theme 데이터를 저장해서 다시 방문하여도 이전 사용자가 설정했던 theme이 적용되도록 해야겠습니다.
 
-### 참고자료
+## 참고자료
 
 [gatsbyjs - Gatsby Server Rendering APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-ssr/)<br/>
 [styled components - Theming](https://styled-components.com/docs/advanced)<br/>
