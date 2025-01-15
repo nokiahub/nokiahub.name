@@ -26,14 +26,19 @@ export default async function PostItem({ params }: Props) {
   const tag = rawPost.tags.filter((tag) => tag !== "all")[0];
 
   return (
-    <>
-      <h1 className={"text-2xl font-bold"}>{rawPost?.title}</h1>
-      <span className={"text-sm text-zinc-600"}>{rawPost?.date}</span>
+    <div className={"prose mt-6 dark:prose-invert"}>
+      <h1>{rawPost?.title}</h1>
+      <p>{rawPost?.date}</p>
       <PostContent name={params.slug} />
-      <RelatedPosts tag={tag} currentPostSlug={params.slug} />
-    </>
+    </div>
   );
 }
+
+const PostContent = ({ name }: { name: string }) => {
+  const postForMdx = allPosts.find((post) => post._id.includes(name));
+
+  return postForMdx && <MdxComponents post={postForMdx} />;
+};
 
 const RelatedPosts = async ({
   tag,
@@ -57,16 +62,6 @@ const RelatedPosts = async ({
         ))}
       </ul>
     </div>
-  );
-};
-
-const PostContent = ({ name }: { name: string }) => {
-  const postForMdx = allPosts.find((post) => post._id.includes(name));
-
-  return (
-    <article className={"prose mt-6 dark:prose-invert"}>
-      {postForMdx && <MdxComponents post={postForMdx} />}
-    </article>
   );
 };
 
