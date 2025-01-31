@@ -13,6 +13,10 @@ export const Header = () => {
   const handleScroll = useCallback(() => {
     const currentScrollY = window.scrollY;
 
+    if (currentScrollY === 0) {
+      setIsHidden(false);
+    }
+
     setIsHidden(currentScrollY > lastScrollY);
     setLastScrollY(currentScrollY);
   }, [lastScrollY]);
