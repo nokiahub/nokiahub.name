@@ -26,7 +26,7 @@ export default async function PostItem({ params }: Props) {
 
   return (
     <div className={"prose mt-6 dark:prose-invert"}>
-      <h1>{rawPost?.title}</h1>
+      <h1 className={"break-words"}>{rawPost?.title}</h1>
       <p>{rawPost?.date}</p>
       <PostContent name={params.slug} />
     </div>
