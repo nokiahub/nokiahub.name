@@ -14,7 +14,7 @@ export const Header = () => {
     const currentScrollY = window.scrollY;
 
     if (currentScrollY <= 0) {
-      setIsHidden(false);
+      return setIsHidden(false);
     }
 
     setIsHidden(currentScrollY > lastScrollY);
