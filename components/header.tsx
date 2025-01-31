@@ -15,7 +15,7 @@ export const Header = () => {
 
     setIsHidden(currentScrollY > lastScrollY);
     setLastScrollY(currentScrollY);
-  }, []);
+  }, [lastScrollY]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
