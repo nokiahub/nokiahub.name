@@ -71,17 +71,23 @@ export function getAllPostIds() {
   });
 }
 
+function isStringArray(value: unknown): value is string[] {
+  return (
+    Array.isArray(value) && value.every((item) => typeof item === "string")
+  );
+}
+
 export async function getTagCounts() {
   const postsDirectory = path.join(process.cwd(), "content/posts");
   const fileNames = fs.readdirSync(postsDirectory);
   const tagCounts: Record<string, number> = {};
 
-  fileNames.map((fileName) => {
+  fileNames.forEach((fileName) => {
     const filePath = path.join(postsDirectory, fileName);
     const fileContents = fs.readFileSync(filePath, "utf8");
-    const { data } = matter(fileContents) as { data: Post };
+    const { data } = matter(fileContents);
 
-    const tags = data.tags || ["all"];
+    const tags = isStringArray(data.tags) ? data.tags : ["all"];
 
     tags.forEach((tag) => {
       tagCounts[tag] = (tagCounts[tag] || 0) + 1;

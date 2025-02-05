@@ -6,7 +6,13 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export function Tag({ name, href, count }) {
+type Props = {
+  name: string;
+  href: string;
+  count: number;
+};
+
+export function Tag({ name, href, count }: Props) {
   const pathname = usePathname();
 
   return (
