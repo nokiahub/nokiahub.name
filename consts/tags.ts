@@ -1,53 +1,23 @@
-export const devTags = [
-  {
-    name: "all",
-    href: "/posts",
-  },
-  {
-    name: "blog making",
-    href: "/posts/tag/blog making",
-  },
-  {
-    name: "git",
-    href: "/posts/tag/git",
-  },
-  {
-    name: "react",
-    href: "/posts/tag/react",
-  },
-  {
-    name: "nextjs",
-    href: "/posts/tag/nextjs",
-  },
-  {
-    name: "remix",
-    href: "/posts/tag/remix",
-  },
-  {
-    name: "web",
-    href: "/posts/tag/web",
-  },
-  {
-    name: "typescript",
-    href: "/posts/tag/typescript",
-  },
-  {
-    name: "javascript",
-    href: "/posts/tag/javascript",
-  },
+export const devTagNames = [
+  "all",
+  "blog making",
+  "git",
+  "react",
+  "nextjs",
+  "remix",
+  "web",
+  "typescript",
+  "javascript",
 ];
 
-export const etcTags = [
-  {
-    name: "all",
-    href: "/etc",
-  },
-  {
-    name: "travel",
-    href: "/etc/tag/travel",
-  },
-  {
-    name: "music",
-    href: "/etc/tag/music",
-  },
-];
+export const devTags = devTagNames.map((name) => ({
+  name,
+  href: `/posts/tag/${name}`,
+}));
+
+export const etcTagNames = ["all", "travel", "music"];
+
+export const etcTags = etcTagNames.map((name) => ({
+  name,
+  href: `/etc/tag/${name}`,
+}));

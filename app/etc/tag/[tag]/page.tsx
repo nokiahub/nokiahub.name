@@ -1,8 +1,8 @@
 import { Posts } from "@/components/posts";
-import { Tags } from "@/components/tags";
 import { cn } from "@/lib/utils";
-import { etcTags } from "@/consts/tags";
+import { etcTagNames, etcTags } from "@/consts/tags";
 import { getPostsData } from "@/lib/post";
+import { TagsWithCount } from "@/components/tags-with-count";
 
 type Props = {
   params: { tag: string };
@@ -12,7 +12,7 @@ const PostsPage = ({ params }: Props) => {
 
   return (
     <div className={cn("flex flex-col gap-12")}>
-      <Tags items={etcTags} />
+      <TagsWithCount items={etcTags} />
       <Posts items={posts} />
     </div>
   );
@@ -21,5 +21,5 @@ const PostsPage = ({ params }: Props) => {
 export default PostsPage;
 
 export async function generateStaticParams() {
-  return ["travel"];
+  return etcTagNames;
 }

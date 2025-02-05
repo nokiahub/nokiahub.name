@@ -71,6 +71,26 @@ export function getAllPostIds() {
   });
 }
 
+export async function getTagCounts() {
+  const postsDirectory = path.join(process.cwd(), "content/posts");
+  const fileNames = fs.readdirSync(postsDirectory);
+  const tagCounts: Record<string, number> = {};
+
+  fileNames.map((fileName) => {
+    const filePath = path.join(postsDirectory, fileName);
+    const fileContents = fs.readFileSync(filePath, "utf8");
+    const { data } = matter(fileContents) as { data: Post };
+
+    const tags = data.tags || ["all"];
+
+    tags.forEach((tag) => {
+      tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+    });
+  });
+
+  return tagCounts;
+}
+
 export async function getPostData(id: string) {
   const postsDirectory = path.join(process.cwd(), "content/posts");
 

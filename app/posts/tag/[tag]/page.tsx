@@ -1,8 +1,8 @@
 import { Posts } from "@/components/posts";
-import { Tags } from "@/components/tags";
-import { cn } from "@/lib/utils";
-import { devTags } from "@/consts/tags";
+import { devTagNames, devTags } from "@/consts/tags";
 import { getPostsData } from "@/lib/post";
+import { TagsWithCount } from "@/components/tags-with-count";
+import { cn } from "@/lib/utils";
 
 type Props = {
   params: { tag: string };
@@ -12,7 +12,7 @@ const PostsPage = ({ params }: Props) => {
 
   return (
     <div className={cn("flex flex-col gap-12")}>
-      <Tags items={devTags} />
+      <TagsWithCount items={devTags} />
       <Posts items={posts} />
     </div>
   );
@@ -21,15 +21,5 @@ const PostsPage = ({ params }: Props) => {
 export default PostsPage;
 
 export async function generateStaticParams() {
-  return [
-    "all",
-    "blog making",
-    "git",
-    "react",
-    "nextjs",
-    "remix",
-    "web",
-    "typescript",
-    "javascript",
-  ];
+  return devTagNames;
 }
