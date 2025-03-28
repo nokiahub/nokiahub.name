@@ -2,7 +2,6 @@ import "@/styles/globals.css";
 import { ReactNode } from "react";
 import { Header } from "@/components/header";
 import Footer from "../components/footer";
-import { ScrollToTopButton } from "@/components/scroll-to-top-button";
 import { Providers } from "@/components/providers";
 
 import localFont from "next/font/local";
@@ -25,14 +24,23 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang={"ko"} suppressHydrationWarning>
-      <body className={cn(helveticaNeue.className, "antialiased")}>
+      <body
+        className={cn(
+          helveticaNeue.className,
+          "antialiased",
+          "flex min-h-screen flex-col justify-between",
+        )}
+      >
         <Providers>
-          <Header />
-          <main className={"flex justify-center py-8"}>
-            <div className={cn("w-full max-w-[960px] px-4")}>{children}</div>
-          </main>
+          <div>
+            <Header />
+            <main className={"flex justify-center py-8"}>
+              <div className={cn("w-full max-w-[960px] px-4 pb-20")}>
+                {children}
+              </div>
+            </main>
+          </div>
           <Footer />
-          <ScrollToTopButton />
         </Providers>
       </body>
     </html>

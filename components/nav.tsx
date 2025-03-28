@@ -4,7 +4,6 @@ import ThemeSwitchToggle from "@/components/theme-switch-toggle";
 import { cn } from "@/lib/utils";
 
 export const links = [
-  { href: "/posts", label: "dev", ariaLabel: "dev" },
   { href: "/etc", label: "etc", ariaLabel: "more personal stuff" },
   { href: "/about", label: "info", ariaLabel: "about me" },
 ];
