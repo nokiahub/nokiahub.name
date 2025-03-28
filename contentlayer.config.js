@@ -44,34 +44,6 @@ const Post = defineDocumentType(() => ({
   },
 }));
 
-const Project = defineDocumentType(() => ({
-  name: "Project",
-  filePathPattern: `projects/*.@(md|mdx)`,
-  contentType: "mdx",
-  fields: {
-    title: {
-      type: "string",
-      description: "The title of the project",
-      required: true,
-    },
-    description: {
-      type: "string",
-      description: "The summary of the project",
-      required: true,
-    },
-    date: {
-      type: "date",
-      description: "The date of the project",
-      required: true,
-    },
-    private: {
-      type: "boolean",
-      description: "The privacy of the project",
-      required: false,
-    },
-  },
-}));
-
 const options = {
   theme: {
     light: "catppuccin-latte",
@@ -108,7 +80,7 @@ const rehypeFigcaption = () => (tree) => {
 };
 export default makeSource({
   contentDirPath: "content",
-  documentTypes: [Post, Project],
+  documentTypes: [Post],
   mdx: {
     rehypePlugins: [
       createRawCodeInCodeBlock,
