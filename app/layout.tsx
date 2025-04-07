@@ -4,14 +4,15 @@ import { Header } from "@/components/header";
 import Footer from "../components/footer";
 import { Providers } from "@/components/providers";
 
-import localFont from "next/font/local";
-import { cn } from "@/lib/utils";
+import { Nanum_Gothic } from "next/font/google";
 
-const helveticaNeue = localFont({
-  src: "./fonts/HelveticaNeueCyr-Medium.woff2",
+const nanumGothic = Nanum_Gothic({
+  subsets: ["latin"],
   display: "swap",
-  weight: "500",
+  weight: ["400", "700"],
 });
+
+import { cn } from "@/lib/utils";
 
 export const metadata = {
   title: "nokia's blog",
@@ -26,9 +27,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang={"ko"} suppressHydrationWarning>
       <body
         className={cn(
-          helveticaNeue.className,
           "antialiased",
           "flex min-h-screen flex-col justify-between",
+          nanumGothic.className,
         )}
       >
         <Providers>
