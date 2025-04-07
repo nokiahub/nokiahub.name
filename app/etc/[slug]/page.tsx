@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-function formatKoreanDate(dateStr) {
+function formatKoreanDate(dateStr: string) {
   const [year, month, day] = dateStr.split("-");
   return `${year}년 ${parseInt(month)}월 ${parseInt(day)}일`;
 }

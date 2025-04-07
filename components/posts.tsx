@@ -10,14 +10,14 @@ export const Posts: NextPage<Props> = ({ items }) => {
   return (
     <ol className={cn("grid grid-cols-1 md:grid-cols-3")}>
       {items.map((item) => (
-        <PostCard post={item} />
+        <PostCard key={item.id} post={item} />
       ))}
     </ol>
   );
 };
 
 const PostCard = ({ post }: { post: Post }) => {
-  const { id, title, description, date } = post;
+  const { id, title, description } = post;
 
   return (
     <article className="p-6">
