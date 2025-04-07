@@ -1,9 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Nav from "@/components/nav";
-import Burger from "@/components/burger";
-import { cn } from "@/lib/utils";
 import { useCallback, useEffect, useState } from "react";
 
 export const Header = () => {
@@ -30,21 +27,16 @@ export const Header = () => {
   }, [lastScrollY, handleScroll]);
 
   return (
-    <div
-      className={cn(
-        "sticky top-0 z-10 flex items-center justify-between border-b border-border/45 bg-background px-6 py-3",
-        isHidden ? "invisible" : "",
-      )}
-    >
-      <Link className={"text-end text-xl"} href={"/"}>
-        nokia&apos;s blog
-      </Link>
-      <div className={cn("hidden md:block")}>
-        <Nav />
-      </div>
-      <div className={cn("block md:hidden")}>
-        <Burger />
-      </div>
-    </div>
+    <header className="flex items-center justify-between border-b border-black px-4 py-2 text-xs uppercase tracking-widest">
+      <span>nokia.blog</span>
+      <nav className="space-x-3">
+        <Link href="/etc" className="hover:underline">
+          Archives
+        </Link>
+        <Link href="/about" className="hover:underline">
+          About
+        </Link>
+      </nav>
+    </header>
   );
 };

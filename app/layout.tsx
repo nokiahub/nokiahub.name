@@ -13,6 +13,7 @@ const nanumGothic = Nanum_Gothic({
 });
 
 import { cn } from "@/lib/utils";
+import { Hero } from "@/components/hero";
 
 export const metadata = {
   title: "nokia's blog",
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <Header />
             <main className={"flex justify-center py-8"}>
               <div className={cn("w-full max-w-[960px] px-4 pb-20")}>
+                <Hero />
                 {children}
               </div>
             </main>
