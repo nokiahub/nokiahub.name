@@ -1,6 +1,6 @@
 export const Hero = () => {
   return (
-    <section className="border-b border-black p-6 text-center md:p-12">
+    <section className="p-6 text-center md:p-12">
       <h1 className="mb-4 text-5xl font-bold md:text-7xl">
         NO STYLE IS STYLE.
       </h1>

@@ -1,14 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { cn } from "@/lib/utils";
 import { useRef } from "react";
 import { IMAGE_URL } from "@/consts/envVariables";
 
@@ -22,39 +14,16 @@ function ImageWithModal({ src, alt, ariaDescribedby }: Props) {
   const imageRef = useRef<HTMLImageElement>(null);
 
   return (
-    <Dialog>
-      <DialogTrigger className={cn("flex w-full justify-center")}>
-        <Image
-          sizes="(max-width: 500px) 80vw, 400px"
-          ref={imageRef}
-          alt={alt}
-          width={400}
-          height={400}
-          placeholder="blur"
-          blurDataURL={`${IMAGE_URL}${src}`}
-          src={`${IMAGE_URL}${src}`}
-        />
-      </DialogTrigger>
-      <DialogContent className={cn("max-h-screen max-w-screen-2xl")}>
-        <DialogTitle className={cn("hidden")}>{alt}</DialogTitle>
-        <div className={cn("relative flex w-full justify-center")}>
-          <Image
-            style={{
-              width: "100%",
-              height: "auto",
-            }}
-            alt={alt}
-            src={`${IMAGE_URL}${src}`}
-            sizes="100vw"
-            width={500}
-            height={500}
-          />
-        </div>
-        <DialogDescription className={cn("hidden")}>
-          {ariaDescribedby}
-        </DialogDescription>
-      </DialogContent>
-    </Dialog>
+    <Image
+      sizes="(max-width: 500px) 80vw, 400px"
+      ref={imageRef}
+      alt={alt}
+      width={400}
+      height={400}
+      placeholder="blur"
+      blurDataURL={`${IMAGE_URL}${src}`}
+      src={`${IMAGE_URL}${src}`}
+    />
   );
 }
 

@@ -28,7 +28,7 @@ export const Header = () => {
 
   return (
     <header className="flex items-center justify-between border-b border-black px-4 py-2 text-xs uppercase tracking-widest">
-      <span>nokia.blog</span>
+      <Link href={"/"}>nokia.blog</Link>
       <nav className="space-x-3">
         <Link href="/etc" className="hover:underline">
           Archives
