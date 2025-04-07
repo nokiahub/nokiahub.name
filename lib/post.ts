@@ -74,7 +74,7 @@ export function getAllPostIds() {
 export async function getPostData(id: string) {
   const postsDirectory = path.join(process.cwd(), "content/posts");
 
-  const matterResult = getMatterFrom(postsDirectory, `${id}.mdx`);
+  const matterResult = getMatterFrom(postsDirectory, `${id}.md`);
   const processedContent = await remark()
     .use(html)
     .process(matterResult.content);

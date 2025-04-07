@@ -1,10 +1,8 @@
 import { getAllPostIds, getPostData } from "@/lib/post";
 import { Metadata } from "next";
-import MdxComponents from "@/components/mdx/mdx-components";
-
-import { allPosts } from "contentlayer/generated";
 
 import { URLSearchParams } from "url";
+import { cn } from "@/lib/utils";
 
 type Props = {
   params: { slug: string };
@@ -21,22 +19,41 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+function formatKoreanDate(dateStr) {
+  const [year, month, day] = dateStr.split("-");
+  return `${year}년 ${parseInt(month)}월 ${parseInt(day)}일`;
+}
+
+// Example:
+console.log(formatKoreanDate("2025-04-07")); // 2025년 4월 7일
+
 export default async function PostItem({ params }: Props) {
   const rawPost = await getPostData(params.slug);
 
   return (
     <div className={"prose mt-6 dark:prose-invert"}>
-      <h1 className={"break-words"}>{rawPost?.title}</h1>
-      <p>{rawPost?.date}</p>
+      <h1 className={"mb-2 text-4xl font-bold md:text-5xl"}>
+        {rawPost?.title}
+      </h1>
+      <p
+        className={cn(
+          "border-b border-black pb-2 text-sm uppercase text-gray-700",
+        )}
+      >
+        {formatKoreanDate(rawPost?.date)} · {rawPost.tags?.join(" · ")}
+      </p>
       <PostContent name={params.slug} />
     </div>
   );
 }
 
-const PostContent = ({ name }: { name: string }) => {
-  const postForMdx = allPosts.find((post) => post._id.includes(name));
-
-  return postForMdx && <MdxComponents post={postForMdx} />;
+const PostContent = async ({ name }: { name: string }) => {
+  const postForMdx = await getPostData(name);
+  console.log(postForMdx);
+  // return postForMdx && <MdxComponents post={postForMdx} />;
+  return (
+    <div dangerouslySetInnerHTML={{ __html: postForMdx.contentHtml }}></div>
+  );
 };
 
 export async function generateStaticParams() {

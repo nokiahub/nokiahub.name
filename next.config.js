@@ -1,5 +1,4 @@
-import { withContentlayer } from "next-contentlayer";
-export default withContentlayer({
+const nextConfig = {
   images: {
     remotePatterns: [
       {
@@ -8,4 +7,6 @@ export default withContentlayer({
       },
     ],
   },
-});
+};
+
+module.exports = nextConfig;
