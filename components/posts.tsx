@@ -23,7 +23,7 @@ const PostCard = ({ post }: { post: Post }) => {
     <article className="p-6">
       <h2 className="mb-2 text-xl font-bold uppercase">{title}</h2>
       <p>{description}</p>
-      <a href={`/posts/${id}`} className="mt-2 block underline">
+      <a href={`/etc/${id}`} className="mt-2 block underline">
         Read →
       </a>
     </article>
