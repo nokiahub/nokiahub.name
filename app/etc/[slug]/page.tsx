@@ -1,8 +1,10 @@
-import { getAllPostIds, getPostData } from "@/lib/post";
+import { getPostData } from "@/lib/post";
 import { Metadata } from "next";
 
 import { URLSearchParams } from "url";
 import { cn } from "@/lib/utils";
+import path from "path";
+import fs from "fs";
 
 type Props = {
   params: { slug: string };
@@ -23,9 +25,6 @@ function formatKoreanDate(dateStr: string) {
   const [year, month, day] = dateStr.split("-");
   return `${year}년 ${parseInt(month)}월 ${parseInt(day)}일`;
 }
-
-// Example:
-console.log(formatKoreanDate("2025-04-07")); // 2025년 4월 7일
 
 export default async function PostItem({ params }: Props) {
   const rawPost = await getPostData(params.slug);
@@ -57,5 +56,14 @@ const PostContent = async ({ name }: { name: string }) => {
 };
 
 export async function generateStaticParams() {
-  return getAllPostIds();
+  const postsDirectory = path.join(process.cwd(), "content/posts");
+  const fileNames = fs.readdirSync(postsDirectory);
+
+  return fileNames.map((fileName) => {
+    return {
+      params: {
+        id: fileName.replace(/\.[^/.]+$/, ""),
+      },
+    };
+  });
 }
