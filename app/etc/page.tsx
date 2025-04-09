@@ -4,9 +4,7 @@ import { Hero } from "@/components/hero";
 import path from "path";
 import fs from "fs";
 
-const compareByDate = (a: Post, b: Post): number =>
-  b.date.localeCompare(a.date);
-export function getPostsData(filterBy?: string, tag?: string): Post[] {
+function getPostsData(filterBy?: string, tag?: string): Post[] {
   const postsDir = path.join(process.cwd(), "content/posts");
   const fileNames = fs.readdirSync(postsDir);
 
@@ -19,7 +17,7 @@ export function getPostsData(filterBy?: string, tag?: string): Post[] {
   return posts
     .filter((post) => !filterBy || post.category === filterBy)
     .filter((post) => !tag || post.tags.includes(tag))
-    .sort(compareByDate);
+    .sort((a: Post, b: Post): number => b.date.localeCompare(a.date));
 }
 
 const EtcPage = () => {

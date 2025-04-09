@@ -7,7 +7,6 @@ import html from "remark-html";
 export type Post = {
   id: string;
   category: string;
-  published: boolean;
   date: string;
   title: string;
   description: string;
@@ -20,9 +19,7 @@ export const getMatterFrom = (ContentPath: string, fileName: string) => {
   return matter(fileContents);
 };
 
-export async function getPostData(
-  id: string,
-): Promise<Post & { contentHtml: string }> {
+export async function getPostData(id: string) {
   const postsDir = path.join(process.cwd(), "content/posts");
   const { data, content } = getMatterFrom(postsDir, `${id}.md`);
 
@@ -32,6 +29,6 @@ export async function getPostData(
   return {
     id,
     contentHtml,
-    ...data,
+    ...(data as Omit<Post, "id">),
   };
 }

@@ -48,8 +48,6 @@ export default async function PostItem({ params }: Props) {
 
 const PostContent = async ({ name }: { name: string }) => {
   const postForMdx = await getPostData(name);
-  console.log(postForMdx);
-  // return postForMdx && <MdxComponents post={postForMdx} />;
   return (
     <div dangerouslySetInnerHTML={{ __html: postForMdx.contentHtml }}></div>
   );
