@@ -32,7 +32,7 @@ export default async function PostItem({ params }: Props) {
 
   return (
     <div className={"justify-round flex w-screen dark:prose-invert"}>
-      <Toc />
+      {/*<Toc />*/}
       <main className={cn("flex w-full justify-center")}>
         <div className={cn("w-full max-w-[900px] pt-10")}>
           <h1 className={"mb-2 px-3 text-4xl font-bold md:text-5xl"}>
