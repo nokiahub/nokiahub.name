@@ -3,6 +3,7 @@ import { Posts } from "@/components/posts";
 import { Hero } from "@/components/hero";
 import path from "path";
 import fs from "fs";
+import { cn } from "@/lib/utils";
 
 function getPostsData(filterBy?: string, tag?: string): Post[] {
   const postsDir = path.join(process.cwd(), "content/posts");
@@ -24,10 +25,12 @@ const EtcPage = () => {
   const posts = getPostsData("etc");
 
   return (
-    <>
-      <Hero />
-      <Posts items={posts} />
-    </>
+    <main className={"flex justify-center py-8"}>
+      <div className={cn("w-full max-w-[960px] px-4 pb-20")}>
+        <Hero />
+        <Posts items={posts} />
+      </div>
+    </main>
   );
 };
 

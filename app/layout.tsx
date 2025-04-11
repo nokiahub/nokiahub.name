@@ -35,11 +35,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Providers>
           <div>
             <Header />
-            <main className={"flex justify-center py-8"}>
-              <div className={cn("w-full max-w-[960px] px-4 pb-20")}>
-                {children}
-              </div>
-            </main>
+            {children}
           </div>
           <Footer />
         </Providers>
