@@ -34,13 +34,13 @@ export default async function PostItem({ params }: Props) {
     <div className={"justify-round flex w-screen dark:prose-invert"}>
       {/*<Toc />*/}
       <main className={cn("flex w-full justify-center")}>
-        <div className={cn("w-full max-w-[900px] pt-10")}>
-          <h1 className={"mb-2 px-3 text-4xl font-bold md:text-5xl"}>
+        <div className={cn("w-full pt-10")}>
+          <h1 className={"mb-2 px-6 text-4xl font-bold md:text-5xl"}>
             {rawPost?.title}
           </h1>
           <p
             className={cn(
-              "border-b border-black px-3 pb-2 text-sm uppercase text-gray-700",
+              "border-b border-black px-6 pb-2 text-sm uppercase text-gray-700",
             )}
           >
             {formatKoreanDate(rawPost?.date)} · {rawPost.tags?.join(" · ")}
@@ -56,7 +56,7 @@ const PostContent = async ({ name }: { name: string }) => {
   const postForMdx = await getPostData(name);
   return (
     <div
-      className={cn("px-3 pb-20")}
+      className={cn("px-6 pb-20")}
       dangerouslySetInnerHTML={{ __html: postForMdx.contentHtml }}
     ></div>
   );
