@@ -4,12 +4,12 @@ import { Header } from "@/components/header";
 import Footer from "../components/footer";
 import { Providers } from "@/components/providers";
 
-import { Nanum_Gothic } from "next/font/google";
+import { Orbit } from "next/font/google";
 
-const nanumGothic = Nanum_Gothic({
+const font = Orbit({
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "700"],
+  weight: ["400"],
 });
 
 import { cn } from "@/lib/utils";
@@ -29,7 +29,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         className={cn(
           "antialiased",
           "flex min-h-screen flex-col justify-between",
-          nanumGothic.className,
+          font.className,
         )}
       >
         <Providers>
