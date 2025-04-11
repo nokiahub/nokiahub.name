@@ -5,7 +5,6 @@ import { URLSearchParams } from "url";
 import { cn } from "@/lib/utils";
 import path from "path";
 import fs from "fs";
-import { Toc } from "@/components/toc";
 
 type Props = {
   params: { slug: string };
