@@ -2,15 +2,6 @@
   @tailwind components;
   @tailwind utilities;
 
-  @layer base {
-    :root {
-    }
-
-    .dark {
-    }
-  }
-
-
 ul {
   margin: 0;
   padding: 0;

@@ -32,13 +32,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           font.className,
         )}
       >
-        <Providers>
-          <div>
-            <Header />
-            {children}
-          </div>
-          <Footer />
-        </Providers>
+        <div>
+          <Header />
+          {children}
+        </div>
+        <Footer />
       </body>
     </html>
   );
